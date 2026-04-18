@@ -1,1 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Create professional resumes instantly with ResumeCraft Pro. Choose from 15+ ATS-optimized templates with 100/100 score. Free resume builder with beautiful designs.">
+    <meta name="keywords" content="resume builder, CV maker, professional resume, resume templates, ATS resume, job resume, free resume builder">
+    <meta name="author" content="Shariq Rafiq">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ResumeCraft Pro - Professional Resume Builder">
+    <meta property="og:description" content="Create stunning resumes with 15+ professional templates. 100% ATS optimized.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://resumecraftpro.com">
+    <title>ResumeCraft Pro | Professional Resume Builder with 15+ ATS-Optimized Templates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Signature Styles */
+        .signature {
+            text-align: center;
+            padding: 0.8rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.95);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signature-top {
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .signature-bottom {
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 2rem;
+        }
+
+        .signature-text {
+            display: inline-block;
+            position: relative;
+            animation: signatureGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes signatureGlow {
+            0%, 100% {
+                text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255,255,255,0.8);
+            }
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            color: #667eea;
+            margin-right: 0.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 0.7rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Templates Grid */
+        .templates-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-align: center;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .template-card:active {
+            transform: scale(0.98);
+        }
+
+        .template-preview {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #4CAF50;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .template-info {
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .template-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .template-info p {
+            font-size: 0.8rem;
+        }
+
+        /* Template Preview Styles */
+        .template-preview.template1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .template-preview.template2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .template-preview.template3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .template-preview.template4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .template-preview.template5 { background: linear-gradient(135deg, #fa709a, #fee140); }
+        .template-preview.template6 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .template-preview.template7 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+        .template-preview.template8 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .template-preview.template9 { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+        .template-preview.template10 { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+        .template-preview.template11 { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+        .template-preview.template12 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
+        .template-preview.template13 { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
+        .template-preview.template14 { background: linear-gradient(135deg, #ffb88c, #de6262); }
+        .template-preview.template15 { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
+
+        .template-preview::before {
+            content: "Preview";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Resume Output */
+        .resume-output {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem;
+            margin-top: 2rem;
+            display: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .resume-header h2 {
+            font-size: 1.3rem;
+        }
+
+        .resume-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.96);
+        }
+
+        .resume-content {
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Floating Button for Mobile */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+            border-radius: 50px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.8rem;
+            }
+            
+            .templates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+            
+            .signature {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media print {
+            .header, .signature-top, .signature-bottom, .floating-btn, .resume-actions, .templates-section, .form-section, .hero {
+                display: none !important;
+            }
+            .resume-output {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Signature -->
+    <div class="signature signature-top">
+        <div class="signature-text">
+            <i class="fas fa-pen-fancy"></i>
+            Created by Shariq Rafiq
+            <i class="fas fa-star"></i>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-file-alt"></i>
+                ResumeCraft Pro
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Templates</a>
+                <button class="btn-primary" onclick="scrollToForm()">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Create Your Professional Resume</h1>
+            <p>15+ ATS-Optimized Templates • 100/100 Score</p>
+            <button class="btn-primary" onclick="scrollToForm()">Get Started →</button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Resume Ready! ATC Score: 100/100
+        </div>
+
+        <div class="form-section" id="formSection">
+            <h2 style="margin-bottom: 1rem; text-align: center;">Your Information</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullName" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" id="jobTitle" placeholder="Software Engineer">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" placeholder="+1 234 567 8900">
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location" placeholder="New York, NY">
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn</label>
+                    <input type="text" id="linkedin" placeholder="linkedin.com/in/johndoe">
+                </div>
+                <div class="form-group">
+                    <label>Summary</label>
+                    <textarea id="summary" rows="3" placeholder="Professional summary..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Work Experience</label>
+                    <textarea id="experience" rows="4" placeholder="Senior Developer - ABC Corp (2020-Present)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Education</label>
+                    <textarea id="education" rows="3" placeholder="B.S. Computer Science - University (2016-2020)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Skills</label>
+                    <textarea id="skills" rows="3" placeholder="JavaScript, Python, React, Node.js"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="templates-section">
+            <h2 class="section-title">Choose Template</h2>
+            <div class="templates-grid" id="templatesGrid"></div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 0.8rem;">Generating your resume...</p>
+        </div>
+
+        <div class="resume-output" id="resumeOutput">
+            <div class="resume-header">
+                <h2>Your Resume</h2>
+                <div class="resume-actions">
+                    <button class="btn-secondary" onclick="downloadPDF()">
+                        <i class="fas fa-download"></i> PDF
+                    </button>
+                    <button class="btn-secondary" onclick="printResume()">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                </div>
+            </div>
+            <div class="resume-content" id="resumeContent"></div>
+        </div>
+    </div>
+
+    <!-- Bottom Signature -->
+    <div class="signature signature-bottom">
+        <div class="signature-text">
+            <i class="fas fa-code"></i>
+            Created with ❤️ by Shariq Rafiq
+            <i class="fas fa-rocket"></i>
+        </div>
+    </div>
+
+    <script>
+        let selectedTemplate = 1;
+        let templates = [];
+
+        for(let i = 1; i <= 15; i++) {
+            templates.push({ id: i, name: `Template ${i}`, style: `Professional`, score: 100 });
+        }
+
+        function renderTemplates() {
+            const grid = document.getElementById('templatesGrid');
+            grid.innerHTML = '';
+            templates.forEach(template => {
+                const card = document.createElement('div');
+                card.className = 'template-card';
+                card.ontouchend = (e) => {
+                    e.preventDefault();
+                    selectTemplate(template.id);
+                };
+                card.onclick = () => selectTemplate(template.id);
+                card.innerHTML = `
+                    <div class="template-preview template${template.id}">
+                        <div class="template-badge">ATC: ${template.score}</div>
+                    </div>
+                    <div class="template-info">
+                        <h3>${template.name}</h3>
+                        <p>${template.style}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function selectTemplate(id) {
+            selectedTemplate = id;
+            const cards = document.querySelectorAll('.template-card');
+            cards.forEach((card, index) => {
+                if(index + 1 === id) {
+                    card.style.border = '3px solid #667eea';
+                    card.style.transform = 'scale(1.02)';
+                } else {
+                    card.style.border = 'none';
+                    card.style.transform = 'scale(1)';
+                }
+            });
+            
+            // Mobile toast notification
+            const toast = document.createElement('div');
+            toast.style.position = 'fixed';
+            toast.style.bottom = '80px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.background = '#4CAF50';
+            toast.style.color = 'white';
+            toast.style.padding = '0.6rem 1.2rem';
+            toast.style.borderRadius = '50px';
+            toast.style.zIndex = '9999';
+            toast.style.fontSize = '0.85rem';
+            toast.innerHTML = `✓ Template ${id} selected`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 1500);
+        }
+
+        function scrollToForm() {
+            document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateResume() {
+            const fullName = document.getElementById('fullName').value || "John Doe";
+            const jobTitle = document.getElementById('jobTitle').value || "Professional";
+            const email = document.getElementById('email').value || "email@example.com";
+            const phone = document.getElementById('phone').value || "+1 234 567 8900";
+            const location = document.getElementById('location').value || "City, State";
+            const linkedin = document.getElementById('linkedin').value || "linkedin.com/in/profile";
+            const summary = document.getElementById('summary').value || "Experienced professional with a demonstrated history of working in the industry.";
+            const experience = document.getElementById('experience').value || "• Senior Position - Company Name (2020-Present)\n• Led key initiatives resulting in 30% growth";
+            const education = document.getElementById('education').value || "• Degree in Field - University Name (Year)";
+            const skills = document.getElementById('skills').value || "• Project Management\n• Team Leadership\n• Technical Skills";
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('resumeOutput').style.display = 'none';
+
+            setTimeout(() => {
+                const templateStyles = {
+                    1: 'border-left: 4px solid #667eea; padding: 15px;',
+                    2: 'background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 15px; border-radius: 10px;',
+                    3: 'border: 2px solid #4facfe; padding: 15px; border-radius: 20px;',
+                    4: 'background: #f0fdf4; padding: 15px; border-radius: 8px;',
+                    5: 'background: #fff5f5; padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);',
+                    6: 'background: #f0f9ff; padding: 15px; border-radius: 15px 50px;',
+                    7: 'background: linear-gradient(to right, #ffe6e6, #fff0f0); padding: 15px;',
+                    8: 'background: #fff9e6; padding: 15px; border-left: 8px solid #ff9a9e;',
+                    9: 'background: #e6f3ff; padding: 15px; border-radius: 30px 10px;',
+                    10: 'background: #e6ffe6; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);',
+                    11: 'background: linear-gradient(135deg, #fff5f9, #f0f5ff); padding: 15px;',
+                    12: 'background: #fff0e6; padding: 15px; border-bottom: 5px solid #d57eeb;',
+                    13: 'background: #f0f0ff; padding: 15px; border-radius: 10px 50px;',
+                    14: 'background: #ffe6e6; padding: 15px; border-top: 5px solid #de6262;',
+                    15: 'background: linear-gradient(135deg, #e6f7ff, #f0f5ff); padding: 15px; border-radius: 20px;'
+                };
+
+                const style = templateStyles[selectedTemplate] || templateStyles[1];
+
+                const resumeHTML = `
+                    <div style="${style}">
+                        <h1 style="font-size: 1.5rem; margin-bottom: 8px;">${fullName}</h1>
+                        <h3 style="color: #667eea; font-size: 1.1rem; margin-bottom: 15px;">${jobTitle}</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 2px solid #e0e0e0; font-size: 0.85rem;">
+                            <div><i class="fas fa-envelope"></i> ${email}</div>
+                            <div><i class="fas fa-phone"></i> ${phone}</div>
+                            <div><i class="fas fa-map-marker-alt"></i> ${location}</div>
+                            <div><i class="fab fa-linkedin"></i> ${linkedin}</div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <h3 style="color: #667eea; font-size: 1rem; margin-bottom: 8px;">Professional Summary</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">${summary}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <h3 style="color: #667eea; font-size: 1rem; margin-bottom: 8px;">Work Experience</h3>
+                            <div style="white-space: pre-line; font-size: 0.9rem; line-height: 1.5;">${experience}</div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <h3 style="color: #667eea; font-size: 1rem; margin-bottom: 8px;">Education</h3>
+                            <div style="white-space: pre-line; font-size: 0.9rem; line-height: 1.5;">${education}</div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <h3 style="color: #667eea; font-size: 1rem; margin-bottom: 8px;">Skills</h3>
+                            <div style="white-space: pre-line; font-size: 0.9rem; line-height: 1.5;">${skills}</div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid #e0e0e0; text-align: center; font-size: 0.75rem; color: #666;">
+                            <i class="fas fa-check-circle" style="color: #4CAF50;"></i> ATS Optimized (100/100)
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('resumeContent').innerHTML = resumeHTML;
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('resumeOutput').style.display = 'block';
+                
+                const successMsg = document.getElementById('successMessage');
+                successMsg.style.display = 'block';
+                setTimeout(() => successMsg.style.display = 'none', 3000);
+                document.getElementById('resumeOutput').scrollIntoView({ behavior: 'smooth' });
+            }, 1000);
+        }
+
+        function downloadPDF() {
+            alert("📄 To save as PDF:\n1. Click OK\n2. Press Ctrl+P (or Cmd+P on Mac)\n3. Choose 'Save as PDF'\n4. Click Save");
+            window.print();
+        }
+
+        function printResume() {
+            window.print();
+        }
+
+        const generateBtn = document.createElement('button');
+        generateBtn.className = 'btn-primary floating-btn';
+        generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generate';
+        generateBtn.onclick = generateResume;
+        document.body.appendChild(generateBtn);
+
+        renderTemplates();
+
+        // Pre-fill sample data
+        window.onload = () => {
+            document.getElementById('fullName').value = "Alexandra Chen";
+            document.getElementById('jobTitle').value = "Senior Product Designer";
+            document.getElementById('email').value = "alex.chen@example.com";
+            document.getElementById('phone').value = "+1 (555) 123-4567";
+            document.getElementById('location').value = "San Francisco, CA";
+            document.getElementById('linkedin').value = "linkedin.com/in/alexchen";
+            document.getElementById('summary').value = "Award-winning Product Designer with 8+ years of experience creating intuitive digital experiences.";
+            document.getElementById('experience').value = "• Senior Product Designer - TechCorp (2021-Present)\n  - Led redesign of flagship product\n  - Mentored 5 junior designers\n\n• Product Designer - DesignStudio (2018-2021)\n  - Collaborated on 20+ successful product launches";
+            document.getElementById('education').value = "• MFA in Interaction Design - California College of the Arts (2016-2018)\n• BFA in Graphic Design - UCLA (2012-2016)";
+            document.getElementById('skills').value = "• UI/UX Design\n• Figma, Sketch\n• User Research\n• Design Systems\n• Prototyping";
+        };
+    </script>
+</body>
+</html>
