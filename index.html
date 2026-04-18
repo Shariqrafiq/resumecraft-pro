@@ -2,15 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="description" content="Create professional resumes instantly with ResumeCraft Pro. Choose from 15+ unique ATS-optimized templates with different layouts and designs.">
-    <meta name="keywords" content="resume builder, CV maker, professional resume, resume templates, ATS resume, job resume, free resume builder">
-    <meta name="author" content="Shariq Rafiq">
-    <meta name="robots" content="index, follow">
-    <title>ResumeCraft Pro | 15+ Unique Resume Templates</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="AI-powered resume builder that optimizes your resume for any job. Get 90%+ match scores with our intelligent tailoring engine. Create a job-winning resume in minutes.">
+    <title>ResumeAI Pro | AI-Powered Resume Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ========== PREMIUM DESIGN SYSTEM ========== */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #475569;
+            --gray-800: #1e293b;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,18 +37,29 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: var(--gray-50);
+            color: var(--dark);
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* Navigation */
-        .navbar {
+        body.dark-mode {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav {
             background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--gray-200);
             position: sticky;
             top: 0;
             z-index: 1000;
+        }
+
+        body.dark-mode .nav {
+            background: rgba(15,23,42,0.98);
+            border-bottom-color: #1e293b;
         }
 
         .nav-container {
@@ -45,9 +74,9 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -56,206 +85,227 @@
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .nav-link {
             text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            transition: color 0.3s;
-            cursor: pointer;
+            color: var(--gray-600);
+            font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
         }
 
         .nav-link:hover, .nav-link.active {
-            color: #667eea;
-            background: rgba(102,126,234,0.1);
+            background: var(--gray-100);
+            color: var(--primary);
         }
 
-        /* Pages */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease;
+        body.dark-mode .nav-link {
+            color: #94a3b8;
         }
 
-        .page.active-page {
-            display: block;
+        body.dark-mode .nav-link:hover {
+            background: #1e293b;
+            color: var(--primary);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Container */
-        .container {
+        /* ========== MAIN LAYOUT ========== */
+        .app-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Form */
-        .form-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 450px 1fr;
+            gap: 2rem;
         }
 
-        .form-group {
+        /* Builder Sidebar */
+        .builder-sidebar {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        body.dark-mode .builder-sidebar {
+            background: #1e293b;
+        }
+
+        /* Preview Section */
+        .preview-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 100px);
             display: flex;
             flex-direction: column;
+        }
+
+        body.dark-mode .preview-section {
+            background: #1e293b;
+        }
+
+        .preview-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gray-50);
+        }
+
+        body.dark-mode .preview-header {
+            background: #0f172a;
+            border-bottom-color: #334155;
+        }
+
+        .score-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .preview-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        /* ========== WIZARD STYLES ========== */
+        .wizard-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            background: var(--gray-50);
+        }
+
+        body.dark-mode .wizard-header {
+            background: #0f172a;
+            border-bottom-color: #334155;
+        }
+
+        .wizard-steps {
+            display: flex;
             gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .step {
+            flex: 1;
+            height: 4px;
+            background: var(--gray-200);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .step.active {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .step.completed {
+            background: var(--success);
+        }
+
+        .wizard-content {
+            padding: 1.5rem;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
+            display: block;
             font-weight: 600;
-            color: #555;
+            margin-bottom: 0.5rem;
+            color: var(--gray-800);
         }
 
-        .form-group input, .form-group textarea {
+        body.dark-mode .form-group label {
+            color: #e2e8f0;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
             padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
             font-family: inherit;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
         }
 
         .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
         }
 
-        /* Templates Grid */
-        .templates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .template-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .template-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-        }
-
-        .template-preview {
-            height: 250px;
-            position: relative;
-            overflow: hidden;
+        /* AI Job Card */
+        .job-card {
+            background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+            border-radius: var(--radius-md);
             padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .preview-content {
-            color: white;
-            text-align: center;
-            width: 100%;
-        }
-
-        .template-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #4CAF50;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .template-info {
-            padding: 1rem;
-            text-align: center;
-        }
-
-        /* Facts Section */
-        .facts-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .fact-card {
-            text-align: center;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            border-radius: 15px;
-        }
-
-        .fact-card i {
-            font-size: 2.5rem;
-            color: #667eea;
             margin-bottom: 1rem;
+            border: 1px solid #dbeafe;
+        }
+
+        body.dark-mode .job-card {
+            background: linear-gradient(135deg, #1e293b, #2d2b3f);
+            border-color: #334155;
+        }
+
+        .match-score {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         /* Buttons */
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 50px;
-            cursor: pointer;
+            border-radius: var(--radius-md);
             font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102,126,234,0.3);
+            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
         }
 
         .btn-secondary {
-            background: #f0f0f0;
-            color: #333;
+            background: var(--gray-100);
+            color: var(--gray-800);
             padding: 0.5rem 1rem;
             border: none;
             border-radius: 8px;
@@ -263,469 +313,693 @@
             font-weight: 500;
         }
 
-        /* Resume Output */
-        .resume-output {
+        body.dark-mode .btn-secondary {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .improve-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        /* AI Panel */
+        .ai-panel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 450px;
+            height: 100vh;
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            display: none;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+            overflow-y: auto;
         }
 
-        .resume-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #e0e0e0;
-            flex-wrap: wrap;
-            gap: 1rem;
+        body.dark-mode .ai-panel {
+            background: #1e293b;
         }
 
-        .resume-actions {
-            display: flex;
-            gap: 1rem;
+        .ai-panel.open {
+            transform: translateX(0);
         }
 
-        .resume-content {
-            min-height: 500px;
+        .ai-panel-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
         }
 
-        /* Signature */
-        .signature {
-            text-align: center;
+        .ai-suggestion {
             padding: 1rem;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
-            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--gray-200);
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 2rem;
+        .ai-suggestion:hover {
+            background: var(--gray-50);
         }
 
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
+        body.dark-mode .ai-suggestion:hover {
+            background: #0f172a;
+        }
+
+        /* Resume Preview Template */
+        .resume-preview {
+            max-width: 800px;
             margin: 0 auto;
+            background: white;
+            box-shadow: var(--shadow-lg);
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        body.dark-mode .resume-preview {
+            background: #0f172a;
         }
 
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .app-container {
+                grid-template-columns: 1fr;
             }
-            .hero h1 {
-                font-size: 2rem;
+            .builder-sidebar, .preview-section {
+                position: relative;
+                top: 0;
+                height: auto;
             }
-            .container {
-                padding: 1rem;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: var(--gray-100);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideIn 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <!-- Signature Top -->
-    <div class="signature">
-        <i class="fas fa-pen-fancy"></i> Created by Shariq Rafiq <i class="fas fa-star"></i>
-    </div>
-
-    <!-- Navigation -->
-    <div class="navbar">
+    <div class="nav">
         <div class="nav-container">
             <div class="logo" onclick="showPage('home')">
-                <i class="fas fa-file-alt"></i> ResumeCraft Pro
+                <i class="fas fa-brain"></i> ResumeAI Pro
             </div>
             <div class="nav-links">
-                <a class="nav-link active" onclick="showPage('home')">🏠 Home</a>
-                <a class="nav-link" onclick="showPage('templates')">📄 Templates</a>
-                <a class="nav-link" onclick="showPage('builder')">✏️ Resume Builder</a>
-                <a class="nav-link" onclick="showPage('facts')">💡 Facts</a>
+                <a class="nav-link" onclick="showPage('builder')">Builder</a>
+                <a class="nav-link" onclick="showPage('templates')">Templates</a>
+                <a class="nav-link" onclick="showPage('dashboard')">Dashboard</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-primary" onclick="startNewResume()">Start Free</button>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <!-- Home Page -->
-        <div id="homePage" class="page active-page">
-            <div class="hero">
-                <h1>Create Your Dream Resume in Minutes</h1>
-                <p>15+ Unique Templates • 100% ATS Optimized • Free Forever</p>
-                <button class="btn-primary" onclick="showPage('builder')">Start Building →</button>
-            </div>
-
-            <div class="facts-section">
-                <h2 style="text-align: center; margin-bottom: 1rem;">Why Choose ResumeCraft Pro?</h2>
-                <div class="facts-grid">
-                    <div class="fact-card">
-                        <i class="fas fa-layer-group"></i>
-                        <h3>15+ Unique Templates</h3>
-                        <p>Different structures, layouts, and designs for every profession</p>
-                    </div>
-                    <div class="fact-card">
-                        <i class="fas fa-robot"></i>
-                        <h3>100% ATS Friendly</h3>
-                        <p>All templates score 100/100 on ATS scanners</p>
-                    </div>
-                    <div class="fact-card">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>Mobile Responsive</h3>
-                        <p>Perfect viewing on any device</p>
-                    </div>
-                    <div class="fact-card">
-                        <i class="fas fa-download"></i>
-                        <h3>PDF Export</h3>
-                        <p>Download your resume as PDF instantly</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Templates Page -->
-        <div id="templatesPage" class="page">
-            <h2 style="color: white; text-align: center; margin-bottom: 2rem;">Choose Your Style</h2>
-            <div class="templates-grid" id="templatesGrid"></div>
-        </div>
-
-        <!-- Builder Page -->
-        <div id="builderPage" class="page">
-            <div class="form-section">
-                <h2 style="margin-bottom: 1.5rem; text-align: center;">Your Information</h2>
-                <div class="form-grid">
-                    <div class="form-group"><label>Full Name</label><input type="text" id="fullName" placeholder="John Doe"></div>
-                    <div class="form-group"><label>Job Title</label><input type="text" id="jobTitle" placeholder="Software Engineer"></div>
-                    <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="john@example.com"></div>
-                    <div class="form-group"><label>Phone</label><input type="tel" id="phone" placeholder="+1 234 567 8900"></div>
-                    <div class="form-group"><label>Location</label><input type="text" id="location" placeholder="New York, NY"></div>
-                    <div class="form-group"><label>LinkedIn</label><input type="text" id="linkedin" placeholder="linkedin.com/in/johndoe"></div>
-                    <div class="form-group"><label>Summary</label><textarea id="summary" rows="3" placeholder="Professional summary..."></textarea></div>
-                    <div class="form-group"><label>Work Experience</label><textarea id="experience" rows="4" placeholder="Senior Developer - ABC Corp (2020-Present)&#10;Led team of 5 developers..."></textarea></div>
-                    <div class="form-group"><label>Education</label><textarea id="education" rows="3" placeholder="B.S. Computer Science - University (2016-2020)"></textarea></div>
-                    <div class="form-group"><label>Skills</label><textarea id="skills" rows="3" placeholder="JavaScript, Python, React, Node.js"></textarea></div>
-                    <div class="form-group"><label>Certifications (Optional)</label><textarea id="certifications" rows="2" placeholder="AWS Certified, Google Analytics"></textarea></div>
-                    <div class="form-group"><label>Languages (Optional)</label><textarea id="languages" rows="2" placeholder="English (Native), Spanish (Fluent)"></textarea></div>
-                </div>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <button class="btn-primary" onclick="generateResume()">Generate Resume →</button>
-                </div>
-            </div>
-
-            <div class="loading" id="loading"><div class="spinner"></div><p>Creating your professional resume...</p></div>
-            <div class="resume-output" id="resumeOutput">
-                <div class="resume-header">
-                    <h2>Your Resume</h2>
-                    <div class="resume-actions">
-                        <button class="btn-secondary" onclick="downloadPDF()"><i class="fas fa-download"></i> PDF</button>
-                        <button class="btn-secondary" onclick="printResume()"><i class="fas fa-print"></i> Print</button>
-                    </div>
-                </div>
-                <div class="resume-content" id="resumeContent"></div>
-            </div>
-        </div>
-
-        <!-- Facts Page -->
-        <div id="factsPage" class="page">
-            <div class="facts-section">
-                <h2 style="text-align: center; margin-bottom: 1.5rem;">📊 Interesting Resume Facts</h2>
-                <div class="facts-grid">
-                    <div class="fact-card"><i class="fas fa-clock"></i><h3>6 Seconds</h3><p>Recruiters spend only 6-7 seconds on average reviewing a resume</p></div>
-                    <div class="fact-card"><i class="fas fa-chart-line"></i><h3>75% Rejection</h3><p>75% of resumes are rejected by ATS before reaching human eyes</p></div>
-                    <div class="fact-card"><i class="fas fa-file-alt"></i><h3>1 Page Rule</h3><p>For less than 10 years experience, keep resume to 1 page</p></div>
-                    <div class="fact-card"><i class="fas fa-key"></i><h3>Keywords Matter</h3><p>Resumes with job-specific keywords get 50% more interviews</p></div>
-                    <div class="fact-card"><i class="fas fa-image"></i><h3>No Photos</h3><p>Never include your photo on US resumes (leads to bias)</p></div>
-                    <div class="fact-card"><i class="fas fa-chart-bar"></i><h3>Quantify Wins</h3><p>Resumes with numbers get 40% more callbacks</p></div>
-                    <div class="fact-card"><i class="fas fa-check-circle"></i><h3>ATS Score</h3><p>Our templates score 100/100 on all major ATS systems</p></div>
-                    <div class="fact-card"><i class="fas fa-globe"></i><h3>Global Standard</h3><p>Different countries have different resume formats</p></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Signature Bottom -->
-    <div class="signature">
-        <i class="fas fa-code"></i> Created with ❤️ by Shariq Rafiq <i class="fas fa-rocket"></i>
-    </div>
+    <div id="app"></div>
 
     <script>
+        // ========== STATE MANAGEMENT ==========
+        let currentPage = 'builder';
+        let currentStep = 1;
         let selectedTemplate = 1;
+        let currentEditingField = null;
         
-        // 15 UNIQUE TEMPLATES with different structures
-        const templates = [
-            { id: 1, name: "Modern Classic", style: "Two-column with sidebar", color: "#667eea", layout: "sidebar" },
-            { id: 2, name: "Corporate Elite", style: "Bold header with timeline", color: "#2c3e50", layout: "timeline" },
-            { id: 3, name: "Creative Portfolio", style: "Visual with skill badges", color: "#e74c3c", layout: "creative" },
-            { id: 4, name: "Minimal Clean", style: "White space optimized", color: "#3498db", layout: "minimal" },
-            { id: 5, name: "Executive Pro", style: "Luxury gold accents", color: "#f39c12", layout: "executive" },
-            { id: 6, name: "Tech Modern", style: "Grid-based with icons", color: "#1abc9c", layout: "tech" },
-            { id: 7, name: "Academic", style: "Publication focused", color: "#9b59b6", layout: "academic" },
-            { id: 8, name: "Healthcare", style: "Patient-centered layout", color: "#2ecc71", layout: "healthcare" },
-            { id: 9, name: "Legal", style: "Traditional authoritative", color: "#34495e", layout: "legal" },
-            { id: 10, name: "Sales Hunter", style: "Achievement focused", color: "#e67e22", layout: "sales" },
-            { id: 11, name: "Designer", style: "Visual portfolio style", color: "#e84393", layout: "designer" },
-            { id: 12, name: "Entry Level", style: "Education focused", color: "#00cec9", layout: "entry" },
-            { id: 13, name: "Freelancer", style: "Project showcase", color: "#6c5ce7", layout: "freelance" },
-            { id: 14, name: "Manager", style: "Leadership focused", color: "#fd79a8", layout: "manager" },
-            { id: 15, name: "Remote Worker", style: "Digital nomad style", color: "#0984e3", layout: "remote" }
-        ];
-
-        // Navigation
-        function showPage(pageName) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page'));
-            document.getElementById(`${pageName}Page`).classList.add('active-page');
-            
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            if(pageName === 'templates') renderTemplates();
-        }
-
-        // Render Templates
-        function renderTemplates() {
-            const grid = document.getElementById('templatesGrid');
-            grid.innerHTML = '';
-            templates.forEach(template => {
-                const card = document.createElement('div');
-                card.className = 'template-card';
-                card.onclick = () => selectTemplate(template.id);
-                card.innerHTML = `
-                    <div class="template-preview" style="background: linear-gradient(135deg, ${template.color}20, ${template.color}40);">
-                        <div class="preview-content">
-                            <i class="fas fa-file-alt" style="font-size: 3rem; color: ${template.color};"></i>
-                            <h3 style="color: ${template.color}; margin-top: 1rem;">${template.name}</h3>
-                            <p style="color: #666;">${template.style}</p>
-                        </div>
-                        <div class="template-badge">ATC: 100</div>
-                    </div>
-                    <div class="template-info">
-                        <h3>${template.name}</h3>
-                        <p>${template.style}</p>
-                        <i class="fas fa-star" style="color: gold;"></i> ATS Score: 100
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function selectTemplate(id) {
-            selectedTemplate = id;
-            alert(`✓ ${templates[id-1].name} template selected!`);
-        }
-
-        // Generate Resume with UNIQUE layouts
-        function generateResume() {
-            const data = {
-                name: document.getElementById('fullName').value || "John Doe",
-                title: document.getElementById('jobTitle').value || "Professional",
-                email: document.getElementById('email').value || "email@example.com",
-                phone: document.getElementById('phone').value || "+1 234 567 8900",
-                location: document.getElementById('location').value || "City, State",
-                linkedin: document.getElementById('linkedin').value || "linkedin.com/in/profile",
-                summary: document.getElementById('summary').value || "Experienced professional with proven track record of success.",
-                experience: document.getElementById('experience').value || "• Senior Role - Company (2020-Present)\n• Key achievements and responsibilities",
-                education: document.getElementById('education').value || "• Degree - University (Year)",
-                skills: document.getElementById('skills').value || "• Skill 1\n• Skill 2\n• Skill 3",
-                certifications: document.getElementById('certifications').value || "",
-                languages: document.getElementById('languages').value || ""
-            };
-
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('resumeOutput').style.display = 'none';
-
-            setTimeout(() => {
-                let resumeHTML = generateTemplateLayout(data, selectedTemplate);
-                document.getElementById('resumeContent').innerHTML = resumeHTML;
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('resumeOutput').style.display = 'block';
-                document.getElementById('resumeOutput').scrollIntoView({ behavior: 'smooth' });
-            }, 800);
-        }
-
-        // UNIQUE TEMPLATE LAYOUTS
-        function generateTemplateLayout(data, templateId) {
-            const layouts = {
-                1: `<!-- Template 1: Modern Classic Two-Column -->
-                    <div style="display: grid; grid-template-columns: 35% 65%; gap: 0; min-height: 500px;">
-                        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem;">
-                            <h2 style="font-size: 1.8rem;">${data.name}</h2>
-                            <p style="margin: 0.5rem 0;">${data.title}</p>
-                            <hr style="margin: 1rem 0;">
-                            <h3>Contact</h3>
-                            <p><i class="fas fa-envelope"></i> ${data.email}</p>
-                            <p><i class="fas fa-phone"></i> ${data.phone}</p>
-                            <p><i class="fas fa-map-marker-alt"></i> ${data.location}</p>
-                            <h3 style="margin-top: 1.5rem;">Skills</h3>
-                            <div style="white-space: pre-line;">${data.skills}</div>
-                        </div>
-                        <div style="padding: 2rem;">
-                            <h3 style="color: #667eea;">Professional Summary</h3>
-                            <p>${data.summary}</p>
-                            <h3 style="color: #667eea; margin-top: 1.5rem;">Work Experience</h3>
-                            <div style="white-space: pre-line;">${data.experience}</div>
-                            <h3 style="color: #667eea; margin-top: 1.5rem;">Education</h3>
-                            <div style="white-space: pre-line;">${data.education}</div>
-                        </div>
-                    </div>`,
-                
-                2: `<!-- Template 2: Corporate Elite Timeline -->
-                    <div style="padding: 2rem; border-left: 4px solid #2c3e50;">
-                        <h1 style="color: #2c3e50;">${data.name}</h1>
-                        <h3 style="color: #7f8c8d;">${data.title}</h3>
-                        <div style="display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap;">
-                            <span><i class="fas fa-envelope"></i> ${data.email}</span>
-                            <span><i class="fas fa-phone"></i> ${data.phone}</span>
-                            <span><i class="fas fa-map-marker-alt"></i> ${data.location}</span>
-                        </div>
-                        <div style="background: #ecf0f1; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
-                            <h3>Summary</h3>
-                            <p>${data.summary}</p>
-                        </div>
-                        <h3><i class="fas fa-briefcase"></i> Experience</h3>
-                        <div style="white-space: pre-line;">${data.experience}</div>
-                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                        <div style="white-space: pre-line;">${data.education}</div>
-                        <h3><i class="fas fa-cogs"></i> Skills</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">${data.skills.split('\n').map(s => `<span style="background: #2c3e50; color: white; padding: 0.3rem 0.8rem; border-radius: 20px;">${s.replace('•', '')}</span>`).join('')}</div>
-                    </div>`,
-                
-                3: `<!-- Template 3: Creative Portfolio -->
-                    <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 2rem; text-align: center;">
-                        <h1 style="font-size: 2.5rem;">${data.name}</h1>
-                        <h3>${data.title}</h3>
-                        <div style="display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap;">
-                            <span>📧 ${data.email}</span>
-                            <span>📱 ${data.phone}</span>
-                            <span>📍 ${data.location}</span>
-                        </div>
-                    </div>
-                    <div style="padding: 2rem;">
-                        <div style="background: #fdf2e9; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem;">
-                            <h3 style="color: #e74c3c;">🎨 Creative Summary</h3>
-                            <p>${data.summary}</p>
-                        </div>
-                        <h3 style="color: #e74c3c;">💼 Portfolio Highlights</h3>
-                        <div style="white-space: pre-line;">${data.experience}</div>
-                        <h3 style="color: #e74c3c; margin-top: 1.5rem;">🎓 Education</h3>
-                        <div style="white-space: pre-line;">${data.education}</div>
-                        <h3 style="color: #e74c3c;">⚡ Creative Skills</h3>
-                        <div style="white-space: pre-line;">${data.skills}</div>
-                    </div>`,
-                
-                4: `<!-- Template 4: Minimal Clean -->
-                    <div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
-                        <h1 style="font-size: 2rem; font-weight: 300;">${data.name}</h1>
-                        <p style="font-size: 1.2rem; color: #3498db;">${data.title}</p>
-                        <hr style="margin: 1rem 0;">
-                        <p>${data.email} | ${data.phone} | ${data.location}</p>
-                        <hr style="margin: 1rem 0;">
-                        <p>${data.summary}</p>
-                        <h3 style="margin-top: 1.5rem; font-weight: 500;">Experience</h3>
-                        <div style="white-space: pre-line;">${data.experience}</div>
-                        <h3 style="margin-top: 1rem; font-weight: 500;">Education</h3>
-                        <div style="white-space: pre-line;">${data.education}</div>
-                        <h3 style="margin-top: 1rem; font-weight: 500;">Skills</h3>
-                        <div style="white-space: pre-line;">${data.skills}</div>
-                    </div>`,
-                
-                5: `<!-- Template 5: Executive Pro -->
-                    <div style="border: 2px solid #f39c12; padding: 2rem;">
-                        <div style="text-align: center; border-bottom: 3px solid #f39c12; margin-bottom: 1.5rem;">
-                            <h1 style="color: #2c3e50;">${data.name}</h1>
-                            <h3 style="color: #f39c12;">${data.title}</h3>
-                            <p style="margin: 0.5rem 0;">${data.email} | ${data.phone} | ${data.location}</p>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <h3 style="color: #f39c12;">Executive Summary</h3>
-                            <p>${data.summary}</p>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <h3 style="color: #f39c12;">Leadership Experience</h3>
-                            <div style="white-space: pre-line;">${data.experience}</div>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <h3 style="color: #f39c12;">Education & Credentials</h3>
-                            <div style="white-space: pre-line;">${data.education}</div>
-                        </div>
-                        <div>
-                            <h3 style="color: #f39c12;">Core Competencies</h3>
-                            <div style="white-space: pre-line;">${data.skills}</div>
-                        </div>
-                    </div>`
-            };
-
-            // For templates 6-15, use variations of above layouts
-            if(templateId >= 6 && templateId <= 15) {
-                return layouts[templateId % 5 + 1] || layouts[1];
+        let resumeData = {
+            id: 'resume_1',
+            personal: {
+                name: "Alexandra Chen",
+                title: "Senior Product Designer",
+                email: "alex.chen@example.com",
+                phone: "+1 (555) 123-4567",
+                location: "San Francisco, CA",
+                linkedin: "linkedin.com/in/alexchen",
+                portfolio: "alexchen.design"
+            },
+            summary: "Award-winning Product Designer with 8+ years of experience creating intuitive digital experiences that drive business growth. Led redesigns resulting in 45% engagement increase and $2.3M revenue impact.",
+            experience: [
+                { id: 1, title: "Senior Product Designer", company: "TechCorp", period: "2021-Present", bullets: ["Led redesign of flagship product, increasing user engagement by 45%", "Mentored 5 junior designers, 3 promoted within 1 year"] },
+                { id: 2, title: "Product Designer", company: "DesignStudio", period: "2018-2021", bullets: ["Collaborated on 20+ successful product launches", "Redesigned onboarding flow, reducing drop-off by 30%"] }
+            ],
+            education: [
+                { id: 1, degree: "MFA in Interaction Design", school: "California College of the Arts", year: "2018" }
+            ],
+            skills: ["UI/UX Design", "Figma", "User Research", "Design Systems", "Prototyping", "Agile"],
+            certifications: ["Google UX Design Certificate", "Advanced Figma"],
+            projects: [
+                { id: 1, name: "Mobile Banking App", description: "Designed end-to-end experience for 500k+ users", link: "" }
+            ],
+            languages: ["English (Native)", "Spanish (Fluent)"]
+        };
+        
+        let jobDescription = "";
+        let matchScore = 0;
+        let resumeScore = 0;
+        
+        // ========== AI SERVICE (Simulated - Replace with OpenAI API) ==========
+        class AIService {
+            static async improveBullet(bullet, jobContext = "") {
+                await new Promise(resolve => setTimeout(resolve, 500));
+                return {
+                    professional: `🚀 ${bullet.replace(/^[^:]+/, "Spearheaded initiative that")} resulting in measurable business impact`,
+                    impact: `💥 ${bullet.includes("%") ? bullet + " → $2.3M annual revenue impact" : bullet + " achieving 40% efficiency gain"}`,
+                    concise: bullet.substring(0, 80) + (bullet.length > 80 ? "..." : "")
+                };
             }
             
-            return layouts[templateId] || layouts[1];
-        }
-
-        function downloadPDF() {
-            alert("💾 To save as PDF:\n1. Click OK\n2. Press Ctrl+P (Cmd+P on Mac)\n3. Select 'Save as PDF'\n4. Click Save");
-            window.print();
-        }
-
-        function printResume() {
-            window.print();
-        }
-
-        function renderTemplates() {
-            const grid = document.getElementById('templatesGrid');
-            if(!grid) return;
-            grid.innerHTML = '';
-            templates.forEach(template => {
-                const card = document.createElement('div');
-                card.className = 'template-card';
-                card.onclick = () => {
-                    selectedTemplate = template.id;
-                    alert(`✓ ${template.name} template selected!`);
+            static async analyzeMatch(resumeText, jobDesc) {
+                await new Promise(resolve => setTimeout(resolve, 800));
+                const keywords = ["product design", "user research", "prototyping", "design systems", "figma"];
+                const missing = keywords.slice(0, Math.floor(Math.random() * 3) + 1);
+                const score = Math.floor(Math.random() * 30) + 65;
+                return { score, missingKeywords: missing, suggestions: ["Add metrics to experience", `Include "${missing[0]}" keyword`, "Quantify achievements"], strengths: ["Clear formatting", "Good structure"] };
+            }
+            
+            static async generateSummary(role, experience, jobDesc) {
+                await new Promise(resolve => setTimeout(resolve, 600));
+                return `Innovative ${role} with ${experience}+ years of experience delivering user-centered solutions. Proven track record of driving 40%+ engagement increases through strategic design decisions. Passionate about creating accessible, intuitive products that solve real user problems.`;
+            }
+            
+            static async tailorResume(resume, jobDesc) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                return {
+                    newSummary: await this.generateSummary(resume.personal.title, "8", jobDesc),
+                    suggestions: ["Add 'Agile Methodology' to skills", "Highlight cross-functional collaboration", "Add metric to first bullet point"]
                 };
-                card.innerHTML = `
-                    <div class="template-preview" style="background: linear-gradient(135deg, ${template.color}20, ${template.color}40);">
-                        <div class="preview-content">
-                            <i class="fas fa-file-alt" style="font-size: 3rem; color: ${template.color};"></i>
-                            <h3 style="color: ${template.color}; margin-top: 1rem;">${template.name}</h3>
-                            <p style="color: #666;">${template.style}</p>
+            }
+        }
+        
+        // ========== RESUME SCORING ENGINE ==========
+        class ResumeScorer {
+            static calculateScore(resume) {
+                let score = 0;
+                const feedback = [];
+                const text = JSON.stringify(resume);
+                
+                // Metrics check
+                const hasMetrics = /\d+%|\$\d+|\d+x|\d+\s*(percent|increase)/i.test(text);
+                score += hasMetrics ? 30 : 10;
+                if (!hasMetrics) feedback.push({ type: "warning", message: "Add measurable metrics (%, $, numbers) to showcase impact" });
+                
+                // Skills check
+                if (resume.skills.length >= 6) score += 25;
+                else if (resume.skills.length >= 4) score += 15;
+                else feedback.push({ type: "warning", message: "Add more relevant skills (aim for 6-8)" });
+                
+                // Experience depth
+                const hasDetailedBullets = resume.experience.some(exp => exp.bullets.length >= 2);
+                score += hasDetailedBullets ? 25 : 10;
+                if (!hasDetailedBullets) feedback.push({ type: "warning", message: "Add at least 2 bullet points per experience" });
+                
+                // Summary quality
+                if (resume.summary && resume.summary.length > 80) score += 20;
+                else feedback.push({ type: "warning", message: "Write a more detailed professional summary" });
+                
+                return { score: Math.min(100, score), feedback };
+            }
+        }
+        
+        // ========== UI RENDERING ==========
+        function renderApp() {
+            const app = document.getElementById('app');
+            if (currentPage === 'builder') {
+                app.innerHTML = `
+                    <div class="app-container">
+                        <div class="builder-sidebar">
+                            <div class="wizard-header">
+                                <h3>Build Your Resume</h3>
+                                <p style="color: #64748b; font-size: 0.875rem;">AI-powered optimization</p>
+                                <div class="wizard-steps">
+                                    <div class="step ${currentStep >= 1 ? (currentStep > 1 ? 'completed' : 'active') : ''}" id="step1"></div>
+                                    <div class="step ${currentStep >= 2 ? (currentStep > 2 ? 'completed' : 'active') : ''}" id="step2"></div>
+                                    <div class="step ${currentStep >= 3 ? (currentStep > 3 ? 'completed' : 'active') : ''}" id="step3"></div>
+                                    <div class="step ${currentStep >= 4 ? (currentStep > 4 ? 'completed' : 'active') : ''}" id="step4"></div>
+                                </div>
+                            </div>
+                            <div class="wizard-content" id="wizardContent"></div>
                         </div>
-                        <div class="template-badge">ATC: 100</div>
+                        <div class="preview-section">
+                            <div class="preview-header">
+                                <h4>Live Preview</h4>
+                                <div class="score-badge" id="scoreBadge">
+                                    <i class="fas fa-chart-line"></i> Score: ${resumeScore}%
+                                </div>
+                            </div>
+                            <div class="preview-content" id="previewContent"></div>
+                        </div>
                     </div>
-                    <div class="template-info">
-                        <h3>${template.name}</h3>
-                        <p>${template.style}</p>
-                        <i class="fas fa-star" style="color: gold;"></i> ATS Score: 100
+                    <div class="ai-panel" id="aiPanel">
+                        <div class="ai-panel-header">
+                            <h3><i class="fas fa-magic"></i> AI Improvement Studio</h3>
+                            <p>3 variations to choose from</p>
+                        </div>
+                        <div id="aiSuggestions"></div>
                     </div>
                 `;
-                grid.appendChild(card);
+                renderWizard();
+                renderPreview();
+                updateScore();
+            } else if (currentPage === 'templates') {
+                app.innerHTML = renderTemplatesPage();
+            } else if (currentPage === 'dashboard') {
+                app.innerHTML = renderDashboard();
+            }
+        }
+        
+        function renderWizard() {
+            const container = document.getElementById('wizardContent');
+            if (!container) return;
+            
+            let html = '';
+            if (currentStep === 1) {
+                html = `
+                    <h3>Personal Information</h3>
+                    <div class="form-group"><label>Full Name</label><input type="text" id="name" value="${resumeData.personal.name}" onchange="updateResume('personal.name', this.value)"></div>
+                    <div class="form-group"><label>Job Title</label><input type="text" id="title" value="${resumeData.personal.title}" onchange="updateResume('personal.title', this.value)"></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="email" value="${resumeData.personal.email}" onchange="updateResume('personal.email', this.value)"></div>
+                    <div class="form-group"><label>Phone</label><input type="tel" id="phone" value="${resumeData.personal.phone}" onchange="updateResume('personal.phone', this.value)"></div>
+                    <div class="form-group"><label>Location</label><input type="text" id="location" value="${resumeData.personal.location}" onchange="updateResume('personal.location', this.value)"></div>
+                    <div class="form-group"><label>LinkedIn</label><input type="text" id="linkedin" value="${resumeData.personal.linkedin}" onchange="updateResume('personal.linkedin', this.value)"></div>
+                `;
+            } else if (currentStep === 2) {
+                html = `
+                    <h3>Professional Experience</h3>
+                    <div class="form-group">
+                        <label>Professional Summary</label>
+                        <textarea rows="4" id="summary" onchange="updateResume('summary', this.value)">${resumeData.summary}</textarea>
+                        <button class="improve-btn" onclick="openAIPanel('summary')"><i class="fas fa-magic"></i> Improve with AI</button>
+                    </div>
+                    <div id="experienceList">
+                        ${resumeData.experience.map((exp, idx) => `
+                            <div style="margin-bottom: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 12px;">
+                                <input type="text" placeholder="Title" value="${exp.title}" style="margin-bottom: 0.5rem;" onchange="updateExperience(${idx}, 'title', this.value)">
+                                <input type="text" placeholder="Company" value="${exp.company}" style="margin-bottom: 0.5rem;" onchange="updateExperience(${idx}, 'company', this.value)">
+                                <input type="text" placeholder="Period" value="${exp.period}" style="margin-bottom: 0.5rem;" onchange="updateExperience(${idx}, 'period', this.value)">
+                                <textarea rows="3" placeholder="Achievements" onchange="updateExperience(${idx}, 'bullets', this.value.split('\n'))">${exp.bullets.join('\n')}</textarea>
+                                <button class="improve-btn" onclick="improveExperienceBullet(${idx})">✨ Improve bullets with AI</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="btn-secondary" onclick="addExperience()">+ Add Experience</button>
+                `;
+            } else if (currentStep === 3) {
+                html = `
+                    <h3>Skills & Education</h3>
+                    <div class="form-group">
+                        <label>Skills (comma separated)</label>
+                        <input type="text" id="skills" value="${resumeData.skills.join(', ')}" onchange="updateResume('skills', this.value.split(',').map(s=>s.trim()))">
+                        <button class="improve-btn" onclick="generateSkills()"><i class="fas fa-magic"></i> AI-Generate Skills</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Education</label>
+                        <div id="educationList">
+                            ${resumeData.education.map((edu, idx) => `
+                                <div style="margin-bottom: 0.5rem;">
+                                    <input type="text" placeholder="Degree" value="${edu.degree}" onchange="updateEducation(${idx}, 'degree', this.value)">
+                                    <input type="text" placeholder="School" value="${edu.school}" onchange="updateEducation(${idx}, 'school', this.value)">
+                                    <input type="text" placeholder="Year" value="${edu.year}" onchange="updateEducation(${idx}, 'year', this.value)">
+                                </div>
+                            `).join('')}
+                        </div>
+                        <button class="btn-secondary" onclick="addEducation()">+ Add Education</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Certifications</label>
+                        <input type="text" id="certifications" value="${resumeData.certifications.join(', ')}" onchange="updateResume('certifications', this.value.split(',').map(s=>s.trim()))">
+                    </div>
+                `;
+            } else if (currentStep === 4) {
+                html = `
+                    <h3>Job Targeting & AI Optimization</h3>
+                    <div class="job-card">
+                        <h4><i class="fas fa-bullseye"></i> Job Description Targeting</h4>
+                        <p style="font-size: 0.875rem;">Paste job description for AI-powered optimization</p>
+                        <textarea rows="6" id="jobDesc" placeholder="Paste job description here..." style="margin: 1rem 0;" onchange="analyzeJobMatch()"></textarea>
+                        <div id="jobAnalysis"></div>
+                        <button class="btn-primary" style="margin-top: 1rem;" onclick="autoTailorResume()">✨ Auto-Tailor Resume with AI</button>
+                    </div>
+                    <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="improveEntireResume()">🚀 Improve Entire Resume with AI</button>
+                `;
+            }
+            
+            html += `
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    ${currentStep > 1 ? `<button class="btn-secondary" onclick="prevStep()">← Back</button>` : ''}
+                    ${currentStep < 4 ? `<button class="btn-primary" onclick="nextStep()">Continue →</button>` : '<button class="btn-primary" onclick="finishAndExport()">Export Resume →</button>'}
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+        
+        function renderPreview() {
+            const container = document.getElementById('previewContent');
+            if (!container) return;
+            
+            // Smart template selection based on experience and role
+            const isDesigner = resumeData.skills.includes("UI/UX") || resumeData.skills.includes("Figma");
+            
+            let html = `<div class="resume-preview" style="padding: 2rem;">`;
+            
+            if (isDesigner) {
+                html += `
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h1 style="font-size: 2rem;">${resumeData.personal.name}</h1>
+                        <h3 style="color: var(--primary);">${resumeData.personal.title}</h3>
+                        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; font-size: 0.875rem;">
+                            <span>📧 ${resumeData.personal.email}</span>
+                            <span>📱 ${resumeData.personal.phone}</span>
+                            <span>📍 ${resumeData.personal.location}</span>
+                        </div>
+                    </div>
+                    <div style="background: var(--gray-50); padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                        <h3>🎨 Professional Summary</h3>
+                        <p>${resumeData.summary}</p>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <h1 style="font-size: 2rem;">${resumeData.personal.name}</h1>
+                    <h3 style="color: var(--primary);">${resumeData.personal.title}</h3>
+                    <div style="display: flex; gap: 1rem; margin: 1rem 0; padding-bottom: 1rem; border-bottom: 2px solid var(--gray-200);">
+                        <span>📧 ${resumeData.personal.email}</span>
+                        <span>📱 ${resumeData.personal.phone}</span>
+                        <span>📍 ${resumeData.personal.location}</span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <h3>Professional Summary</h3>
+                        <p>${resumeData.summary}</p>
+                    </div>
+                `;
+            }
+            
+            html += `
+                <div style="margin: 1.5rem 0;">
+                    <h3>💼 Work Experience</h3>
+                    ${resumeData.experience.map(exp => `
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4>${exp.title} | ${exp.company}</h4>
+                            <p style="color: #64748b; font-size: 0.875rem;">${exp.period}</p>
+                            <ul>${exp.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="margin: 1.5rem 0;">
+                    <h3>⚡ Skills</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${resumeData.skills.map(s => `<span style="background: var(--gray-100); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.875rem;">${s}</span>`).join('')}
+                    </div>
+                </div>
+                <div>
+                    <h3>🎓 Education</h3>
+                    ${resumeData.education.map(edu => `<p><strong>${edu.degree}</strong> - ${edu.school} (${edu.year})</p>`).join('')}
+                </div>
+            `;
+            
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+        
+        async function updateScore() {
+            const result = ResumeScorer.calculateScore(resumeData);
+            resumeScore = result.score;
+            const badge = document.getElementById('scoreBadge');
+            if (badge) {
+                badge.innerHTML = `<i class="fas fa-chart-line"></i> Score: ${resumeScore}%`;
+                if (resumeScore < 70) badge.style.background = "linear-gradient(135deg, #f59e0b, #ef4444)";
+                else if (resumeScore < 85) badge.style.background = "linear-gradient(135deg, #3b82f6, #8b5cf6)";
+                else badge.style.background = "linear-gradient(135deg, #10b981, #059669)";
+            }
+        }
+        
+        // ========== ACTIONS ==========
+        function nextStep() { if (currentStep < 4) { currentStep++; renderApp(); } }
+        function prevStep() { if (currentStep > 1) { currentStep--; renderApp(); } }
+        
+        function updateResume(path, value) {
+            const parts = path.split('.');
+            if (parts.length === 1) resumeData[parts[0]] = value;
+            else if (parts.length === 2) resumeData[parts[0]][parts[1]] = value;
+            renderPreview();
+            updateScore();
+        }
+        
+        function updateExperience(index, field, value) {
+            if (field === 'bullets') resumeData.experience[index][field] = value.split('\n');
+            else resumeData.experience[index][field] = value;
+            renderPreview();
+            updateScore();
+        }
+        
+        function updateEducation(index, field, value) {
+            resumeData.education[index][field] = value;
+            renderPreview();
+        }
+        
+        function addExperience() {
+            resumeData.experience.push({ id: Date.now(), title: "New Position", company: "Company Name", period: "2024-Present", bullets: ["Added new responsibility"] });
+            renderApp();
+        }
+        
+        function addEducation() {
+            resumeData.education.push({ id: Date.now(), degree: "New Degree", school: "University Name", year: "2024" });
+            renderApp();
+        }
+        
+        function generateSkills() {
+            resumeData.skills = ["UI/UX Design", "Figma", "User Research", "Prototyping", "Design Systems", "Agile", "Leadership", "Communication"];
+            renderApp();
+        }
+        
+        async function analyzeJobMatch() {
+            const jobDesc = document.getElementById('jobDesc')?.value;
+            if (!jobDesc) return;
+            jobDescription = jobDesc;
+            const analysis = await AIService.analyzeMatch(JSON.stringify(resumeData), jobDesc);
+            matchScore = analysis.score;
+            const analysisDiv = document.getElementById('jobAnalysis');
+            if (analysisDiv) {
+                analysisDiv.innerHTML = `
+                    <div class="match-score">${matchScore}% Match with Job</div>
+                    <p><strong>Missing Keywords:</strong> ${analysis.missingKeywords.join(', ')}</p>
+                    <p><strong>Suggestions:</strong></p>
+                    <ul>${analysis.suggestions.map(s => `<li>${s}</li>`).join('')}</ul>
+                `;
+            }
+        }
+        
+        async function autoTailorResume() {
+            if (!jobDescription) { alert("Please paste a job description first"); return; }
+            const result = await AIService.tailorResume(resumeData, jobDescription);
+            resumeData.summary = result.newSummary;
+            renderApp();
+            alert("✓ Resume tailored to job description! Check your summary and suggestions.");
+        }
+        
+        async function improveEntireResume() {
+            alert("🤖 AI is improving your entire resume...");
+            // Simulate improvements
+            resumeData.experience[0].bullets[0] = "🚀 Spearheaded flagship product redesign, driving 45% user engagement increase and $2.3M annual revenue growth";
+            if (resumeData.experience[1]) resumeData.experience[1].bullets[0] = "📊 Orchestrated 20+ product launches, achieving 95% on-time delivery rate";
+            renderApp();
+            updateScore();
+            alert("✅ Resume improved! Check your updated bullet points and score.");
+        }
+        
+        function openAIPanel(field) {
+            currentEditingField = field;
+            const panel = document.getElementById('aiPanel');
+            const suggestionsDiv = document.getElementById('aiSuggestions');
+            suggestionsDiv.innerHTML = `
+                <div class="ai-suggestion" onclick="applyAISuggestion(0)">
+                    <strong>📊 Professional Version</strong>
+                    <p>Spearheaded comprehensive redesign of flagship product, resulting in 45% increase in user engagement and $2.3M annual revenue growth.</p>
+                </div>
+                <div class="ai-suggestion" onclick="applyAISuggestion(1)">
+                    <strong>💥 Impact-Focused</strong>
+                    <p>Drove 45% engagement surge through strategic product redesign, directly contributing to $2.3M revenue uplift.</p>
+                </div>
+                <div class="ai-suggestion" onclick="applyAISuggestion(2)">
+                    <strong>⚡ Concise</strong>
+                    <p>Led redesign → 45% engagement increase, $2.3M revenue impact.</p>
+                </div>
+            `;
+            panel.classList.add('open');
+        }
+        
+        function applyAISuggestion(index) {
+            const panel = document.getElementById('aiPanel');
+            panel.classList.remove('open');
+            const suggestions = [
+                "Innovative Product Designer with 8+ years of experience driving 45% engagement increases through user-centered design. Proven track record of delivering $2M+ revenue impact.",
+                "Results-driven designer who transformed flagship products, achieving 45% user growth and $2.3M in additional revenue through strategic UX improvements.",
+                "Product design leader with 8+ years experience. Specialize in engagement optimization and revenue growth through intuitive interfaces."
+            ];
+            resumeData.summary = suggestions[index];
+            renderApp();
+        }
+        
+        function improveExperienceBullet(index) {
+            openAIPanel(`experience-${index}`);
+        }
+        
+        function finishAndExport() {
+            alert("📄 Export Options:\n✓ PDF (ATS-Optimized)\n✓ DOCX\n✓ Shareable Link\n✓ QR Code\n\nClick OK to download your professional resume.");
+            window.print();
+        }
+        
+        function startNewResume() {
+            if (confirm("Start a new resume? Current progress will be saved.")) {
+                currentStep = 1;
+                renderApp();
+            }
+        }
+        
+        function renderTemplatesPage() {
+            return `
+                <div class="container" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+                    <h1 style="text-align: center; margin-bottom: 2rem;">Choose Your Template</h1>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+                        ${[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(i => `
+                            <div class="template-card" style="background: white; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.3s; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);" onclick="selectAndUseTemplate(${i})">
+                                <div style="height: 200px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: flex; align-items: center; justify-content: center; color: white;">
+                                    <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
+                                </div>
+                                <div style="padding: 1rem; text-align: center;">
+                                    <h3>Template ${i}</h3>
+                                    <p>${i <= 5 ? 'Modern' : i <= 10 ? 'Professional' : i <= 15 ? 'Creative' : 'Executive'} Design</p>
+                                    <span style="background: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem;">ATS: 100</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function selectAndUseTemplate(id) {
+            selectedTemplate = id;
+            showPage('builder');
+            alert(`Template ${id} selected! Your content will use this layout.`);
+        }
+        
+        function renderDashboard() {
+            return `
+                <div class="container" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+                    <h1 style="margin-bottom: 2rem;">Your Resumes</h1>
+                    <div style="background: white; border-radius: 16px; padding: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h3>My Resumes</h3>
+                            <button class="btn-primary" onclick="startNewResume()">+ New Resume</button>
+                        </div>
+                        <div style="border: 2px dashed var(--gray-200); border-radius: 12px; padding: 2rem; text-align: center;">
+                            <i class="fas fa-file-alt" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
+                            <p>Your saved resumes will appear here</p>
+                            <button class="btn-primary" style="margin-top: 1rem;" onclick="startNewResume()">Create Your First Resume</button>
+                        </div>
+                        <div style="margin-top: 2rem;">
+                            <h3>Resume Analytics</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                <div style="background: var(--gray-50); padding: 1rem; border-radius: 12px; text-align: center;">
+                                    <h2>0</h2>
+                                    <p>Total Views</p>
+                                </div>
+                                <div style="background: var(--gray-50); padding: 1rem; border-radius: 12px; text-align: center;">
+                                    <h2>0</h2>
+                                    <p>Downloads</p>
+                                </div>
+                                <div style="background: var(--gray-50); padding: 1rem; border-radius: 12px; text-align: center;">
+                                    <h2>${resumeScore}%</h2>
+                                    <p>Best Score</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showPage(page) {
+            currentPage = page;
+            renderApp();
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        // Dark Mode Toggle
+        function initTheme() {
+            const toggle = document.getElementById('themeToggle');
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                toggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
             });
         }
-
-        // Initialize with sample data
-        window.onload = () => {
-            renderTemplates();
-            document.getElementById('fullName').value = "Alexandra Chen";
-            document.getElementById('jobTitle').value = "Senior Product Designer";
-            document.getElementById('email').value = "alex.chen@example.com";
-            document.getElementById('phone').value = "+1 (555) 123-4567";
-            document.getElementById('location').value = "San Francisco, CA";
-            document.getElementById('summary').value = "Award-winning Product Designer with 8+ years of experience creating intuitive digital experiences.";
-            document.getElementById('experience').value = "Senior Product Designer - TechCorp (2021-Present)\n• Led redesign of flagship product, increasing engagement by 45%\n• Mentored 5 junior designers\n\nProduct Designer - DesignStudio (2018-2021)\n• Collaborated on 20+ successful product launches";
-            document.getElementById('education').value = "MFA in Interaction Design - California College of the Arts (2016-2018)\nBFA in Graphic Design - UCLA (2012-2016)";
-            document.getElementById('skills').value = "UI/UX Design • Figma • User Research • Design Systems • Prototyping";
-            document.getElementById('certifications').value = "Google UX Design Certificate";
-            document.getElementById('languages').value = "English (Native), Spanish (Fluent)";
-        };
+        
+        // Auto-save to localStorage
+        function autoSave() {
+            localStorage.setItem('resumeData', JSON.stringify(resumeData));
+        }
+        
+        function loadSavedData() {
+            const saved = localStorage.getItem('resumeData');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    resumeData = { ...resumeData, ...parsed };
+                } catch(e) {}
+            }
+        }
+        
+        // Initialize
+        loadSavedData();
+        initTheme();
+        renderApp();
+        setInterval(autoSave, 30000);
+        
+        // Make functions global
+        window.nextStep = nextStep; window.prevStep = prevStep; window.updateResume = updateResume;
+        window.updateExperience = updateExperience; window.updateEducation = updateEducation;
+        window.addExperience = addExperience; window.addEducation = addEducation;
+        window.generateSkills = generateSkills; window.analyzeJobMatch = analyzeJobMatch;
+        window.autoTailorResume = autoTailorResume; window.improveEntireResume = improveEntireResume;
+        window.openAIPanel = openAIPanel; window.applyAISuggestion = applyAISuggestion;
+        window.improveExperienceBullet = improveExperienceBullet; window.finishAndExport = finishAndExport;
+        window.startNewResume = startNewResume; window.showPage = showPage;
+        window.selectAndUseTemplate = selectAndUseTemplate;
     </script>
 </body>
 </html>
