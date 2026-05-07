@@ -22,8 +22,6 @@ body{background:var(--ink);color:var(--paper);font-family:'DM Sans',sans-serif;o
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#c9a84c50;border-radius:4px}
-
-/* SVG Icon Styles */
 .icon-svg{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .icon-svg svg{width:100%;height:100%;fill:currentColor;stroke:currentColor}
 .icon-sm{width:12px;height:12px}
@@ -31,8 +29,6 @@ body{background:var(--ink);color:var(--paper);font-family:'DM Sans',sans-serif;o
 .icon-lg{width:24px;height:24px}
 .social-svg{width:18px;height:18px;fill:currentColor;transition:all 0.2s}
 .social-btn:hover .social-svg{fill:var(--gold)}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48px);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(10,10,18,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.12);transition:all .4s ease}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
 .logo-icon{width:36px;height:36px;min-width:36px;background:linear-gradient(135deg,#c9a84c,#f0d080);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:900;font-size:13px;color:#0a0a12}
@@ -55,8 +51,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .mobile-nav-link{padding:12px 16px;border-radius:10px;font-size:15px;font-weight:600;color:rgba(250,250,247,.7);text-decoration:none;transition:all .2s;border:1px solid transparent}
 .mobile-nav-link:hover{color:var(--gold);background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.15)}
 .mobile-nav-cta{margin-top:8px;padding:14px;background:linear-gradient(135deg,#c9a84c,#e8c56a);color:#0a0a12;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center}
-
-/* HERO */
 #hero{min-height:100svh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:calc(var(--nav-h) + 40px) clamp(16px,5vw,48px) 60px}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(201,168,76,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 70%,rgba(55,48,163,.12) 0%,transparent 50%),linear-gradient(180deg,#0a0a12 0%,#0d0d1a 100%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:60px 60px}
@@ -85,22 +79,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .resume-mockup{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7);transform:perspective(1000px) rotateY(-6deg) rotateX(2deg);transition:transform .4s}
 .resume-mockup:hover{transform:perspective(1000px) rotateY(0deg) rotateX(0deg)}
 .mockup-bar{height:5px;background:linear-gradient(90deg,#c9a84c,#f0d080)}
-
-/* STRIP */
 #features-strip{padding:18px 0;background:rgba(201,168,76,.05);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1);overflow:hidden;white-space:nowrap}
 .strip-track{display:inline-flex;gap:0;animation:marquee 30s linear infinite}
 .strip-item{display:inline-flex;align-items:center;gap:10px;padding:0 36px;font-size:12px;font-weight:600;color:rgba(250,250,247,.4);letter-spacing:.3px}
 .strip-item span{color:var(--gold);font-size:14px}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* SECTIONS */
 .section{padding:clamp(60px,8vw,100px) clamp(16px,5vw,48px)}
 .section-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .section-heading{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,52px);font-weight:900;line-height:1.1;margin-bottom:14px}
 .section-sub{font-size:clamp(14px,1.5vw,17px);color:rgba(250,250,247,.5);max-width:560px;line-height:1.7}
 .section-header{max-width:1100px;margin:0 auto 50px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
-
-/* FEATURES */
 #ai-features{background:#0d0d1a}
 .features-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2px}
 .feat-card{background:rgba(250,250,247,.02);padding:clamp(24px,3vw,36px);border:1px solid rgba(250,250,247,.06);transition:all .3s;position:relative;overflow:hidden}
@@ -110,8 +98,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .feat-icon{width:46px;height:46px;background:rgba(201,168,76,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
 .feat-title{font-size:16px;font-weight:700;margin-bottom:8px}
 .feat-desc{font-size:13px;color:rgba(250,250,247,.45);line-height:1.65}
-
-/* TEMPLATES */
 #templates{background:var(--ink)}
 .templates-wrapper{max-width:1200px;margin:0 auto}
 .template-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px}
@@ -129,9 +115,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .tmpl-feat-dot{width:6px;height:6px;min-width:6px;border-radius:50%}
 .use-template-btn{padding:12px 26px;border-radius:10px;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif}
 .use-template-btn:hover{transform:translateY(-2px)}
-
-/* RESUME TEMPLATE STYLES */
-/* NEXUS */
+/* ─── RESUME TEMPLATES ─── */
 .resume-nexus{background:#13131f;color:#e8e6f0;font-family:'DM Sans',sans-serif;display:grid;grid-template-columns:200px 1fr;min-height:600px;font-size:10px}
 .nexus-sidebar{background:#0d0d18;padding:24px 18px;display:flex;flex-direction:column;gap:18px;border-right:1px solid rgba(99,102,241,.2)}
 .nexus-avatar{width:64px;height:64px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:18px;font-weight:900;color:#fff;margin:0 auto 8px;border:2px solid rgba(99,102,241,.4)}
@@ -157,8 +141,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .nexus-exp-block{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(99,102,241,.1)}
 .nexus-main-sec-title{font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6366f1;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(99,102,241,.2)}
 .nexus-tag{display:inline-block;background:rgba(99,102,241,.15);color:#a5b4fc;padding:2px 7px;border-radius:3px;font-size:8px;font-weight:600;margin:2px;border:1px solid rgba(99,102,241,.2)}
-
-/* FOLIO */
 .resume-folio{background:#fdfcf8;color:#1a1208;font-family:'Playfair Display',serif;min-height:600px;font-size:10px}
 .folio-top-bar{height:7px;background:repeating-linear-gradient(90deg,#1a1208 0px,#1a1208 26px,#c9a84c 26px,#c9a84c 28px)}
 .folio-header{padding:24px 28px 18px;border-bottom:2px solid #1a1208}
@@ -189,8 +171,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .folio-exp-item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px dotted #e8e3d8}
 .folio-tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
 .folio-tag{font-family:'JetBrains Mono',monospace;font-size:7.5px;padding:2px 7px;border:1px solid #d8d0c4;color:#4a3f30}
-
-/* PRISM */
 .resume-prism{background:#fff8f0;color:#1c0a00;font-family:'Syne',sans-serif;min-height:600px;font-size:10px;position:relative}
 .prism-accent-block{position:absolute;top:0;right:0;width:180px;height:180px;background:linear-gradient(135deg,#f59e0b,#ef4444);clip-path:polygon(100% 0,100% 100%,0 0)}
 .prism-header{padding:24px 28px 18px;position:relative;border-bottom:2px solid #1c0a00}
@@ -213,8 +193,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .prism-skill-tag{display:inline-block;background:#1c0a00;color:#fff8f0;padding:2px 7px;font-size:7.5px;font-weight:700;margin:2px 2px 2px 0;border-radius:2px}
 .prism-skill-alt{background:#f59e0b;color:#1c0a00}
 .prism-summary{font-size:9.5px;color:#5c3a1e;line-height:1.7;margin-bottom:18px;border-left:3px solid #f59e0b;padding-left:10px}
-
-/* VERTEX */
 .resume-vertex{background:#0c1117;color:#cdd6f4;font-family:'DM Sans',sans-serif;min-height:600px;font-size:10px}
 .vertex-header{padding:22px 28px;background:linear-gradient(135deg,#0c1117,#151b27);border-bottom:1px solid rgba(134,239,172,.15);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
 .vertex-name{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:3px;line-height:1.1}
@@ -241,9 +219,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .vertex-skill-level{display:flex;gap:2px}
 .vertex-level-dot{width:5px;height:5px;border-radius:50%;background:rgba(134,239,172,.15)}
 .vertex-level-dot.lit{background:#86efac}
-.vertex-tag{display:inline-block;background:rgba(134,239,172,.08);color:#86efac;padding:2px 6px;border-radius:3px;font-size:7.5px;font-weight:600;margin:2px;border:1px solid rgba(134,239,172,.15)}
-
-/* CANVAS */
 .resume-canvas{background:#fff;color:#111827;font-family:'Instrument Serif',serif;min-height:600px;font-size:10px}
 .canvas-header{padding:28px 32px 22px;border-bottom:1px solid #e5e7eb;position:relative}
 .canvas-accent-line{position:absolute;bottom:0;left:32px;width:50px;height:3px;background:#111827}
@@ -267,8 +242,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .canvas-edu-deg{font-family:'DM Sans',sans-serif;font-size:9.5px;color:#6b7280}
 .canvas-edu-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
 .canvas-edu-year{font-family:'DM Sans',sans-serif;font-size:8.5px;color:#d1d5db}
-
-/* NEON */
 .resume-neon{background:#06000f;color:#f0e6ff;font-family:'Syne',sans-serif;min-height:600px;font-size:10px;position:relative}
 .neon-glow-1{position:absolute;top:-40px;left:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(168,85,247,.25),transparent 70%);pointer-events:none}
 .neon-glow-2{position:absolute;bottom:40px;right:-20px;width:130px;height:130px;background:radial-gradient(circle,rgba(236,72,153,.2),transparent 70%);pointer-events:none}
@@ -296,9 +269,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .neon-skill-name{font-size:8.5px;color:rgba(240,230,255,.65);margin-bottom:3px}
 .neon-skill-bar{height:3px;background:rgba(168,85,247,.15);border-radius:2px;overflow:hidden}
 .neon-skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#a855f7,#ec4899)}
-.neon-tag{display:inline-block;padding:2px 7px;font-size:7.5px;font-weight:700;margin:2px;border-radius:3px;background:rgba(168,85,247,.12);color:#a855f7;border:1px solid rgba(168,85,247,.25)}
-
-/* ATLAS */
 .resume-atlas{background:#f8f6f2;color:#1f2937;font-family:'DM Sans',sans-serif;min-height:600px;font-size:10px}
 .atlas-header{background:#1f2937;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .atlas-name{font-family:'Fraunces',serif;font-size:26px;font-weight:900;color:#f8f6f2;line-height:1}
@@ -323,9 +293,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .atlas-edu-deg{font-size:9px;color:#6b7280;margin-bottom:2px}
 .atlas-edu-year{font-size:8px;color:#9ca3af;font-family:'JetBrains Mono',monospace}
 .atlas-tag{display:inline-block;background:#1f2937;color:#f8f6f2;padding:2px 8px;font-size:7.5px;font-weight:600;margin:2px;border-radius:3px}
-.atlas-summary{font-size:9.5px;color:#4b5563;line-height:1.7;font-style:italic}
-
-/* HOW IT WORKS */
+/* ─── HOW IT WORKS ─── */
 #how-it-works{background:#0d0d1a}
 .steps-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2px}
 .step-card{padding:32px 24px;background:rgba(250,250,247,.02);border:1px solid rgba(250,250,247,.06);position:relative;transition:all .3s}
@@ -334,8 +302,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .step-icon{width:36px;height:36px;margin-bottom:12px;color:var(--gold)}
 .step-title{font-size:15px;font-weight:700;margin-bottom:8px}
 .step-desc{font-size:13px;color:rgba(250,250,247,.4);line-height:1.65}
-
-/* TESTIMONIALS */
 #testimonials{background:var(--ink)}
 .testimonials-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
 .testi-card{background:rgba(250,250,247,.03);border:1px solid rgba(250,250,247,.07);border-radius:14px;padding:28px;transition:all .3s}
@@ -347,15 +313,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48
 .testi-name{font-size:13px;font-weight:700}
 .testi-role{font-size:11px;color:rgba(250,250,247,.35)}
 .stars{color:var(--gold);font-size:12px;margin-bottom:10px}
-
-/* CTA */
 #cta{padding:clamp(60px,8vw,100px) clamp(16px,5vw,48px);background:#0d0d1a;position:relative;overflow:hidden;text-align:center}
 .cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(201,168,76,.08),transparent 70%);pointer-events:none}
 .cta-heading{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,58px);font-weight:900;max-width:700px;margin:0 auto 16px;line-height:1.05;position:relative}
 .cta-sub{font-size:clamp(15px,1.8vw,18px);color:rgba(250,250,247,.45);margin-bottom:36px;position:relative}
 .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
-
-/* FOOTER */
 footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56px clamp(16px,5vw,48px) 32px}
 .footer-inner{max-width:1100px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:48px}
@@ -369,12 +331,9 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
 .footer-social{display:flex;gap:8px}
 .social-btn{width:34px;height:34px;border-radius:9px;background:rgba(250,250,247,.05);border:1px solid rgba(250,250,247,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .25s;cursor:pointer;color:rgba(250,250,247,.4)}
 .social-btn:hover{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.3);color:var(--gold)}
-
-/* ═══ BUILDER OVERLAY ═══ */
+/* ─── BUILDER ─── */
 #builder-overlay{display:none;position:fixed;inset:0;background:#0a0a12;z-index:2000;overflow:hidden;flex-direction:column}
 #builder-overlay.open{display:flex;animation:fadeIn .3s ease}
-
-/* BUILDER HEADER */
 .builder-header{display:flex;align-items:center;padding:0 16px;height:54px;min-height:54px;background:rgba(10,10,18,.98);border-bottom:1px solid rgba(201,168,76,.15);flex-shrink:0;gap:8px;backdrop-filter:blur(20px)}
 .builder-title{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;flex-shrink:0;white-space:nowrap}
 #builder-tmpl-label{font-size:10px;color:rgba(250,250,247,.4);font-family:'DM Sans',sans-serif;font-weight:400}
@@ -386,11 +345,7 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
 .btn-download-header{padding:7px 14px;background:linear-gradient(135deg,#c9a84c,#e8c56a);color:#0a0a12;border:none;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;white-space:nowrap;flex-shrink:0}
 .btn-close-builder{background:rgba(250,250,247,.08);color:var(--paper);font-size:16px;width:34px;height:34px;min-width:34px;border-radius:8px;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .btn-close-builder:hover{background:rgba(250,250,247,.15)}
-
-/* BUILDER BODY */
 .builder-body{flex:1;display:grid;grid-template-columns:380px 1fr;min-height:0;overflow:hidden}
-
-/* FORM PANEL */
 .builder-form-panel{display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,.07);min-height:0;overflow:hidden;background:rgba(255,255,255,.02)}
 .form-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0;-webkit-overflow-scrolling:touch}
 .form-tabs::-webkit-scrollbar{display:none}
@@ -398,14 +353,11 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
 .form-tab .tab-icon{display:block;font-size:15px;margin-bottom:2px}
 .form-tab .tab-label{display:block;font-size:9px}
 .form-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(201,168,76,.06)}
-
 .form-scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#c9a84c30 transparent}
 .form-scroll::-webkit-scrollbar{width:3px}
 .form-scroll::-webkit-scrollbar-thumb{background:#c9a84c40;border-radius:3px}
-
 .form-panel{display:none;padding:14px}
 .form-panel.active{display:block}
-
 .form-section-title{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,250,247,.35);margin-bottom:10px;margin-top:16px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.06)}
 .form-section-title:first-child{margin-top:0}
 .form-group{margin-bottom:10px;width:100%}
@@ -416,64 +368,54 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
 .form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
 .form-select option{background:#1a1a2e;color:var(--paper)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-/* SAVE BUTTON */
 .save-btn{width:100%;padding:12px;background:linear-gradient(135deg,#065f46,#10b981);border:none;border-radius:9px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px}
 .save-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(16,185,129,.3)}
-.save-btn.saved{background:linear-gradient(135deg,#10b981,#34d399)}
-
 .exp-block{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:12px;width:100%;min-width:0}
 .exp-block-title{font-size:12px;font-weight:700;margin-bottom:12px;color:rgba(250,250,247,.8);display:flex;justify-content:space-between;align-items:center}
 .remove-btn{background:rgba(255,80,80,.12);border:none;border-radius:6px;color:#f87171;font-size:18px;padding:2px 8px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;line-height:1}
 .remove-btn:hover{background:rgba(255,80,80,.25)}
 .add-btn{width:100%;padding:11px;background:rgba(201,168,76,.08);border:1.5px dashed rgba(201,168,76,.3);border-radius:9px;color:var(--gold);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;margin-top:6px;display:block;text-align:center}
 .add-btn:hover{background:rgba(201,168,76,.14);border-color:var(--gold)}
-
 .skill-tags-input{display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:rgba(250,250,247,.06);border:1px solid rgba(250,250,247,.1);border-radius:9px;min-height:48px;cursor:text;width:100%}
 .skill-tag{display:flex;align-items:center;gap:4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);padding:3px 8px 3px 10px;border-radius:100px;font-size:12px;font-weight:600}
 .skill-tag button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:14px;padding:0;line-height:1;opacity:.7}
 .skill-tag button:hover{opacity:1}
 .skill-input-inline{background:none;border:none;outline:none;color:var(--paper);font-size:13px;font-family:'DM Sans',sans-serif;min-width:80px;flex:1}
-
+/* ─── SKILL SUGGESTIONS UI ─── */
+.skill-suggestions-wrap{margin-top:12px}
+.skill-suggestions-label{font-size:10px;font-weight:700;color:rgba(250,250,247,.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:block}
+.skill-suggestions-grid{display:flex;flex-wrap:wrap;gap:6px}
+.skill-suggest-chip{padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;border:1.5px solid rgba(201,168,76,.25);background:rgba(201,168,76,.06);color:rgba(250,250,247,.6);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.skill-suggest-chip:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.12)}
+.skill-suggest-chip.added{border-color:rgba(16,185,129,.4);color:#10b981;background:rgba(16,185,129,.08);cursor:default}
 .tmpl-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
 .tmpl-pick-btn{padding:12px 6px;border-radius:9px;font-size:10px;font-weight:700;border:2px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(250,250,247,.6);cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;text-align:center}
 .tmpl-pick-btn.selected,.tmpl-pick-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.1)}
 .tmpl-pick-color{width:20px;height:20px;border-radius:50%;margin:0 auto 6px;border:2px solid rgba(255,255,255,.15)}
-
 .download-bar{display:flex;gap:8px;padding:12px 14px;background:rgba(201,168,76,.06);border-top:1px solid rgba(201,168,76,.15);align-items:center;flex-shrink:0}
 .download-bar-label{font-size:11px;color:rgba(250,250,247,.4);flex:1;min-width:0}
 .btn-download{padding:10px 16px;background:linear-gradient(135deg,#c9a84c,#e8c56a);color:#0a0a12;border:none;border-radius:9px;font-size:13px;font-weight:800;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
 .btn-download:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.4)}
-
-/* PREVIEW PANEL */
 .builder-preview-panel{display:flex;flex-direction:column;min-height:0;overflow:hidden;background:#08080f}
 .preview-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,250,247,.25);padding:10px 14px 6px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .preview-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05)}
 .preview-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 12px 20px;-webkit-overflow-scrolling:touch}
 .preview-scale-wrap{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px;overflow:hidden}
 #resume-preview-container{transform-origin:top left;width:850px}
-
-/* AI LOADING STATE */
 .ai-loading{display:none;position:absolute;inset:0;background:rgba(10,10,18,.8);backdrop-filter:blur(4px);z-index:10;align-items:center;justify-content:center;flex-direction:column;gap:12px;border-radius:10px}
 .ai-loading.active{display:flex}
 .ai-spinner{width:36px;height:36px;border:3px solid rgba(201,168,76,.2);border-top-color:#c9a84c;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ai-loading-text{font-size:13px;color:rgba(250,250,247,.6);font-weight:600}
-
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
-
 #toast{position:fixed;top:70px;right:20px;z-index:9999;background:linear-gradient(135deg,#c9a84c,#e8c56a);color:#0a0a12;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;box-shadow:0 8px 28px rgba(201,168,76,.5);font-family:'DM Sans',sans-serif;opacity:0;transform:translateY(-10px);transition:all .3s ease;pointer-events:none;max-width:calc(100vw - 40px)}
 #toast.show{opacity:1;transform:translateY(0)}
-
-/* SAVED INDICATOR */
 .saved-indicator{display:none;align-items:center;gap:6px;font-size:11px;color:#10b981;font-weight:600;padding:4px 10px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:20px}
 .saved-indicator.show{display:flex}
-
-/* RESPONSIVE */
 @media(max-width:900px){.builder-body{grid-template-columns:320px 1fr}}
 @media(max-width:768px){
   :root{--nav-h:58px}
@@ -531,10 +473,7 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
 </style>
 </head>
 <body>
-
 <div id="toast"></div>
-
-<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="logo-icon">R</div>
@@ -554,7 +493,6 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
     <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
 <div class="mobile-nav-drawer" id="mobileNav">
   <a href="#templates" class="mobile-nav-link" onclick="closeMobileNav()">Templates</a>
   <a href="#ai-features" class="mobile-nav-link" onclick="closeMobileNav()">AI Features</a>
@@ -562,8 +500,6 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
   <a href="#testimonials" class="mobile-nav-link" onclick="closeMobileNav()">Reviews</a>
   <button class="mobile-nav-cta" onclick="closeMobileNav();openBuilder()">✦ Start Building Free — No Login</button>
 </div>
-
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div><div class="hero-grid"></div>
   <div class="hero-content">
@@ -572,10 +508,7 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
       <h1 class="hero-heading">Build a <em>Job-Winning</em><br/>Resume in<br/>2 Minutes</h1>
       <p class="hero-sub">The world's most intelligent resume builder. AI writes for you, ATS scores guide you, and 7 stunning templates impress every recruiter.</p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="openBuilder()">
-          <span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>
-          Start Building Free
-        </button>
+        <button class="btn-primary" onclick="openBuilder()"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Start Building Free</button>
         <a href="#templates" class="btn-outline">View Templates →</a>
       </div>
       <div class="hero-stats">
@@ -593,23 +526,16 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
           <div class="nexus-main"><div class="nexus-greeting">Shariq Rafiq Anim</div><div class="nexus-summary-text">Innovative engineer with 7+ years building scalable systems serving 10M+ users.</div><div class="nexus-main-sec-title">Work Experience</div><div class="nexus-exp-block"><div class="nexus-exp-header"><div><div class="nexus-job-title">Senior Software Engineer</div><div class="nexus-company">TechCorp Inc.</div></div><div class="nexus-date-badge">2021–Present</div></div><div class="nexus-bullet">Architected microservices platform serving 15M+ daily users</div></div></div>
         </div>
       </div>
-      <div class="ai-chip">
-        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>
-        <div class="ai-chip-text">AI Enhanced · 3 improvements applied</div>
-      </div>
+      <div class="ai-chip"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span><div class="ai-chip-text">AI Enhanced · 3 improvements applied</div></div>
     </div>
   </div>
 </section>
-
-<!-- STRIP -->
 <div id="features-strip">
   <div class="strip-track">
     <span class="strip-item"><span>⚡</span> AI-Powered Writing</span><span class="strip-item"><span>🎯</span> ATS Keyword Matching</span><span class="strip-item"><span>📊</span> Resume Score 0–100</span><span class="strip-item"><span>🎨</span> 7 Unique Templates</span><span class="strip-item"><span>📥</span> PDF Export</span><span class="strip-item"><span>🔍</span> Job Description Analyzer</span><span class="strip-item"><span>💡</span> Smart Bullet Rewriter</span><span class="strip-item"><span>🚀</span> 2-Minute Build</span><span class="strip-item"><span>✦</span> No Login Required</span>
     <span class="strip-item"><span>⚡</span> AI-Powered Writing</span><span class="strip-item"><span>🎯</span> ATS Keyword Matching</span><span class="strip-item"><span>📊</span> Resume Score 0–100</span><span class="strip-item"><span>🎨</span> 7 Unique Templates</span><span class="strip-item"><span>📥</span> PDF Export</span><span class="strip-item"><span>🔍</span> Job Description Analyzer</span><span class="strip-item"><span>💡</span> Smart Bullet Rewriter</span><span class="strip-item"><span>🚀</span> 2-Minute Build</span><span class="strip-item"><span>✦</span> No Login Required</span>
   </div>
 </div>
-
-<!-- AI FEATURES -->
 <section id="ai-features" class="section">
   <div class="section-header reveal"><div><div class="section-label">AI Engine</div><h2 class="section-heading">Smarter Than Any<br/><em style="font-style:italic;color:var(--gold)">Resume Tool</em> Online</h2></div><p class="section-sub">Our AI doesn't just suggest — it writes, scores, analyzes, and optimizes your entire resume for the exact job you want.</p></div>
   <div class="features-grid">
@@ -621,8 +547,6 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
     <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><span class="icon-svg icon-md"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z"/></svg></span></div><div class="feat-title">One-Click Enhancement</div><div class="feat-desc">Hit "AI Enhance" and watch your entire resume rewritten, rescored, and optimized in under 10 seconds.</div></div>
   </div>
 </section>
-
-<!-- TEMPLATES -->
 <section id="templates" class="section" style="padding-top:50px">
   <div class="section-header reveal"><div><div class="section-label">Templates</div><h2 class="section-heading">7 Radically Different<br/><em style="font-style:italic;color:var(--gold)">Designs</em></h2></div><p class="section-sub">Every template has a completely distinct visual identity — not just color swaps, entirely different layouts.</p></div>
   <div class="templates-wrapper reveal">
@@ -635,45 +559,36 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
       <button class="tmpl-tab" onclick="showTemplate('neon',this)">⑥ Neon</button>
       <button class="tmpl-tab" onclick="showTemplate('atlas',this)">⑦ Atlas</button>
     </div>
-    <!-- Template showcases remain the same but with contact phone fixed -->
     <div id="showcase-nexus" class="template-showcase active">
       <div class="tmpl-preview"><div class="resume-nexus"><div class="nexus-sidebar"><div><div class="nexus-avatar">SR</div><div class="nexus-name">Shariq Rafiq Anim</div><div class="nexus-role">Senior Software Engineer</div></div><div class="nexus-divider"></div><div><div class="nexus-section-title">Contact</div><div class="nexus-contact-item"><span class="nexus-contact-icon">✉</span>shariq@email.com</div><div class="nexus-contact-item"><span class="nexus-contact-icon">☎</span>+1 555 234 5678</div></div><div class="nexus-divider"></div><div><div class="nexus-section-title">Skills</div><div class="nexus-skill-bar"><div class="nexus-skill-name"><span>React</span><span>95%</span></div><div class="nexus-bar-bg"><div class="nexus-bar-fill" style="width:95%"></div></div></div><div class="nexus-skill-bar"><div class="nexus-skill-name"><span>Node.js</span><span>90%</span></div><div class="nexus-bar-bg"><div class="nexus-bar-fill" style="width:90%"></div></div></div></div></div><div class="nexus-main"><div class="nexus-greeting">Shariq Rafiq Anim</div><div class="nexus-summary-text">Innovative engineer with 7+ years building scalable systems.</div><div class="nexus-main-sec-title">Work Experience</div><div class="nexus-exp-block"><div class="nexus-exp-header"><div><div class="nexus-job-title">Senior Software Engineer</div><div class="nexus-company">TechCorp Inc.</div></div><div class="nexus-date-badge">2021–Present</div></div><div class="nexus-bullet">Architected microservices platform serving 15M+ daily users</div></div><div class="nexus-main-sec-title">Technologies</div><span class="nexus-tag">React</span><span class="nexus-tag">TypeScript</span><span class="nexus-tag">AWS</span></div></div></div>
       <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.25)">Modern · Dark</div><div class="tmpl-name">Nexus</div><p class="tmpl-desc">Split-column dark UI with sidebar skill bars and avatar. Perfect for tech professionals who want a bold, contemporary look.</p><div class="tmpl-features"><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#6366f1"></span>Sidebar with skill percentage bars</div><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#6366f1"></span>Dark glassmorphism aesthetic</div></div><button class="use-template-btn btn-primary" onclick="openBuilder('nexus')">Use Nexus Template →</button></div>
     </div>
-    <!-- FOLIO, PRISM, VERTEX, CANVAS, NEON, ATLAS showcases remain the same structure -->
     <div id="showcase-folio" class="template-showcase">
       <div class="tmpl-preview"><div class="resume-folio"><div class="folio-top-bar"></div><div class="folio-header"><div class="folio-header-inner"><div class="folio-name"><em>Shariq</em> Rafiq Anim</div><div class="folio-title-badge">Senior Engineer</div></div></div><div class="folio-body"><div class="folio-aside"><div class="folio-aside-section"><div class="folio-aside-title">Contact</div><div class="folio-contact-row"><span class="folio-contact-label">Email</span><span class="folio-contact-val">shariq@email.com</span></div><div class="folio-contact-row"><span class="folio-contact-label">Phone</span><span class="folio-contact-val">+1 555 234 5678</span></div></div><div class="folio-aside-section"><div class="folio-aside-title">Skills</div><div class="folio-skill-item">React<div class="folio-skill-dots"><div class="folio-dot filled"></div><div class="folio-dot filled"></div><div class="folio-dot filled"></div><div class="folio-dot filled"></div><div class="folio-dot filled"></div></div></div></div></div><div class="folio-main"><div class="folio-main-section"><div class="folio-main-title">Profile</div><p class="folio-summary">Innovative engineer with 7+ years crafting scalable systems.</p></div><div class="folio-main-section"><div class="folio-main-title">Experience</div><div class="folio-exp-item"><div class="folio-exp-role">Senior Software Engineer</div><div class="folio-exp-company">TechCorp Inc.</div><div class="folio-exp-date">Jan 2021 — Present</div></div></div></div></div></div></div>
       <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.25)">Editorial · Classic</div><div class="tmpl-name" style="color:var(--gold)">Folio</div><p class="tmpl-desc">High-end editorial design — striped top bar, serif typography, dot-rating skill meters. Ideal for senior professionals applying to traditional or prestigious firms.</p><button class="use-template-btn btn-primary" onclick="openBuilder('folio')">Use Folio Template →</button></div>
     </div>
-    <!-- Prism showcase -->
     <div id="showcase-prism" class="template-showcase">
       <div class="tmpl-preview"><div class="resume-prism"><div class="prism-accent-block"></div><div class="prism-header"><div class="prism-name">Shariq Rafiq Anim</div><div class="prism-title">Senior Engineer</div></div><div class="prism-body"><div class="prism-main"><div class="prism-section-title">Experience</div><div class="prism-exp-item"><div style="display:flex;justify-content:space-between"><div class="prism-exp-company">TechCorp</div><div class="prism-exp-date">2021–Now</div></div><div class="prism-exp-role">Senior Engineer</div><div class="prism-bullet">Scaled platform to 15M users</div></div></div><div class="prism-sidebar"><div class="prism-aside-title">Contact</div><div class="prism-contact-item"><div class="prism-contact-label">Email</div>shariq@email.com</div><div class="prism-contact-item"><div class="prism-contact-label">Phone</div>+1 555 234 5678</div><div class="prism-aside-title" style="margin-top:12px">Stack</div><span class="prism-skill-tag">React</span><span class="prism-skill-tag prism-skill-alt">AWS</span></div></div></div></div>
       <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.3)">Geometric · Bold</div><div class="tmpl-name" style="background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Prism</div><p class="tmpl-desc">High-energy geometric design with diagonal corner accent and alternating skill chips. Made for creative professionals and startup founders.</p><button class="use-template-btn btn-primary" onclick="openBuilder('prism')">Use Prism Template →</button></div>
     </div>
-    <!-- Vertex showcase -->
     <div id="showcase-vertex" class="template-showcase">
       <div class="tmpl-preview"><div class="resume-vertex"><div class="vertex-header"><div><div class="vertex-name">Shariq Rafiq Anim</div><div class="vertex-title">Senior Engineer</div></div><div class="vertex-contact-grid"><div class="vertex-contact"><span class="vertex-contact-icon">✉</span>shariq@email.com</div><div class="vertex-contact"><span class="vertex-contact-icon">☎</span>+1 555 234 5678</div></div></div><div class="vertex-body"><div class="vertex-main"><div class="vertex-section-title">Experience</div><div class="vertex-exp-block"><div class="vertex-exp-header"><div><div class="vertex-job">Senior Engineer</div><div class="vertex-company">TechCorp</div></div><div class="vertex-date">2021–Present</div></div><div class="vertex-bullet">Scaled platform to 15M users</div></div></div><div class="vertex-aside"><div class="vertex-aside-title">Skills</div><div class="vertex-skill"><span class="vertex-skill-name">React</span><div class="vertex-skill-level"><div class="vertex-level-dot lit"></div><div class="vertex-level-dot lit"></div><div class="vertex-level-dot lit"></div><div class="vertex-level-dot lit"></div><div class="vertex-level-dot lit"></div></div></div></div></div></div></div>
       <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(134,239,172,.08);color:#86efac;border:1px solid rgba(134,239,172,.25)">Executive · Dark</div><div class="tmpl-name" style="color:#86efac">Vertex</div><p class="tmpl-desc">Dark navy executive layout with mint green accents. Crafted for senior executives applying to top-tier companies.</p><button class="use-template-btn" style="background:linear-gradient(135deg,#065f46,#10b981);color:#fff;padding:12px 26px;border-radius:10px;font-size:14px;font-weight:700;border:none;cursor:pointer" onclick="openBuilder('vertex')">Use Vertex Template →</button></div>
     </div>
-    <!-- Canvas showcase -->
     <div id="showcase-canvas" class="template-showcase">
       <div class="tmpl-preview"><div class="resume-canvas"><div class="canvas-header"><div class="canvas-name">Shariq Rafiq Anim</div><div class="canvas-title">Senior Engineer</div><div class="canvas-contact-strip"><span class="canvas-contact-pill">✉ shariq@email.com</span><span class="canvas-contact-pill">☎ +1 555 234 5678</span></div><div class="canvas-accent-line"></div></div><div class="canvas-body"><div class="canvas-section"><div class="canvas-section-title">Summary</div><p class="canvas-summary">Engineer with 7+ years building scalable systems for 10M+ users.</p></div><div class="canvas-section"><div class="canvas-section-title">Skills</div><div class="canvas-skills-wrap"><span class="canvas-skill">React</span><span class="canvas-skill">TypeScript</span></div></div></div></div></div>
       <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(17,24,39,.06);color:#374151;border:1px solid rgba(17,24,39,.2)">Minimal · Pure White</div><div class="tmpl-name" style="color:#111827">Canvas</div><p class="tmpl-desc">Pristine white minimalism. The most ATS-safe template. Perfect for finance, law, and traditional industries.</p><button class="use-template-btn" style="background:#111827;color:#fff;padding:12px 26px;border-radius:10px;font-size:14px;font-weight:700;border:none;cursor:pointer" onclick="openBuilder('canvas')">Use Canvas Template →</button></div>
     </div>
-    <!-- Neon showcase -->
     <div id="showcase-neon" class="template-showcase">
       <div class="tmpl-preview"><div class="resume-neon"><div class="neon-glow-1"></div><div class="neon-header"><div class="neon-name">Shariq <span>Rafiq Anim</span></div><div class="neon-title">Senior Engineer</div><div class="neon-contact-row"><div class="neon-contact-item"><span class="neon-icon">✉</span>shariq@email.com</div><div class="neon-contact-item"><span class="neon-icon">☎</span>+1 555 234 5678</div></div></div><div class="neon-body"><div class="neon-main"><div class="neon-section-title">Experience</div><div class="neon-exp-block"><div class="neon-exp-company">TechCorp</div><div class="neon-exp-role">Senior Engineer</div><div class="neon-bullet">Scaled platform to 15M users</div></div></div><div class="neon-aside"><div class="neon-aside-title">Skills</div><div class="neon-skill"><div class="neon-skill-name">React</div><div class="neon-skill-bar"><div class="neon-skill-fill" style="width:95%"></div></div></div></div></div></div></div>
       <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(168,85,247,.1);color:#a855f7;border:1px solid rgba(168,85,247,.3)">Creative · Neon Dark</div><div class="tmpl-name" style="background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Neon</div><p class="tmpl-desc">Ultra-dark creative layout with purple-to-pink gradients. For UX designers and bold, forward-thinking industries.</p><button class="use-template-btn" style="background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;padding:12px 26px;border-radius:10px;font-size:14px;font-weight:700;border:none;cursor:pointer" onclick="openBuilder('neon')">Use Neon Template →</button></div>
     </div>
-    <!-- Atlas showcase -->
     <div id="showcase-atlas" class="template-showcase">
       <div class="tmpl-preview"><div class="resume-atlas"><div class="atlas-header"><div><div class="atlas-name">Shariq Rafiq Anim</div><div class="atlas-title">Senior Engineer</div></div><div class="atlas-contact-block"><div class="atlas-contact-item">✉ shariq@email.com</div><div class="atlas-contact-item">☎ +1 555 234 5678</div><div class="atlas-contact-item">⌖ San Francisco, CA</div></div></div><div class="atlas-body"><div class="atlas-col"><div class="atlas-section-title">Experience</div><div class="atlas-exp-block"><div class="atlas-exp-company">TechCorp Inc.</div><div class="atlas-exp-role">Senior Engineer</div><div class="atlas-exp-date">2021 – Present</div><div class="atlas-bullet">Scaled platform to 15M daily users</div></div></div><div class="atlas-col"><div class="atlas-section-title">Skills</div><div class="atlas-skill-row"><span class="atlas-skill-name">React</span><div class="atlas-skill-bar"><div class="atlas-skill-fill" style="width:90%"></div></div></div><div class="atlas-skill-row"><span class="atlas-skill-name">Node.js</span><div class="atlas-skill-bar"><div class="atlas-skill-fill" style="width:85%"></div></div></div><div class="atlas-section-title" style="margin-top:14px">Education</div><div class="atlas-edu-school">MIT</div><div class="atlas-edu-deg">B.S. Computer Science</div></div></div></div></div>
-      <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.25)">Professional · Two-Column</div><div class="tmpl-name" style="color:var(--gold)">Atlas</div><p class="tmpl-desc">Dark executive header with warm cream body and gold accents. The most recruiter-friendly layout — balanced two-column design that's ATS safe and visually striking.</p><div class="tmpl-features"><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#c9a84c"></span>Dark header, warm body contrast</div><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#c9a84c"></span>Balanced two-column layout</div><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#c9a84c"></span>High ATS compatibility</div></div><button class="use-template-btn btn-primary" onclick="openBuilder('atlas')">Use Atlas Template →</button></div>
+      <div class="tmpl-meta"><div class="tmpl-category" style="background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.25)">Professional · Two-Column</div><div class="tmpl-name" style="color:var(--gold)">Atlas</div><p class="tmpl-desc">Dark executive header with warm cream body and gold accents. Balanced two-column design that's ATS safe and visually striking.</p><div class="tmpl-features"><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#c9a84c"></span>Dark header, warm body contrast</div><div class="tmpl-feat"><span class="tmpl-feat-dot" style="background:#c9a84c"></span>High ATS compatibility</div></div><button class="use-template-btn btn-primary" onclick="openBuilder('atlas')">Use Atlas Template →</button></div>
     </div>
   </div>
 </section>
-
-<!-- HOW IT WORKS -->
 <section id="how-it-works" class="section">
   <div class="section-header reveal"><div><div class="section-label">Process</div><h2 class="section-heading">Resume Ready in<br/><em style="font-style:italic;color:var(--gold)">4 Steps</em></h2></div><p class="section-sub">We removed every friction point so you can go from blank to interview-ready in under 3 minutes.</p></div>
   <div class="steps-grid">
@@ -683,8 +598,6 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
     <div class="step-card reveal reveal-delay-3"><div class="step-num">04</div><div class="step-icon"><span class="icon-svg icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span></div><div class="step-title">Download & Win</div><div class="step-desc">Export pixel-perfect PDF in one click, check your ATS score, and apply with confidence.</div></div>
   </div>
 </section>
-
-<!-- TESTIMONIALS -->
 <section id="testimonials" class="section" style="padding-top:50px">
   <div class="section-header reveal"><div><div class="section-label">Reviews</div><h2 class="section-heading">250,000+ Careers<br/><em style="font-style:italic;color:var(--gold)">Transformed</em></h2></div></div>
   <div class="testimonials-grid">
@@ -693,23 +606,16 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
     <div class="testi-card reveal reveal-delay-2"><div class="stars">★★★★★</div><div class="testi-quote">"</div><p class="testi-text">The Atlas template is exactly what hiring managers want to see. Got callbacks from 5 out of 6 companies I applied to.</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899)">MR</div><div><div class="testi-name">Maya Rodriguez</div><div class="testi-role">Product Manager → Stripe</div></div></div></div>
   </div>
 </section>
-
-<!-- CTA -->
 <section id="cta">
   <div class="cta-glow"></div>
   <div class="section-label" style="text-align:center;margin-bottom:18px">Start Today</div>
   <h2 class="cta-heading reveal">Your Dream Job is<br/><em style="font-style:italic;color:var(--gold)">One Resume Away</em></h2>
   <p class="cta-sub reveal">No account. No credit card. No login. Just build.</p>
   <div class="cta-actions reveal">
-    <button class="btn-primary" style="font-size:clamp(14px,1.5vw,16px);padding:clamp(13px,1.5vw,16px) clamp(24px,3vw,40px)" onclick="openBuilder()">
-      <span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>
-      Build My Resume — Free
-    </button>
+    <button class="btn-primary" style="font-size:clamp(14px,1.5vw,16px);padding:clamp(13px,1.5vw,16px) clamp(24px,3vw,40px)" onclick="openBuilder()"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Build My Resume — Free</button>
     <a href="#templates" class="btn-outline" style="font-size:clamp(14px,1.5vw,16px);padding:clamp(13px,1.5vw,16px) clamp(20px,2.5vw,32px)">See All Templates →</a>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -719,16 +625,9 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
       <div class="footer-col"><h4>Company</h4><span class="footer-link">About</span><span class="footer-link">Contact</span><span class="footer-link">Privacy Policy</span></div>
     </div>
     <div class="footer-bottom"><div class="footer-copy">© 2026 <strong>ResumeAI Pro</strong> · Built by <strong>Shariq Rafiq Anim</strong></div><div class="footer-social">
-      <!-- Social Media Icons as SVGs with placeholder links -->
-      <a href="https://www.instagram.com/shariqanim?igsh=MW14MnRleXFoM2R4dw%3D%3D&utm_source=qr" target="_blank" class="social-btn" rel="noopener">
-        <svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="18" y1="6" x2="18" y2="6"/></svg>
-      </a>
-      <a href="https://github.com/Shariqrafiq" target="_blank" class="social-btn" rel="noopener">
-        <svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-      </a>
-      <a href="https://x.com/anim_shariq?s=21" target="_blank" class="social-btn" rel="noopener">
-        <svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-      </a>
+      <a href="https://www.instagram.com/shariqanim?igsh=MW14MnRleXFoM2R4dw%3D%3D&utm_source=qr" target="_blank" class="social-btn" rel="noopener"><svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="18" y1="6" x2="18" y2="6"/></svg></a>
+      <a href="https://github.com/Shariqrafiq" target="_blank" class="social-btn" rel="noopener"><svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+      <a href="https://x.com/anim_shariq?s=21" target="_blank" class="social-btn" rel="noopener"><svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
     </div></div>
   </div>
 </footer>
@@ -740,18 +639,11 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
     <div class="builder-actions">
       <div class="saved-indicator" id="savedIndicator">✓ Saved</div>
       <div class="ats-badge"><div class="ats-score" id="ats-score-display">72</div><div class="ats-label">ATS</div></div>
-      <button class="btn-builder" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)" onclick="aiEnhance()">
-        <span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>
-        Enhance
-      </button>
-      <button class="btn-download-header" onclick="downloadPDF()">
-        <span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
-        PDF
-      </button>
+      <button class="btn-builder" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)" onclick="aiEnhance()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Enhance</button>
+      <button class="btn-download-header" onclick="downloadPDF()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>PDF</button>
       <button class="btn-close-builder" onclick="closeBuilder()" aria-label="Close">✕</button>
     </div>
   </div>
-
   <div class="builder-body" id="builderBody">
     <div class="builder-form-panel">
       <div class="form-tabs" id="formTabs">
@@ -763,9 +655,7 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
         <button class="form-tab" onclick="switchTab('hobbies',this)"><span class="tab-icon">🎯</span><span class="tab-label">Hobbies</span></button>
         <button class="form-tab" onclick="switchTab('design',this)"><span class="tab-icon">🎨</span><span class="tab-label">Design</span></button>
       </div>
-
       <div class="form-scroll" id="formScrollArea">
-        <!-- PERSONAL TAB -->
         <div class="form-panel active" id="tab-personal">
           <div class="form-section-title">Basic Information</div>
           <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="f-name" placeholder="e.g. Shariq Rafiq Anim" oninput="updatePreview()"/></div>
@@ -781,22 +671,15 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
             <div class="form-group"><label class="form-label">GitHub / Site</label><input class="form-input" id="f-github" placeholder="github.com/you" oninput="updatePreview()"/></div>
           </div>
           <div class="form-section-title">Professional Summary</div>
-          <div class="form-group"><label class="form-label">Summary</label><textarea class="form-textarea" id="f-summary" placeholder="Write a 2-3 sentence summary of your professional background and key achievements…" oninput="updatePreview()"></textarea></div>
+          <div class="form-group"><label class="form-label">Summary</label><textarea class="form-textarea" id="f-summary" placeholder="Write a 2-3 sentence summary…" oninput="updatePreview()"></textarea></div>
           <button class="add-btn" onclick="aiGenerateSummary()">✨ AI: Generate Summary for Me</button>
-          <button class="save-btn" onclick="saveSection('personal')">
-            <span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></span>
-            Save Personal Info
-          </button>
+          <button class="save-btn" onclick="saveSection('personal')"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></span>Save Personal Info</button>
         </div>
-
-        <!-- EXPERIENCE TAB -->
         <div class="form-panel" id="tab-experience">
           <div id="exp-list"></div>
           <button class="add-btn" onclick="addExperience()">+ Add Work Experience</button>
           <button class="save-btn" onclick="saveSection('experience')">💾 Save Experience</button>
         </div>
-
-        <!-- SCHOOL TAB -->
         <div class="form-panel" id="tab-education">
           <div class="form-section-title">High School / Secondary Education</div>
           <p style="font-size:12px;color:rgba(250,250,247,.35);margin-bottom:12px;line-height:1.5">Add your high school, secondary school, or O-levels / A-levels education here.</p>
@@ -804,8 +687,6 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
           <button class="add-btn" onclick="addSchool()">+ Add High School</button>
           <button class="save-btn" onclick="saveSection('education')">💾 Save School Info</button>
         </div>
-
-        <!-- COLLEGE TAB -->
         <div class="form-panel" id="tab-college">
           <div class="form-section-title">University / College Education</div>
           <p style="font-size:12px;color:rgba(250,250,247,.35);margin-bottom:12px;line-height:1.5">Add your bachelor's, master's, PhD, or other higher education degrees here.</p>
@@ -817,19 +698,23 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
           <button class="save-btn" onclick="saveSection('college')">💾 Save College & Certs</button>
         </div>
 
-        <!-- SKILLS TAB -->
+        <!-- ═══ SKILLS TAB — FIXED ═══ -->
         <div class="form-panel" id="tab-skills">
-          <div class="form-section-title">Technical Skills</div>
-          <p style="font-size:12px;color:rgba(250,250,247,.4);margin-bottom:10px">Type a skill and press Enter or comma to add</p>
+          <div class="form-section-title">Your Skills</div>
+          <p style="font-size:12px;color:rgba(250,250,247,.4);margin-bottom:10px">Type a skill and press Enter or comma to add. Click any suggestion chip below to add instantly.</p>
           <div class="skill-tags-input" id="skills-input-wrap" onclick="document.getElementById('skill-inline-input').focus()">
             <div id="skill-tags-list" style="display:contents"></div>
             <input class="skill-input-inline" id="skill-inline-input" placeholder="Add skill…" onkeydown="handleSkillKey(event)"/>
           </div>
-          <button class="add-btn" style="margin-top:10px" onclick="aiSuggestSkills()">✨ AI: Suggest Skills for My Role</button>
+          <button class="add-btn" style="margin-top:10px" onclick="aiSuggestSkills()">✨ AI: Load All Suggestions for My Role</button>
+          <!-- Suggestions panel — populated by aiSuggestSkills() and on title change -->
+          <div class="skill-suggestions-wrap" id="skill-suggestions-wrap" style="display:none">
+            <span class="skill-suggestions-label">Click to add ↓</span>
+            <div class="skill-suggestions-grid" id="skill-suggestions-grid"></div>
+          </div>
           <button class="save-btn" onclick="saveSection('skills')">💾 Save Skills</button>
         </div>
 
-        <!-- HOBBIES TAB -->
         <div class="form-panel" id="tab-hobbies">
           <div class="form-section-title">Interests & Hobbies</div>
           <p style="font-size:12px;color:rgba(250,250,247,.35);margin-bottom:12px;line-height:1.5">Adding relevant hobbies shows personality and can spark conversation during interviews.</p>
@@ -841,8 +726,6 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
           <button class="add-btn" onclick="addVolunteer()">+ Add Volunteer Work</button>
           <button class="save-btn" onclick="saveSection('hobbies')">💾 Save Interests</button>
         </div>
-
-        <!-- DESIGN TAB -->
         <div class="form-panel" id="tab-design">
           <div class="form-section-title">Choose Template</div>
           <div class="tmpl-picker">
@@ -864,17 +747,11 @@ footer{background:#07070e;border-top:1px solid rgba(250,250,247,.06);padding:56p
           </div>
         </div>
       </div>
-
       <div class="download-bar">
         <span class="download-bar-label">Ready to apply?</span>
-        <button class="btn-download" onclick="downloadPDF()">
-          <span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
-          Download PDF
-        </button>
+        <button class="btn-download" onclick="downloadPDF()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>Download PDF</button>
       </div>
     </div>
-
-    <!-- PREVIEW PANEL -->
     <div class="builder-preview-panel">
       <div class="preview-label">Live Preview</div>
       <div class="preview-scroll" id="previewScrollArea">
@@ -898,6 +775,88 @@ let state={
 };
 let expCounter=0,schoolCounter=0,collegeCounter=0,certCounter=0,volunteerCounter=0;
 
+// ═══════════════════════════════════════════════════════
+// COMPREHENSIVE SKILL DATABASE — 30+ skills per category
+// ═══════════════════════════════════════════════════════
+const SKILL_DB = {
+  software: ['JavaScript','TypeScript','Python','Java','C++','C#','Go','Rust','Swift','Kotlin',
+    'React','Next.js','Vue.js','Angular','Svelte','Node.js','Express.js','NestJS','FastAPI','Django',
+    'PostgreSQL','MySQL','MongoDB','Redis','Elasticsearch','GraphQL','REST APIs','gRPC',
+    'AWS','GCP','Azure','Docker','Kubernetes','Terraform','CI/CD','GitHub Actions','Jenkins',
+    'Git','Microservices','System Design','WebSockets','Webpack','Vite','Jest','Cypress'],
+  frontend: ['React','Vue.js','Angular','Next.js','TypeScript','JavaScript','HTML5','CSS3',
+    'Tailwind CSS','SASS/SCSS','Webpack','Vite','Figma','Storybook','Jest','Testing Library',
+    'Accessibility (a11y)','Web Performance','PWA','WebGL','Three.js','D3.js','Redux','Zustand',
+    'React Query','GraphQL','REST APIs','Responsive Design','CSS Grid','Flexbox','Animations'],
+  backend: ['Node.js','Python','Java','Go','Rust','C#','PHP','Ruby','Express.js','FastAPI',
+    'Django','Spring Boot','NestJS','Laravel','Rails','PostgreSQL','MySQL','MongoDB','Redis',
+    'Kafka','RabbitMQ','GraphQL','REST APIs','gRPC','Microservices','Docker','Kubernetes',
+    'AWS Lambda','Serverless','OAuth2','JWT','WebSockets','Caching','Load Balancing','SQL'],
+  data: ['Python','R','SQL','Pandas','NumPy','Scikit-learn','TensorFlow','PyTorch','Keras',
+    'Apache Spark','Hadoop','dbt','Airflow','Tableau','Power BI','Looker','Snowflake',
+    'BigQuery','Redshift','Machine Learning','Deep Learning','NLP','Computer Vision',
+    'Statistics','A/B Testing','Data Visualization','ETL Pipelines','Feature Engineering',
+    'Model Deployment','MLflow','Jupyter','Databricks','Excel','Google Analytics'],
+  design: ['Figma','Sketch','Adobe XD','InVision','Zeplin','Principle','Framer',
+    'Adobe Photoshop','Adobe Illustrator','After Effects','Prototyping','Wireframing',
+    'User Research','Usability Testing','Design Systems','Component Libraries','Typography',
+    'Color Theory','Motion Design','Accessibility','Information Architecture','User Flows',
+    'Interaction Design','Visual Design','Brand Identity','Responsive Design','Design Thinking'],
+  product: ['Product Strategy','Roadmapping','Agile/Scrum','Kanban','OKRs','KPIs',
+    'User Research','A/B Testing','Data Analysis','Competitive Analysis','Go-to-Market',
+    'Stakeholder Management','Jira','Confluence','Notion','Miro','SQL','Tableau',
+    'Customer Discovery','Product Analytics','Prioritization Frameworks','PRD Writing',
+    'Sprint Planning','Backlog Grooming','User Story Mapping','Metrics & Growth',
+    'Cross-functional Leadership','Feature Flagging','Launch Planning','Market Sizing'],
+  marketing: ['SEO','SEM','Google Ads','Meta Ads','LinkedIn Ads','Content Marketing',
+    'Email Marketing','HubSpot','Salesforce','Marketing Automation','Google Analytics',
+    'Social Media Marketing','Influencer Marketing','Brand Strategy','Copywriting',
+    'A/B Testing','Conversion Rate Optimization','Growth Hacking','PR','Event Marketing',
+    'Video Marketing','Podcast Marketing','Affiliate Marketing','CRM','Lead Generation',
+    'Customer Segmentation','Marketing Analytics','Adobe Creative Suite','Mailchimp'],
+  finance: ['Financial Modeling','Valuation','DCF Analysis','Excel','PowerPoint','Bloomberg',
+    'SQL','Python','Tableau','GAAP','IFRS','Financial Reporting','Budgeting','Forecasting',
+    'M&A','Private Equity','Investment Banking','Portfolio Management','Risk Analysis',
+    'Due Diligence','Cap Table Management','P&L Management','Cost Analysis','Audit',
+    'Tax Planning','Cash Flow Analysis','Scenario Analysis','Sensitivity Analysis'],
+  hr: ['Talent Acquisition','Recruitment','Employee Relations','Performance Management',
+    'HRIS (Workday/BambooHR)','Onboarding','Learning & Development','Compensation & Benefits',
+    'HR Compliance','Employment Law','Succession Planning','Organizational Development',
+    'Culture Building','Conflict Resolution','Employer Branding','LinkedIn Recruiting',
+    'Behavioral Interviewing','HR Analytics','Workforce Planning','DEI Initiatives'],
+  sales: ['B2B Sales','SaaS Sales','Salesforce CRM','HubSpot CRM','Pipeline Management',
+    'Account Management','Business Development','Cold Outreach','Discovery Calls',
+    'Negotiation','Contract Management','Revenue Forecasting','Quota Attainment',
+    'Enterprise Sales','Channel Partnerships','Sales Enablement','Demo Skills',
+    'Objection Handling','Customer Success','Upselling','Cross-selling','SDR/BDR'],
+  operations: ['Process Improvement','Project Management','Lean/Six Sigma','Supply Chain',
+    'Vendor Management','Budget Management','Operations Analytics','ERP Systems',
+    'Risk Management','Change Management','Business Analysis','Stakeholder Management',
+    'Cross-functional Collaboration','KPIs & Metrics','SLA Management','Compliance',
+    'Quality Assurance','Procurement','Logistics','Resource Planning','Automation'],
+  general: ['Project Management','Communication','Problem Solving','Leadership',
+    'Team Collaboration','Critical Thinking','Time Management','Presentation Skills',
+    'Microsoft Office','Google Workspace','Data Analysis','Stakeholder Management',
+    'Process Improvement','Adaptability','Mentoring','Strategic Planning',
+    'Budget Management','Risk Management','Conflict Resolution','Negotiation']
+};
+
+function getSkillSuggestions(title){
+  const t = (title||'').toLowerCase();
+  if(t.includes('front') || t.includes('ui ') || t.includes(' ui') || t.includes('react') || t.includes('vue') || t.includes('angular')) return SKILL_DB.frontend;
+  if(t.includes('back') || t.includes('api') || t.includes('server')) return SKILL_DB.backend;
+  if(t.includes('full') || t.includes('software') || t.includes('engineer') || t.includes('developer')) return SKILL_DB.software;
+  if(t.includes('data') || t.includes('ml') || t.includes('machine') || t.includes('ai ') || t.includes('analyst') || t.includes('scientist')) return SKILL_DB.data;
+  if(t.includes('design') || t.includes('ux') || t.includes('ui/ux') || t.includes('product design')) return SKILL_DB.design;
+  if(t.includes('product') || t.includes('pm ') || t.includes(' pm') || t.includes('manager')) return SKILL_DB.product;
+  if(t.includes('market')) return SKILL_DB.marketing;
+  if(t.includes('financ') || t.includes('account') || t.includes('invest') || t.includes('banking')) return SKILL_DB.finance;
+  if(t.includes('hr') || t.includes('human resource') || t.includes('talent') || t.includes('recruit')) return SKILL_DB.hr;
+  if(t.includes('sales') || t.includes('account exec') || t.includes('business dev')) return SKILL_DB.sales;
+  if(t.includes('operat') || t.includes('supply chain') || t.includes('logistics')) return SKILL_DB.operations;
+  return SKILL_DB.general;
+}
+
 // ═══ NAV ═══
 function toggleNav(){const h=document.getElementById('hamburger'),d=document.getElementById('mobileNav');const o=d.classList.toggle('open');h.classList.toggle('open',o);h.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
 function closeMobileNav(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.getElementById('hamburger').setAttribute('aria-expanded','false');document.body.style.overflow='';}
@@ -906,14 +865,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-// ═══ TEMPLATE SHOWCASE ═══
 function showTemplate(id,btn){
   document.querySelectorAll('.template-showcase').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tmpl-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('showcase-'+id).classList.add('active');btn.classList.add('active');
 }
 
-// ═══ BUILDER OPEN/CLOSE ═══
 function openBuilder(tmpl){
   if(tmpl)selectTemplate(tmpl,true);
   document.getElementById('builder-overlay').classList.add('open');
@@ -929,17 +886,17 @@ function closeBuilder(){
   document.body.style.overflow='';
 }
 
-// ═══ TABS ═══
 function switchTab(id,btn){
   document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.form-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
   const fs=document.getElementById('formScrollArea');
-  if(fs){fs.scrollTop=0;}
+  if(fs)fs.scrollTop=0;
+  // Auto-load suggestions when switching to skills tab
+  if(id==='skills') renderSkillSuggestions();
 }
 
-// ═══ TEMPLATE SELECT ═══
 function selectTemplate(id,silent){
   state.template=id;
   document.querySelectorAll('.tmpl-pick-btn').forEach(b=>b.classList.remove('selected'));
@@ -949,7 +906,6 @@ function selectTemplate(id,silent){
   updatePreview();if(!silent)showToast('🎨 Switched to '+(labels[id]||id)+' template!');
 }
 
-// ═══ SAVE SECTION ═══
 function saveSection(section){
   readForm();updatePreview();
   const ind=document.getElementById('savedIndicator');
@@ -985,10 +941,7 @@ function updateExpField(id,field,val){const e=state.experiences.find(e=>e.id===i
 function updateExpBullet(id,idx,val){const e=state.experiences.find(e=>e.id===id);if(e){if(!e.bullets)e.bullets=[];e.bullets[idx]=val;updatePreview();}}
 
 // ═══ SCHOOL ═══
-function addSchool(data){
-  const id=schoolCounter++;const d=data||{school:'',qualification:'',year:'',grade:''};
-  state.schools.push({id,...d});renderSchoolBlocks();
-}
+function addSchool(data){const id=schoolCounter++;const d=data||{school:'',qualification:'',year:'',grade:''};state.schools.push({id,...d});renderSchoolBlocks();}
 function removeSchool(id){state.schools=state.schools.filter(s=>s.id!==id);renderSchoolBlocks();updatePreview();}
 function renderSchoolBlocks(){
   const c=document.getElementById('school-list');if(!c)return;c.innerHTML='';
@@ -997,20 +950,15 @@ function renderSchoolBlocks(){
     div.innerHTML=`<div class="exp-block-title"><span>School ${idx+1}</span><button class="remove-btn" onclick="removeSchool(${sc.id})">×</button></div>
     <div class="form-group"><label class="form-label">School Name</label><input class="form-input" value="${esc(sc.school)}" placeholder="Lincoln High School" oninput="updateSchoolField(${sc.id},'school',this.value)"/></div>
     <div class="form-group"><label class="form-label">Qualification / Exam</label><input class="form-input" value="${esc(sc.qualification)}" placeholder="A-Levels / GCSEs / High School Diploma" oninput="updateSchoolField(${sc.id},'qualification',this.value)"/></div>
-    <div class="form-row">
-      <div class="form-group"><label class="form-label">Year</label><input class="form-input" value="${esc(sc.year)}" placeholder="2016" oninput="updateSchoolField(${sc.id},'year',this.value)"/></div>
-      <div class="form-group"><label class="form-label">Grade / GPA</label><input class="form-input" value="${esc(sc.grade)}" placeholder="A / 4.0" oninput="updateSchoolField(${sc.id},'grade',this.value)"/></div>
-    </div>`;
+    <div class="form-row"><div class="form-group"><label class="form-label">Year</label><input class="form-input" value="${esc(sc.year)}" placeholder="2016" oninput="updateSchoolField(${sc.id},'year',this.value)"/></div>
+    <div class="form-group"><label class="form-label">Grade / GPA</label><input class="form-input" value="${esc(sc.grade)}" placeholder="A / 4.0" oninput="updateSchoolField(${sc.id},'grade',this.value)"/></div></div>`;
     c.appendChild(div);
   });
 }
 function updateSchoolField(id,field,val){const s=state.schools.find(s=>s.id===id);if(s){s[field]=val;updatePreview();}}
 
 // ═══ COLLEGE ═══
-function addCollege(data){
-  const id=collegeCounter++;const d=data||{school:'',degree:'',field:'',year:'',gpa:''};
-  state.colleges.push({id,...d});renderCollegeBlocks();
-}
+function addCollege(data){const id=collegeCounter++;const d=data||{school:'',degree:'',field:'',year:'',gpa:''};state.colleges.push({id,...d});renderCollegeBlocks();}
 function removeCollege(id){state.colleges=state.colleges.filter(c=>c.id!==id);renderCollegeBlocks();updatePreview();}
 function renderCollegeBlocks(){
   const c=document.getElementById('college-list');if(!c)return;c.innerHTML='';
@@ -1031,11 +979,11 @@ function updateCollegeField(id,field,val){const c=state.colleges.find(c=>c.id===
 function handleSkillKey(e){
   if(e.key==='Enter'||e.key===','){
     e.preventDefault();const val=e.target.value.replace(',','').trim();
-    if(val&&!state.skills.includes(val)){state.skills.push(val);renderSkillTags();updatePreview();}
+    if(val&&!state.skills.includes(val)){state.skills.push(val);renderSkillTags();renderSkillSuggestions();updatePreview();}
     e.target.value='';
   }
 }
-function removeSkill(idx){state.skills.splice(idx,1);renderSkillTags();updatePreview();}
+function removeSkill(idx){state.skills.splice(idx,1);renderSkillTags();renderSkillSuggestions();updatePreview();}
 function renderSkillTags(){
   const list=document.getElementById('skill-tags-list');if(!list)return;
   list.innerHTML='';
@@ -1045,11 +993,48 @@ function renderSkillTags(){
   });
 }
 
-// ═══ CERTIFICATIONS ═══
-function addCert(data){
-  const id=certCounter++;const d=data||{name:'',issuer:'',year:''};
-  state.certs.push({id,...d});renderCerts();
+// ─── FIXED: Render clickable suggestion chips for ALL suggestions ───
+function renderSkillSuggestions(){
+  const suggestions = getSkillSuggestions(state.title);
+  const wrap = document.getElementById('skill-suggestions-wrap');
+  const grid = document.getElementById('skill-suggestions-grid');
+  if(!wrap||!grid)return;
+  if(!suggestions||suggestions.length===0){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  grid.innerHTML='';
+  suggestions.forEach(skill=>{
+    const chip=document.createElement('button');
+    chip.className='skill-suggest-chip'+(state.skills.includes(skill)?' added':'');
+    chip.textContent=state.skills.includes(skill)?'✓ '+skill:skill;
+    chip.type='button';
+    if(!state.skills.includes(skill)){
+      chip.onclick=()=>{
+        state.skills.push(skill);
+        renderSkillTags();
+        renderSkillSuggestions(); // refresh added state
+        updatePreview();
+        showToast('✚ Added: '+skill);
+      };
+    }
+    grid.appendChild(chip);
+  });
 }
+
+// ─── FIXED aiSuggestSkills: adds ALL non-duplicate suggestions immediately ───
+function aiSuggestSkills(){
+  const suggestions = getSkillSuggestions(state.title);
+  const newSkills = suggestions.filter(s=>!state.skills.includes(s));
+  if(newSkills.length===0){showToast('✅ All suggestions already added!');return;}
+  // Add ALL suggestions (not just 6)
+  state.skills.push(...newSkills);
+  renderSkillTags();
+  renderSkillSuggestions();
+  updatePreview();
+  showToast('⚡ Added '+newSkills.length+' skills for your role!');
+}
+
+// ═══ CERTIFICATIONS ═══
+function addCert(data){const id=certCounter++;const d=data||{name:'',issuer:'',year:''};state.certs.push({id,...d});renderCerts();}
 function removeCert(id){state.certs=state.certs.filter(c=>c.id!==id);renderCerts();updatePreview();}
 function renderCerts(){
   const c=document.getElementById('cert-list');if(!c)return;c.innerHTML='';
@@ -1065,10 +1050,7 @@ function renderCerts(){
 function updateCertField(id,field,val){const c=state.certs.find(c=>c.id===id);if(c){c[field]=val;updatePreview();}}
 
 // ═══ VOLUNTEERS ═══
-function addVolunteer(data){
-  const id=volunteerCounter++;const d=data||{org:'',role:'',year:''};
-  state.volunteers.push({id,...d});renderVolunteers();
-}
+function addVolunteer(data){const id=volunteerCounter++;const d=data||{org:'',role:'',year:''};state.volunteers.push({id,...d});renderVolunteers();}
 function removeVolunteer(id){state.volunteers=state.volunteers.filter(v=>v.id!==id);renderVolunteers();updatePreview();}
 function renderVolunteers(){
   const c=document.getElementById('volunteer-list');if(!c)return;c.innerHTML='';
@@ -1096,16 +1078,23 @@ function readForm(){
   state.hobbies=document.getElementById('f-hobbies')?.value||'';
   state.languages=document.getElementById('f-languages')?.value||'';
   state.fontSize=document.getElementById('f-fontsize')?.value||'medium';
+  // NOTE: state.skills is managed directly — NOT via readForm
 }
+
+// ─── Refresh suggestions when job title changes ───
+document.addEventListener('input',e=>{
+  if(e.target.id==='f-title'){
+    state.title=e.target.value;
+    renderSkillSuggestions();
+  }
+});
 
 // ═══ HELPERS ═══
 function esc(str){return(str||'').replace(/"/g,'&quot;');}
 function e(str){return(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function getInitials(name){const p=(name||'').trim().split(' ');return p.length>=2?(p[0][0]||'')+(p[p.length-1][0]||''):(p[0]||'??').substring(0,2).toUpperCase();}
 function getFontScale(){const fs=state.fontSize;return fs==='small'?0.88:fs==='large'?1.08:1;}
-function countExperienceYears(){
-  return state.experiences.filter(e=>e.company||e.role).length;
-}
+function countExperienceYears(){return state.experiences.filter(e=>e.company||e.role).length;}
 
 // ═══ ATS SCORE ═══
 function calcATS(){
@@ -1130,7 +1119,7 @@ function updatePreview(){
   clearTimeout(previewDebounce);
   previewDebounce=setTimeout(()=>{
     const container=document.getElementById('resume-preview-container');
-    if(container){container.innerHTML=buildResumeHTML(state);}
+    if(container)container.innerHTML=buildResumeHTML(state);
     requestAnimationFrame(scalePreview);
   },50);
 }
@@ -1140,11 +1129,10 @@ function scalePreview(){
   const container=document.getElementById('resume-preview-container');
   if(!wrap||!container)return;
   const wrapW=wrap.clientWidth-24;
-  const resumeW=850;
-  const scale=Math.min(1,wrapW/resumeW);
+  const scale=Math.min(1,wrapW/850);
   container.style.transform=`scale(${scale})`;
   container.style.transformOrigin='top left';
-  container.style.width=resumeW+'px';
+  container.style.width='850px';
   const h=(container.scrollHeight||600)*scale;
   wrap.style.height=Math.ceil(h+24)+'px';
 }
@@ -1157,7 +1145,6 @@ function buildResumeHTML(s){
   const t={nexus:buildNexus,folio:buildFolio,prism:buildPrism,vertex:buildVertex,canvas:buildCanvas,neon:buildNeon,atlas:buildAtlas};
   return(t[s.template]||buildNexus)(s);
 }
-
 function getAllEdu(s){
   const all=[];
   (s.colleges||[]).filter(c=>c.school).forEach(c=>all.push({school:c.school,degree:c.degree,field:c.field,year:c.year,gpa:c.gpa,type:'college'}));
@@ -1165,9 +1152,11 @@ function getAllEdu(s){
   return all;
 }
 
+// ─── FIX: No longer slicing skills — show ALL added skills on resume ───
 function buildNexus(s){
   const initials=getInitials(s.name);
-  const skillsHTML=s.skills.length>0?s.skills.slice(0,6).map((sk,i)=>{const pct=Math.max(60,95-i*5);return`<div class="nexus-skill-bar"><div class="nexus-skill-name"><span>${e(sk)}</span><span>${pct}%</span></div><div class="nexus-bar-bg"><div class="nexus-bar-fill" style="width:${pct}%"></div></div></div>`;}).join(''):`<div class="nexus-skill-bar"><div class="nexus-skill-name"><span style="color:rgba(232,230,240,.3)">Add skills in Skills tab</span></div></div>`;
+  // Show up to 8 skills in sidebar bars, rest as tags — FIXED from slice(0,6)
+  const skillsHTML=s.skills.length>0?s.skills.slice(0,8).map((sk,i)=>{const pct=Math.max(55,95-i*5);return`<div class="nexus-skill-bar"><div class="nexus-skill-name"><span>${e(sk)}</span><span>${pct}%</span></div><div class="nexus-bar-bg"><div class="nexus-bar-fill" style="width:${pct}%"></div></div></div>`;}).join(''):`<div class="nexus-skill-bar"><div class="nexus-skill-name"><span style="color:rgba(232,230,240,.3)">Add skills in Skills tab</span></div></div>`;
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div class="nexus-exp-block"><div class="nexus-exp-header"><div><div class="nexus-job-title">${e(exp.role)||'Position'}</div><div class="nexus-company">${e(exp.company)||'Company'}${exp.location?' · '+e(exp.location):''}</div></div><div class="nexus-date-badge">${e(exp.start)||'Start'}${exp.end?' – '+e(exp.end):''}</div></div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="nexus-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:10px;color:rgba(232,230,240,.3);padding:8px 0">Add experience in Work tab →</div>`;
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.length>0?eduAll.map(ed=>`<div style="margin-bottom:8px"><div style="font-size:9px;color:#a5b4fc;font-weight:700">${e(ed.degree)||''} ${e(ed.field)||''}</div><div style="font-size:8.5px;color:rgba(232,230,240,.5)">${e(ed.school)}${ed.year?' · '+e(ed.year):''}${ed.gpa?' · GPA '+e(ed.gpa):''}</div></div>`).join(''):`<div style="font-size:9px;color:rgba(232,230,240,.3)">Add education →</div>`;
@@ -1178,7 +1167,8 @@ function buildNexus(s){
 
 function buildFolio(s){
   const nf=(s.name||'').split(' ')[0],nr=(s.name||'').split(' ').slice(1).join(' ');
-  const skillsHTML=s.skills.slice(0,6).map((sk,i)=>{const f=Math.max(1,5-Math.floor(i/2));return`<div class="folio-skill-item">${e(sk)}<div class="folio-skill-dots">${Array(5).fill(0).map((_,j)=>`<div class="folio-dot${j<f?' filled':''}"></div>`).join('')}</div></div>`;}).join('')||`<div class="folio-skill-item" style="color:#a8998a">Add skills →</div>`;
+  // FIXED: show all skills, not just 6
+  const skillsHTML=s.skills.length>0?s.skills.map((sk,i)=>{const f=Math.max(1,5-Math.floor(i/2));return`<div class="folio-skill-item">${e(sk)}<div class="folio-skill-dots">${Array(5).fill(0).map((_,j)=>`<div class="folio-dot${j<f?' filled':''}"></div>`).join('')}</div></div>`;}).join(''):`<div class="folio-skill-item" style="color:#a8998a">Add skills →</div>`;
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div class="folio-exp-item"><div class="folio-exp-role">${e(exp.role)||'Role'}</div><div class="folio-exp-company">${e(exp.company)||'Company'}</div><div class="folio-exp-date">${e(exp.start)||''}${exp.end?' — '+e(exp.end):''}</div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="folio-exp-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:10px;color:#a8998a">Add experience →</div>`;
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.map(ed=>`<div><div style="font-size:9.5px;font-weight:700;color:#1a1208">${e(ed.degree)||''} ${e(ed.field)||''}</div><div style="font-size:8.5px;color:#4a3f30">${e(ed.school)}${ed.year?' · '+e(ed.year):''}</div></div>`).join('')||`<div style="font-size:9px;color:#a8998a">Add education →</div>`;
@@ -1189,7 +1179,8 @@ function buildFolio(s){
 
 function buildPrism(s){
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div class="prism-exp-item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="prism-exp-company">${e(exp.company)||'Company'}</div><div class="prism-exp-date">${e(exp.start)||''}${exp.end?' – '+e(exp.end):''}</div></div><div class="prism-exp-role">${e(exp.role)||'Role'}</div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="prism-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:9px;color:#a37d60">Add experience →</div>`;
-  const skillsHTML=s.skills.map((sk,i)=>`<span class="prism-skill-tag${i%2===1?' prism-skill-alt':''}">${e(sk)}</span>`).join('')||`<span class="prism-skill-tag">Add skills</span>`;
+  // FIXED: show ALL skills as tags
+  const skillsHTML=s.skills.length>0?s.skills.map((sk,i)=>`<span class="prism-skill-tag${i%2===1?' prism-skill-alt':''}">${e(sk)}</span>`).join(''):`<span class="prism-skill-tag">Add skills</span>`;
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.map(ed=>`<div class="prism-exp-item"><div style="font-size:10px;font-weight:800;color:#1c0a00">${e(ed.school)}</div><div style="font-size:8.5px;color:#f59e0b;font-weight:600">${e(ed.degree)||''} ${e(ed.field)||''}</div></div>`).join('')||`<div style="font-size:9px;color:#a37d60">Add education →</div>`;
   return`<div class="resume-prism" style="font-size:${getFontScale()*10}px"><div class="prism-accent-block"></div><div class="prism-header"><div class="prism-name">${e(s.name)||'Your Name'}</div><div class="prism-title">${e(s.title)||'Your Title'}</div></div><div class="prism-body"><div class="prism-main">${s.summary?`<div style="margin-bottom:14px"><div class="prism-section-title">About</div><div class="prism-summary">${e(s.summary)}</div></div>`:''}<div class="prism-section-title">Experience</div>${expHTML}<div class="prism-section-title" style="margin-top:14px">Education</div>${eduHTML}</div><div class="prism-sidebar"><div style="margin-bottom:16px"><div class="prism-aside-title">Contact</div>${s.email?`<div class="prism-contact-item"><div class="prism-contact-label">Email</div>${e(s.email)}</div>`:''}${s.phone?`<div class="prism-contact-item"><div class="prism-contact-label">Phone</div>${e(s.phone)}</div>`:''}${s.location?`<div class="prism-contact-item"><div class="prism-contact-label">Location</div>${e(s.location)}</div>`:''}</div>${s.skills.length>0?`<div><div class="prism-aside-title">Tech Stack</div>${skillsHTML}</div>`:''}</div></div></div>`;
@@ -1198,7 +1189,8 @@ function buildPrism(s){
 function buildVertex(s){
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div class="vertex-exp-block"><div class="vertex-exp-header"><div><div class="vertex-job">${e(exp.role)||'Role'}</div><div class="vertex-company">${e(exp.company)||'Company'}</div></div><div class="vertex-date">${e(exp.start)||''}${exp.end?'–'+e(exp.end):''}</div></div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="vertex-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:9px;color:rgba(205,214,244,.3)">Add experience →</div>`;
   const skillDots=n=>Array(5).fill(0).map((_,i)=>`<div class="vertex-level-dot${i<n?' lit':''}"></div>`).join('');
-  const skillsHTML=s.skills.slice(0,6).map((sk,i)=>`<div class="vertex-skill"><span class="vertex-skill-name">${e(sk)}</span><div class="vertex-skill-level">${skillDots(5-Math.floor(i/2))}</div></div>`).join('')||`<div style="font-size:9px;color:rgba(205,214,244,.3)">Add skills →</div>`;
+  // FIXED: show all skills (up to 10 with dots in sidebar)
+  const skillsHTML=s.skills.length>0?s.skills.slice(0,10).map((sk,i)=>`<div class="vertex-skill"><span class="vertex-skill-name">${e(sk)}</span><div class="vertex-skill-level">${skillDots(Math.max(1,5-Math.floor(i/2)))}</div></div>`).join(''):`<div style="font-size:9px;color:rgba(205,214,244,.3)">Add skills →</div>`;
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.map(ed=>`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:700;color:#cdd6f4">${e(ed.school)}</div><div style="font-size:8.5px;color:#86efac">${e(ed.degree)||''} ${e(ed.field)||''}</div></div>`).join('')||`<div style="font-size:9px;color:rgba(205,214,244,.3)">Add education →</div>`;
   return`<div class="resume-vertex" style="font-size:${getFontScale()*10}px"><div class="vertex-header"><div><div class="vertex-name">${e(s.name)||'Your Name'}</div><div class="vertex-title">${e(s.title)||'Your Title'}</div></div><div class="vertex-contact-grid">${s.email?`<div class="vertex-contact"><span class="vertex-contact-icon">✉</span>${e(s.email)}</div>`:''}${s.phone?`<div class="vertex-contact"><span class="vertex-contact-icon">☎</span>${e(s.phone)}</div>`:''}${s.location?`<div class="vertex-contact"><span class="vertex-contact-icon">⌖</span>${e(s.location)}</div>`:''}</div></div><div class="vertex-body"><div class="vertex-main">${s.summary?`<div style="margin-bottom:16px"><div class="vertex-section-title">Profile</div><div class="vertex-summary">${e(s.summary)}</div></div>`:''}<div class="vertex-section-title">Experience</div>${expHTML}<div class="vertex-section-title">Education</div>${eduHTML}</div><div class="vertex-aside">${s.skills.length>0?`<div style="margin-bottom:18px"><div class="vertex-aside-title">Core Skills</div>${skillsHTML}</div>`:''}</div></div></div>`;
@@ -1206,6 +1198,7 @@ function buildVertex(s){
 
 function buildCanvas(s){
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div style="margin-bottom:14px"><div class="canvas-exp-row"><div><div class="canvas-exp-company">${e(exp.company)||'Company'}</div><div class="canvas-exp-role">${e(exp.role)||'Role'}</div></div><div class="canvas-exp-date">${e(exp.start)||''}${exp.end?' – '+e(exp.end):''}</div></div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="canvas-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:10px;color:#9ca3af">Add experience →</div>`;
+  // FIXED: show ALL skills
   const skillsHTML=s.skills.map(sk=>`<span class="canvas-skill">${e(sk)}</span>`).join('')||'';
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.map(ed=>`<div class="canvas-edu-row"><div><div class="canvas-edu-name">${e(ed.school)}</div><div class="canvas-edu-deg">${e(ed.degree)||''} ${e(ed.field)||''}</div></div><div class="canvas-edu-year">${e(ed.year)||''}</div></div>`).join('')||`<div style="font-size:10px;color:#9ca3af">Add education →</div>`;
@@ -1216,7 +1209,8 @@ function buildCanvas(s){
 function buildNeon(s){
   const nf=(s.name||'').split(' ')[0],nr=(s.name||'').split(' ').slice(1).join(' ');
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div class="neon-exp-block"><div class="neon-exp-company">${e(exp.company)||'Company'}</div><div class="neon-exp-role">${e(exp.role)||'Role'}</div><div class="neon-exp-date">${e(exp.start)||''}${exp.end?' — '+e(exp.end):''}</div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="neon-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:9px;color:rgba(240,230,255,.3)">Add experience →</div>`;
-  const skillsHTML=s.skills.slice(0,6).map((sk,i)=>{const pct=Math.max(60,95-i*5);return`<div class="neon-skill"><div class="neon-skill-name">${e(sk)}</div><div class="neon-skill-bar"><div class="neon-skill-fill" style="width:${pct}%"></div></div></div>`;}).join('')||`<div style="font-size:9px;color:rgba(240,230,255,.3)">Add skills →</div>`;
+  // FIXED: show all skills (up to 10 with bars)
+  const skillsHTML=s.skills.length>0?s.skills.slice(0,10).map((sk,i)=>{const pct=Math.max(55,95-i*5);return`<div class="neon-skill"><div class="neon-skill-name">${e(sk)}</div><div class="neon-skill-bar"><div class="neon-skill-fill" style="width:${pct}%"></div></div></div>`;}).join(''):`<div style="font-size:9px;color:rgba(240,230,255,.3)">Add skills →</div>`;
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.map(ed=>`<div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;color:#fff">${e(ed.school)}</div><div style="font-size:8.5px;color:#a855f7">${e(ed.degree)||''} ${e(ed.field)||''}</div></div>`).join('')||`<div style="font-size:9px;color:rgba(240,230,255,.3)">Add education →</div>`;
   return`<div class="resume-neon" style="font-size:${getFontScale()*10}px"><div class="neon-glow-1"></div><div class="neon-glow-2"></div><div class="neon-header"><div class="neon-name">${e(nf)||'First'} <span>${e(nr)||'Last'}</span></div><div class="neon-title">${e(s.title)||'Your Title'}</div><div class="neon-contact-row">${s.email?`<div class="neon-contact-item"><span class="neon-icon">✉</span>${e(s.email)}</div>`:''}${s.phone?`<div class="neon-contact-item"><span class="neon-icon">☎</span>${e(s.phone)}</div>`:''}${s.location?`<div class="neon-contact-item"><span class="neon-icon">⌖</span>${e(s.location)}</div>`:''}</div></div><div class="neon-body"><div class="neon-main">${s.summary?`<div style="margin-bottom:16px"><div class="neon-section-title">About</div><div class="neon-summary">${e(s.summary)}</div></div>`:''}<div class="neon-section-title">Experience</div>${expHTML}<div class="neon-section-title" style="margin-top:14px">Education</div>${eduHTML}</div><div class="neon-aside">${s.skills.length>0?`<div style="margin-bottom:18px"><div class="neon-aside-title">Skills</div>${skillsHTML}</div>`:''}</div></div></div>`;
@@ -1224,12 +1218,13 @@ function buildNeon(s){
 
 function buildAtlas(s){
   const expHTML=s.experiences.filter(x=>x.company||x.role).map(exp=>`<div class="atlas-exp-block"><div class="atlas-exp-company">${e(exp.company)||'Company'}</div><div class="atlas-exp-role">${e(exp.role)||'Role'}</div><div class="atlas-exp-date">${e(exp.start)||''}${exp.end?' – '+e(exp.end):''}</div>${(exp.bullets||[]).filter(b=>b.trim()).map(b=>`<div class="atlas-bullet">${e(b)}</div>`).join('')}</div>`).join('')||`<div style="font-size:9px;color:#9ca3af">Add experience →</div>`;
-  const skillsHTML=s.skills.slice(0,8).map((sk,i)=>{const pct=Math.max(55,95-i*5);return`<div class="atlas-skill-row"><span class="atlas-skill-name">${e(sk)}</span><div class="atlas-skill-bar"><div class="atlas-skill-fill" style="width:${pct}%"></div></div></div>`;}).join('')||`<div style="font-size:9px;color:#9ca3af">Add skills →</div>`;
+  // FIXED: show ALL skills with bars
+  const skillsHTML=s.skills.length>0?s.skills.map((sk,i)=>{const pct=Math.max(45,95-i*5);return`<div class="atlas-skill-row"><span class="atlas-skill-name">${e(sk)}</span><div class="atlas-skill-bar"><div class="atlas-skill-fill" style="width:${pct}%"></div></div></div>`;}).join(''):`<div style="font-size:9px;color:#9ca3af">Add skills →</div>`;
   const eduAll=getAllEdu(s);
   const eduHTML=eduAll.map(ed=>`<div style="margin-bottom:10px"><div class="atlas-edu-school">${e(ed.school)}</div><div class="atlas-edu-deg">${e(ed.degree)||''} ${e(ed.field)||''}</div><div class="atlas-edu-year">${e(ed.year)||''}</div></div>`).join('')||`<div style="font-size:9px;color:#9ca3af">Add education →</div>`;
   const certsHTML=s.certs.filter(c=>c.name).map(c=>`<div style="font-size:8.5px;color:#374151;margin-bottom:4px"><span class="atlas-tag">${e(c.name)}</span></div>`).join('');
   const hobbiesHTML=s.hobbies?`<div style="margin-top:14px"><div class="atlas-section-title">Interests</div><div style="font-size:9px;color:#4b5563;line-height:1.6">${e(s.hobbies)}</div></div>`:'';
-  const summaryHTML=s.summary?`<div class="atlas-section-title">Profile</div><div class="atlas-summary" style="font-size:9.5px;color:#4b5563;line-height:1.7;font-style:italic;margin-bottom:14px">${e(s.summary)}</div>`:'';
+  const summaryHTML=s.summary?`<div class="atlas-section-title">Profile</div><div style="font-size:9.5px;color:#4b5563;line-height:1.7;font-style:italic;margin-bottom:14px">${e(s.summary)}</div>`:'';
   return`<div class="resume-atlas" style="font-size:${getFontScale()*10}px"><div class="atlas-header"><div><div class="atlas-name">${e(s.name)||'Your Name'}</div><div class="atlas-title">${e(s.title)||'Your Title'}</div></div><div class="atlas-contact-block">${s.email?`<div class="atlas-contact-item">✉ ${e(s.email)}</div>`:''}${s.phone?`<div class="atlas-contact-item">☎ ${e(s.phone)}</div>`:''}${s.location?`<div class="atlas-contact-item">⌖ ${e(s.location)}</div>`:''}</div></div><div class="atlas-body"><div class="atlas-col">${summaryHTML}<div class="atlas-section-title">Experience</div>${expHTML}</div><div class="atlas-col"><div class="atlas-section-title">Skills</div>${skillsHTML}<div class="atlas-section-title" style="margin-top:14px">Education</div>${eduHTML}${certsHTML}${hobbiesHTML}</div></div></div>`;
 }
 
@@ -1246,18 +1241,6 @@ function aiGenerateSummary(){
   ];
   const summary=summaries[Math.floor(Math.random()*summaries.length)];
   document.getElementById('f-summary').value=summary;state.summary=summary;updatePreview();showToast('✨ Summary generated!');
-}
-
-function aiSuggestSkills(){
-  const t=(state.title||'').toLowerCase();let suggested=[];
-  if(t.includes('software')||t.includes('engineer')||t.includes('developer'))suggested=['React','Node.js','TypeScript','Python','AWS','Docker','PostgreSQL','GraphQL','Redis','Git'];
-  else if(t.includes('design')||t.includes('ux')||t.includes('ui'))suggested=['Figma','Sketch','Prototyping','User Research','Wireframing','Design Systems','HTML/CSS'];
-  else if(t.includes('data')||t.includes('analyst')||t.includes('scientist'))suggested=['Python','SQL','Tableau','Machine Learning','Statistics','Pandas','R','Power BI'];
-  else if(t.includes('product')||t.includes('manager'))suggested=['Product Strategy','Agile/Scrum','Roadmapping','Data Analysis','Jira','OKRs','User Research'];
-  else if(t.includes('market'))suggested=['SEO/SEM','Google Analytics','Social Media','Email Marketing','Content Strategy','A/B Testing'];
-  else suggested=['Project Management','Communication','Problem Solving','Microsoft Office','Data Analysis','Team Leadership'];
-  const newSkills=suggested.filter(s=>!state.skills.includes(s));
-  state.skills.push(...newSkills.slice(0,6));renderSkillTags();updatePreview();showToast('⚡ Added '+Math.min(6,newSkills.length)+' skills!');
 }
 
 function aiEnhance(){
@@ -1288,28 +1271,20 @@ function downloadPDF(){
     const pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
     const pdfW=pdf.internal.pageSize.getWidth();
     const pdfH=pdf.internal.pageSize.getHeight();
-    const imgW=canvas.width/2;const imgH=canvas.height/2;
-    const ratio=pdfW/imgW;
-    const scaledH=imgH*ratio;
+    const ratio=pdfW/(canvas.width/2);
+    const scaledH=(canvas.height/2)*ratio;
     let position=0;
     pdf.addImage(imgData,'PNG',0,0,pdfW,scaledH);
     let heightLeft=scaledH-pdfH;
-    while(heightLeft>0){
-      position=position-pdfH;
-      pdf.addPage();
-      pdf.addImage(imgData,'PNG',0,position,pdfW,scaledH);
-      heightLeft-=pdfH;
-    }
-    const fileName=(state.name||'resume').replace(/\s+/g,'_')+'_ResumeAI.pdf';
-    pdf.save(fileName);
+    while(heightLeft>0){position-=pdfH;pdf.addPage();pdf.addImage(imgData,'PNG',0,position,pdfW,scaledH);heightLeft-=pdfH;}
+    pdf.save((state.name||'resume').replace(/\s+/g,'_')+'_ResumeAI.pdf');
     showToast('✅ PDF downloaded successfully!');
   }).catch(err=>{
     console.error(err);
     const pw=window.open('','_blank');
     const styles=Array.from(document.styleSheets).map(ss=>{try{return Array.from(ss.cssRules).map(r=>r.cssText).join('\n')}catch{return''}}).join('\n');
     pw.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${state.name||'Resume'}</title><style>${styles} body{margin:0;padding:20px;background:#fff;}</style></head><body>${buildResumeHTML(state)}</body></html>`);
-    pw.document.close();
-    setTimeout(()=>pw.print(),500);
+    pw.document.close();setTimeout(()=>pw.print(),500);
     showToast('🖨 Opening print dialog as fallback');
   });
 }
@@ -1321,13 +1296,11 @@ function showToast(msg){
   clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-// ═══ KEYBOARD ═══
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&document.getElementById('builder-overlay').classList.contains('open'))closeBuilder();
 });
 window.addEventListener('scroll',()=>{if(document.getElementById('mobileNav').classList.contains('open'))closeMobileNav();},{passive:true});
 
-// ═══ INIT ═══
 window.addEventListener('load',()=>{
   renderExpBlocks();renderSchoolBlocks();renderCollegeBlocks();
   renderCerts();renderSkillTags();renderVolunteers();
