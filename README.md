@@ -2,7 +2,7 @@
 
 > Build a Job-Winning Resume in 2 Minutes — No Login, No Payment, No Bullshit
 
-![ResumeAI Pro](screenshot.png)
+![ResumeAI Pro]
 
 ## 📋 Table of Contents
 - [What is ResumeAI Pro?](#what-is-resumeai-pro)
