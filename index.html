@@ -9,6 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
+    /* === RESET & BASE === */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --ink:#0a0a12;--paper:#fafaf7;--cream:#f2efe8;
@@ -29,6 +30,8 @@
     .icon-lg{width:24px;height:24px}
     .social-svg{width:18px;height:18px;fill:currentColor;transition:all 0.2s}
     .social-btn:hover .social-svg{fill:var(--gold)}
+    
+    /* === NAV === */
     nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 clamp(16px,4vw,48px);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(10,10,18,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.12);transition:all .4s ease}
     .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
     .logo-icon{width:36px;height:36px;min-width:36px;background:linear-gradient(135deg,#c9a84c,#f0d080);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:900;font-size:13px;color:#0a0a12}
@@ -51,6 +54,8 @@
     .mobile-nav-link{padding:12px 16px;border-radius:10px;font-size:15px;font-weight:600;color:rgba(250,250,247,.7);text-decoration:none;transition:all .2s;border:1px solid transparent}
     .mobile-nav-link:hover{color:var(--gold);background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.15)}
     .mobile-nav-cta{margin-top:8px;padding:14px;background:linear-gradient(135deg,#c9a84c,#e8c56a);color:#0a0a12;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center}
+    
+    /* === HERO === */
     #hero{min-height:100svh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:calc(var(--nav-h) + 40px) clamp(16px,5vw,48px) 60px}
     .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(201,168,76,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 70%,rgba(55,48,163,.12) 0%,transparent 50%),linear-gradient(180deg,#0a0a12 0%,#0d0d1a 100%)}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:60px 60px}
@@ -759,36 +764,171 @@
     };
     let expCounter = 0, schoolCounter = 0, collegeCounter = 0, certCounter = 0, volunteerCounter = 0;
 
-    // ═══ SKILL DATABASE ═══
+    // ═══ MASSIVE EXPANDED SKILL DATABASE ═══
     const SKILL_DB = {
-      software: ['JavaScript','TypeScript','Python','Java','C++','C#','Go','Rust','Swift','Kotlin','React','Next.js','Vue.js','Angular','Svelte','Node.js','Express.js','NestJS','FastAPI','Django','PostgreSQL','MySQL','MongoDB','Redis','Elasticsearch','GraphQL','REST APIs','gRPC','AWS','GCP','Azure','Docker','Kubernetes','Terraform','CI/CD','GitHub Actions','Jenkins','Git','Microservices','System Design','WebSockets','Webpack','Vite','Jest','Cypress'],
-      frontend: ['React','Vue.js','Angular','Next.js','TypeScript','JavaScript','HTML5','CSS3','Tailwind CSS','SASS/SCSS','Webpack','Vite','Figma','Storybook','Jest','Testing Library','Accessibility (a11y)','Web Performance','PWA','WebGL','Three.js','D3.js','Redux','Zustand','React Query','GraphQL','REST APIs','Responsive Design','CSS Grid','Flexbox','Animations'],
-      backend: ['Node.js','Python','Java','Go','Rust','C#','PHP','Ruby','Express.js','FastAPI','Django','Spring Boot','NestJS','Laravel','Rails','PostgreSQL','MySQL','MongoDB','Redis','Kafka','RabbitMQ','GraphQL','REST APIs','gRPC','Microservices','Docker','Kubernetes','AWS Lambda','Serverless','OAuth2','JWT','WebSockets','Caching','Load Balancing','SQL'],
-      data: ['Python','R','SQL','Pandas','NumPy','Scikit-learn','TensorFlow','PyTorch','Keras','Apache Spark','Hadoop','dbt','Airflow','Tableau','Power BI','Looker','Snowflake','BigQuery','Redshift','Machine Learning','Deep Learning','NLP','Computer Vision','Statistics','A/B Testing','Data Visualization','ETL Pipelines','Feature Engineering','Model Deployment','MLflow','Jupyter','Databricks','Excel','Google Analytics'],
-      design: ['Figma','Sketch','Adobe XD','InVision','Zeplin','Principle','Framer','Adobe Photoshop','Adobe Illustrator','After Effects','Prototyping','Wireframing','User Research','Usability Testing','Design Systems','Component Libraries','Typography','Color Theory','Motion Design','Accessibility','Information Architecture','User Flows','Interaction Design','Visual Design','Brand Identity','Responsive Design','Design Thinking'],
-      product: ['Product Strategy','Roadmapping','Agile/Scrum','Kanban','OKRs','KPIs','User Research','A/B Testing','Data Analysis','Competitive Analysis','Go-to-Market','Stakeholder Management','Jira','Confluence','Notion','Miro','SQL','Tableau','Customer Discovery','Product Analytics','Prioritization Frameworks','PRD Writing','Sprint Planning','Backlog Grooming','User Story Mapping','Metrics & Growth','Cross-functional Leadership','Feature Flagging','Launch Planning','Market Sizing'],
-      marketing: ['SEO','SEM','Google Ads','Meta Ads','LinkedIn Ads','Content Marketing','Email Marketing','HubSpot','Salesforce','Marketing Automation','Google Analytics','Social Media Marketing','Influencer Marketing','Brand Strategy','Copywriting','A/B Testing','Conversion Rate Optimization','Growth Hacking','PR','Event Marketing','Video Marketing','Podcast Marketing','Affiliate Marketing','CRM','Lead Generation','Customer Segmentation','Marketing Analytics','Adobe Creative Suite','Mailchimp'],
-      finance: ['Financial Modeling','Valuation','DCF Analysis','Excel','PowerPoint','Bloomberg','SQL','Python','Tableau','GAAP','IFRS','Financial Reporting','Budgeting','Forecasting','M&A','Private Equity','Investment Banking','Portfolio Management','Risk Analysis','Due Diligence','Cap Table Management','P&L Management','Cost Analysis','Audit','Tax Planning','Cash Flow Analysis','Scenario Analysis','Sensitivity Analysis'],
-      hr: ['Talent Acquisition','Recruitment','Employee Relations','Performance Management','HRIS (Workday/BambooHR)','Onboarding','Learning & Development','Compensation & Benefits','HR Compliance','Employment Law','Succession Planning','Organizational Development','Culture Building','Conflict Resolution','Employer Branding','LinkedIn Recruiting','Behavioral Interviewing','HR Analytics','Workforce Planning','DEI Initiatives'],
-      sales: ['B2B Sales','SaaS Sales','Salesforce CRM','HubSpot CRM','Pipeline Management','Account Management','Business Development','Cold Outreach','Discovery Calls','Negotiation','Contract Management','Revenue Forecasting','Quota Attainment','Enterprise Sales','Channel Partnerships','Sales Enablement','Demo Skills','Objection Handling','Customer Success','Upselling','Cross-selling','SDR/BDR'],
-      operations: ['Process Improvement','Project Management','Lean/Six Sigma','Supply Chain','Vendor Management','Budget Management','Operations Analytics','ERP Systems','Risk Management','Change Management','Business Analysis','Stakeholder Management','Cross-functional Collaboration','KPIs & Metrics','SLA Management','Compliance','Quality Assurance','Procurement','Logistics','Resource Planning','Automation'],
-      general: ['Project Management','Communication','Problem Solving','Leadership','Team Collaboration','Critical Thinking','Time Management','Presentation Skills','Microsoft Office','Google Workspace','Data Analysis','Stakeholder Management','Process Improvement','Adaptability','Mentoring','Strategic Planning','Budget Management','Risk Management','Conflict Resolution','Negotiation']
+      cloud: [
+        'AWS', 'Microsoft Azure', 'Google Cloud Platform (GCP)', 'Oracle Cloud (OCI)', 'IBM Cloud',
+        'Serverless Framework', 'AWS Lambda', 'Azure Functions', 'GCP Cloud Functions',
+        'EC2', 'S3', 'RDS', 'DynamoDB', 'Redshift', 'Glue', 'Athena', 'Kinesis',
+        'CloudFormation', 'Terraform', 'Pulumi', 'CDK', 'Azure Resource Manager',
+        'IAM', 'Cognito', 'Key Management Service', 'VPC', 'CloudFront', 'Route 53',
+        'Elastic Load Balancing', 'API Gateway', 'SQS', 'SNS', 'EventBridge',
+        'EKS', 'ECS', 'Fargate', 'Azure Kubernetes Service', 'GKE',
+        'CloudWatch', 'Azure Monitor', 'Datadog', 'New Relic',
+        'Cost Optimization', 'FinOps', 'Reserved Instances', 'Savings Plans'
+      ],
+      devops: [
+        'Docker', 'Kubernetes', 'Helm', 'Istio', 'Envoy', 'Linkerd',
+        'Jenkins', 'GitHub Actions', 'GitLab CI/CD', 'CircleCI', 'Travis CI',
+        'Ansible', 'Chef', 'Puppet', 'SaltStack', 'Terraform', 'Packer', 'Vagrant',
+        'Prometheus', 'Grafana', 'ELK Stack', 'Loki', 'Splunk',
+        'ArgoCD', 'Flux', 'Spinnaker', 'Harness',
+        'CI/CD Pipeline Design', 'GitOps', 'DevSecOps',
+        'Site Reliability Engineering (SRE)', 'Incident Management', 'PagerDuty',
+        'Bash Scripting', 'PowerShell', 'Python for DevOps',
+        'Nginx', 'HAProxy', 'Traefik', 'Apache'
+      ],
+      security: [
+        'Penetration Testing', 'Vulnerability Assessment', 'Ethical Hacking',
+        'OWASP Top 10', 'SAST', 'DAST', 'Burp Suite', 'Metasploit',
+        'SIEM', 'Splunk ES', 'QRadar', 'Sentinel', 'Chronicle',
+        'Firewalls', 'IDS/IPS', 'Cisco ASA', 'Palo Alto', 'Fortinet',
+        'ISO 27001', 'SOC 2', 'GDPR', 'HIPAA', 'PCI DSS',
+        'Identity & Access Management', 'Okta', 'Azure AD', 'Ping Identity',
+        'Encryption (AES/RSA)', 'SSL/TLS', 'PKI', 'HashiCorp Vault',
+        'Incident Response', 'Digital Forensics', 'Threat Hunting',
+        'Zero Trust Architecture', 'SASE', 'CASB', 'DLP'
+      ],
+      data: [
+        'Python', 'R', 'SQL', 'Pandas', 'NumPy', 'Scikit-learn',
+        'TensorFlow', 'PyTorch', 'Keras', 'Spark', 'Hadoop',
+        'dbt', 'Airflow', 'Prefect', 'Dagster',
+        'Tableau', 'Power BI', 'Looker', 'Qlik Sense', 'Metabase',
+        'Snowflake', 'BigQuery', 'Redshift', 'Databricks', 'Azure Synapse',
+        'Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision',
+        'Statistics', 'A/B Testing', 'Hypothesis Testing',
+        'ETL/ELT', 'Data Modeling', 'Dimensional Modeling',
+        'Feature Engineering', 'MLOps', 'Model Deployment',
+        'Jupyter', 'Matplotlib', 'Seaborn', 'Plotly',
+        'Data Governance', 'Data Quality', 'Master Data Management'
+      ],
+      networking: [
+        'TCP/IP', 'OSI Model', 'BGP', 'OSPF', 'MPLS', 'SD-WAN',
+        'VLANs', 'Subnetting', 'VPN (IPsec/SSL)', 'DNS', 'DHCP',
+        'Cisco IOS', 'Juniper JunOS', 'Arista EOS',
+        'Load Balancers (F5/HAProxy)', 'Wireshark', 'Packet Analysis',
+        'Network Automation', 'Ansible for Networks', 'Python (Netmiko/Napalm)',
+        'Wi-Fi 6/6E', 'Network Monitoring', 'SNMP', 'NetFlow',
+        'Firewall Configuration', 'ACLs', 'NAT/PAT'
+      ],
+      infrastructure: [
+        'Linux Administration', 'Windows Server', 'Unix',
+        'VMware vSphere', 'Hyper-V', 'KVM', 'Proxmox',
+        'Active Directory', 'Group Policy', 'LDAP',
+        'SCCM', 'Intune', 'JAMF Pro',
+        'Backup & DR', 'Veeam', 'Commvault',
+        'Storage (SAN/NAS)', 'NetApp', 'Dell EMC', 'Pure Storage',
+        'HashiCorp Nomad', 'Consul', 'Zookeeper',
+        'OpenStack', 'CloudStack',
+        'Patch Management', 'System Hardening'
+      ],
+      frontend: [
+        'React', 'Vue.js', 'Angular', 'Svelte', 'SolidJS',
+        'Next.js', 'Nuxt.js', 'Gatsby', 'Remix', 'Astro',
+        'TypeScript', 'JavaScript (ES6+)',
+        'HTML5', 'CSS3', 'Tailwind CSS', 'SASS/SCSS', 'Styled Components',
+        'Webpack', 'Vite', 'Rollup', 'Parcel', 'esbuild',
+        'Figma', 'Sketch', 'Adobe XD',
+        'Jest', 'Testing Library', 'Cypress', 'Playwright',
+        'Redux', 'Zustand', 'MobX', 'Recoil',
+        'GraphQL (Apollo/Relay)', 'REST APIs',
+        'Web Performance Optimization', 'Core Web Vitals',
+        'PWA', 'WebGL', 'Three.js', 'D3.js', 'Chart.js',
+        'Accessibility (a11y)', 'WCAG', 'Responsive Design'
+      ],
+      backend: [
+        'Node.js', 'Express.js', 'NestJS', 'Fastify',
+        'Python', 'Django', 'FastAPI', 'Flask',
+        'Java', 'Spring Boot', 'Hibernate', 'Micronaut',
+        'Go', 'Rust', 'C#', '.NET Core', 'ASP.NET',
+        'PHP', 'Laravel', 'Symfony',
+        'Ruby', 'Ruby on Rails', 'Sinatra',
+        'PostgreSQL', 'MySQL', 'MongoDB', 'Redis',
+        'Kafka', 'RabbitMQ', 'NATS',
+        'GraphQL', 'REST', 'gRPC', 'WebSockets',
+        'Microservices Architecture', 'Event-Driven Architecture',
+        'OAuth2', 'JWT', 'SAML',
+        'Caching (Redis/Memcached)', 'Message Queues',
+        'SQL Optimization', 'ORM/ODM'
+      ],
+      languages: [
+        'JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#',
+        'Go', 'Rust', 'Swift', 'Kotlin', 'Scala', 'Ruby',
+        'PHP', 'Perl', 'R', 'MATLAB', 'Dart',
+        'Shell Scripting (Bash/Zsh)', 'PowerShell',
+        'HTML', 'CSS', 'SCSS', 'SQL', 'NoSQL',
+        'Clojure', 'Elixir', 'Erlang', 'Haskell', 'OCaml'
+      ],
+      general: [
+        'Project Management', 'Agile/Scrum', 'Kanban', 'Sprint Planning',
+        'Jira', 'Confluence', 'Notion', 'Trello', 'Asana',
+        'Communication', 'Leadership', 'Team Collaboration',
+        'Problem Solving', 'Critical Thinking', 'Time Management',
+        'Presentation Skills', 'Stakeholder Management',
+        'Microsoft Office', 'Google Workspace',
+        'Mentoring', 'Strategic Planning', 'Conflict Resolution',
+        'Negotiation', 'Budget Management', 'Risk Management',
+        'Customer Relationship Management (CRM)', 'Salesforce'
+      ]
     };
 
+    // Smart suggestion logic based on job title
     function getSkillSuggestions(title) {
       const t = (title || '').toLowerCase();
-      if (t.includes('front') || t.includes('ui ') || t.includes(' ui') || t.includes('react') || t.includes('vue') || t.includes('angular')) return SKILL_DB.frontend;
-      if (t.includes('back') || t.includes('api') || t.includes('server')) return SKILL_DB.backend;
-      if (t.includes('full') || t.includes('software') || t.includes('engineer') || t.includes('developer')) return SKILL_DB.software;
-      if (t.includes('data') || t.includes('ml') || t.includes('machine') || t.includes('ai ') || t.includes('analyst') || t.includes('scientist')) return SKILL_DB.data;
-      if (t.includes('design') || t.includes('ux') || t.includes('ui/ux') || t.includes('product design')) return SKILL_DB.design;
-      if (t.includes('product') || t.includes('pm ') || t.includes(' pm') || t.includes('manager')) return SKILL_DB.product;
-      if (t.includes('market')) return SKILL_DB.marketing;
-      if (t.includes('financ') || t.includes('account') || t.includes('invest') || t.includes('banking')) return SKILL_DB.finance;
-      if (t.includes('hr') || t.includes('human resource') || t.includes('talent') || t.includes('recruit')) return SKILL_DB.hr;
-      if (t.includes('sales') || t.includes('account exec') || t.includes('business dev')) return SKILL_DB.sales;
-      if (t.includes('operat') || t.includes('supply chain') || t.includes('logistics')) return SKILL_DB.operations;
-      return SKILL_DB.general;
+      let suggestions = new Set(SKILL_DB.general);
+      
+      if (t.includes('front') || t.includes('ui ') || t.includes('ui/ux') || t.includes('react') || t.includes('vue') || t.includes('angular') || t.includes('svelte')) {
+        SKILL_DB.frontend.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('back') || t.includes('api') || t.includes('server') || t.includes('node') || t.includes('django') || t.includes('spring')) {
+        SKILL_DB.backend.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('full') || t.includes('software') || t.includes('engineer') || t.includes('developer') || t.includes('web')) {
+        SKILL_DB.frontend.forEach(s => suggestions.add(s));
+        SKILL_DB.backend.forEach(s => suggestions.add(s));
+        SKILL_DB.languages.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('data') || t.includes('ml') || t.includes('machine') || t.includes('ai ') || t.includes('analyst') || t.includes('scientist')) {
+        SKILL_DB.data.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('cloud') || t.includes('aws') || t.includes('azure') || t.includes('gcp') || t.includes('architect')) {
+        SKILL_DB.cloud.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('devops') || t.includes('sre') || t.includes('platform') || t.includes('reliability')) {
+        SKILL_DB.devops.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('security') || t.includes('secops') || t.includes('cyber')) {
+        SKILL_DB.security.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('network') || t.includes('networking') || t.includes('infra')) {
+        SKILL_DB.networking.forEach(s => suggestions.add(s));
+        SKILL_DB.infrastructure.forEach(s => suggestions.add(s));
+      }
+      if (t.includes('design') || t.includes('ux') || t.includes('ui/ux') || t.includes('product design')) {
+        SKILL_DB.frontend.forEach(s => suggestions.add(s)); // contains figma etc.
+      }
+      if (t.includes('product') || t.includes('pm ') || t.includes(' pm') || t.includes('manager')) {
+        SKILL_DB.general.forEach(s => suggestions.add(s));
+      }
+      
+      // Always include languages if it's a technical role
+      if (t.includes('engineer') || t.includes('developer') || t.includes('tech') || t.includes('software') || t.includes('programmer')) {
+        SKILL_DB.languages.forEach(s => suggestions.add(s));
+        SKILL_DB.cloud.forEach(s => suggestions.add(s));
+        SKILL_DB.devops.forEach(s => suggestions.add(s));
+      }
+
+      return Array.from(suggestions).sort();
     }
 
     // ═══ NAV ═══
@@ -1255,6 +1395,7 @@
       }, 800);
     };
 
+    // ═══ IMPROVED PDF DOWNLOAD (CROSS-DEVICE) ═══
     window.downloadPDF = function() {
       showToast('📥 Generating PDF…');
       const printEl = document.createElement('div');
@@ -1264,56 +1405,49 @@
 
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       
-      const opt = { scale: 2, backgroundColor: '#ffffff', logging: false, allowTaint: true, useCORS: true, width: 850 };
-      
-      html2canvas(printEl, opt).then(canvas => {
-        document.body.removeChild(printEl);
-        const imgData = canvas.toDataURL('image/png', 1.0);
-        
-        if (isIOS && typeof window.jspdf === 'undefined') {
-          // Fallback for iOS if jsPDF fails to load
-          const newWindow = window.open('');
-          newWindow.document.write(`<img src="${imgData}" style="width:100%;"/>`);
-          newWindow.document.close();
-          showToast('📱 Image opened. Long press to save or share.');
-          return;
-        }
-        
-        try {
-          const { jsPDF } = window.jspdf;
-          const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-          const pdfW = pdf.internal.pageSize.getWidth();
-          const ratio = pdfW / (canvas.width / 2);
-          const scaledH = (canvas.height / 2) * ratio;
-          pdf.addImage(imgData, 'PNG', 0, 0, pdfW, scaledH);
+      html2canvas(printEl, { scale: 2, backgroundColor: '#ffffff', logging: false, allowTaint: true, useCORS: true, width: 850 })
+        .then(canvas => {
+          document.body.removeChild(printEl);
+          const imgData = canvas.toDataURL('image/png', 1.0);
           
-          if (isIOS) {
-            // On iOS open PDF blob in new tab to allow sharing/saving
-            const blob = pdf.output('blob');
-            const url = URL.createObjectURL(blob);
-            window.open(url, '_blank');
-            showToast('✅ PDF opened in new tab. Use Share to save.');
-          } else {
-            pdf.save((state.name || 'resume').replace(/\s+/g, '_') + '_ResumeAI.pdf');
-            showToast('✅ PDF downloaded successfully!');
+          // Universal approach: use jsPDF with blob
+          try {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            const pdfW = pdf.internal.pageSize.getWidth();
+            const ratio = pdfW / (canvas.width / 2);
+            const scaledH = (canvas.height / 2) * ratio;
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfW, scaledH);
+            
+            if (isIOS) {
+              // On iOS open blob in new tab to allow sharing/saving
+              const blob = pdf.output('blob');
+              const url = URL.createObjectURL(blob);
+              window.open(url, '_blank');
+              showToast('✅ PDF opened in new tab. Use Share to save.');
+            } else {
+              pdf.save((state.name || 'resume').replace(/\s+/g, '_') + '_ResumeAI.pdf');
+              showToast('✅ PDF downloaded successfully!');
+            }
+          } catch (e) {
+            console.error(e);
+            // Fallback: print dialog
+            const pw = window.open('', '_blank');
+            pw.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${state.name || 'Resume'}</title></head><body style="margin:0;padding:20px;background:#fff;">${buildResumeHTML(state)}</body></html>`);
+            pw.document.close();
+            setTimeout(() => pw.print(), 500);
+            showToast('🖨 Opening print dialog as fallback');
           }
-        } catch (e) {
-          console.error(e);
+        })
+        .catch(err => {
+          console.error(err);
+          document.body.removeChild(printEl);
           const pw = window.open('', '_blank');
           pw.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${state.name || 'Resume'}</title></head><body style="margin:0;padding:20px;background:#fff;">${buildResumeHTML(state)}</body></html>`);
           pw.document.close();
           setTimeout(() => pw.print(), 500);
           showToast('🖨 Opening print dialog as fallback');
-        }
-      }).catch(err => {
-        console.error(err);
-        document.body.removeChild(printEl);
-        const pw = window.open('', '_blank');
-        pw.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${state.name || 'Resume'}</title></head><body style="margin:0;padding:20px;background:#fff;">${buildResumeHTML(state)}</body></html>`);
-        pw.document.close();
-        setTimeout(() => pw.print(), 500);
-        showToast('🖨 Opening print dialog as fallback');
-      });
+        });
     };
 
     let toastTimer;
