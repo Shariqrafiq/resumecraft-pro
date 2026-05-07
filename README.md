@@ -85,22 +85,3 @@ I wanted something that was:
 
 So I built it. One HTML file. Zero dependencies (except PDF libraries). Pure vanilla JavaScript.
 
-## Quick Start
-
-### Option 1: Direct Download
-1. Download `resumeai-pro.html`
-2. Double-click to open in any browser
-3. Start building your resume
-
-### Option 2: Host It
-```bash
-# Clone the repository
-git clone https://github.com/shariqrafiq/resumeai-pro.git
-
-# Navigate to the directory
-cd resumeai-pro
-
-# Serve with any HTTP server
-python3 -m http.server 8000
-# or
-npx serve .
