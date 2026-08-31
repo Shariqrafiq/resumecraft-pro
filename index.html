@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&family=Unbounded:wght@300;700;900&family=Instrument+Serif:ital@0;1&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html-docx-js/dist/html-docx.js"></script>
   <style>
     /* === RESET & BASE === */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -627,8 +628,9 @@
     <div class="builder-title"><span style="color:var(--gold)">✦</span> Builder <span id="builder-tmpl-label">— Nexus</span></div>
     <div class="builder-actions">
       <div class="saved-indicator" id="savedIndicator">✓ Saved</div>
-      <div class="ats-badge"><div class="ats-score" id="ats-score-display">72</div><div class="ats-label">ATS</div></div>
+      <div class="ats-badge"><div class="ats-score" id="ats-score-display">72</div><div class="ats-label" id="ats-badge-label">ATS</div></div>
       <button class="btn-builder" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)" onclick="aiEnhance()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Enhance</button>
+      <button class="btn-builder" style="background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.3)" onclick="downloadDOCX()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Word</button>
       <button class="btn-download-header" onclick="downloadPDF()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>PDF</button>
       <button class="btn-close-builder" onclick="closeBuilder()" aria-label="Close">✕</button>
     </div>
@@ -637,6 +639,7 @@
     <div class="builder-form-panel">
       <div class="form-tabs" id="formTabs">
         <button class="form-tab active" onclick="switchTab('personal',this)"><span class="tab-icon">👤</span><span class="tab-label">Personal</span></button>
+        <button class="form-tab" onclick="switchTab('jd',this)" style="color:#c9a84c"><span class="tab-icon">🎯</span><span class="tab-label">Target Job</span></button>
         <button class="form-tab" onclick="switchTab('experience',this)"><span class="tab-icon">💼</span><span class="tab-label">Work</span></button>
         <button class="form-tab" onclick="switchTab('education',this)"><span class="tab-icon">🎓</span><span class="tab-label">School</span></button>
         <button class="form-tab" onclick="switchTab('college',this)"><span class="tab-icon">🏛</span><span class="tab-label">College</span></button>
@@ -663,6 +666,39 @@
           <div class="form-group"><label class="form-label">Summary</label><textarea class="form-textarea" id="f-summary" placeholder="Write a 2-3 sentence summary…" oninput="updatePreview()"></textarea></div>
           <button class="add-btn" onclick="aiGenerateSummary()">✨ AI: Generate Summary for Me</button>
           <button class="save-btn" onclick="saveSection('personal')"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></span>Save Personal Info</button>
+        </div>
+        <div class="form-panel" id="tab-jd">
+          <div class="form-section-title">Paste the Job Description</div>
+          <p style="font-size:12px;color:rgba(250,250,247,.4);margin-bottom:10px;line-height:1.6">Paste the full job posting below. The AI reads it, tells you exactly how well your resume matches, asks a couple of quick questions if it needs more detail, then tailors your summary, bullets, and skills to that specific role.</p>
+          <div class="form-group"><textarea class="form-textarea" id="f-jd" placeholder="Paste job title, responsibilities, and requirements here…" style="min-height:160px" oninput="onJDInput()"></textarea></div>
+          <button class="add-btn" id="jd-analyze-btn" onclick="analyzeJobDescription()">🔍 Analyze Job Description</button>
+
+          <div id="jd-results" style="display:none;margin-top:18px">
+            <div style="display:flex;align-items:center;gap:14px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:14px;margin-bottom:14px">
+              <div style="text-align:center">
+                <div id="jd-match-score" style="font-family:'Unbounded',sans-serif;font-size:26px;font-weight:900;color:#f59e0b;line-height:1">–</div>
+                <div style="font-size:9px;color:rgba(250,250,247,.4);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Match Score</div>
+              </div>
+              <div style="flex:1;font-size:12px;color:rgba(250,250,247,.6);line-height:1.6" id="jd-summary-text"></div>
+            </div>
+
+            <div id="jd-clarify-wrap" style="display:none;margin-bottom:14px">
+              <div class="form-section-title" style="margin-top:0">Quick Questions</div>
+              <div id="jd-clarify-list"></div>
+            </div>
+
+            <div id="jd-missing-wrap" style="display:none;margin-bottom:14px">
+              <span class="skill-suggestions-label" style="margin-bottom:8px">Missing keywords — click to add ↓</span>
+              <div class="skill-suggestions-grid" id="jd-missing-grid"></div>
+            </div>
+
+            <div id="jd-suggestions-wrap" style="display:none;margin-bottom:14px">
+              <div class="form-section-title" style="margin-top:0">What to improve</div>
+              <ul id="jd-suggestions-list" style="font-size:12px;color:rgba(250,250,247,.6);line-height:1.9;padding-left:18px"></ul>
+            </div>
+
+            <button class="save-btn" id="jd-apply-btn" onclick="applyJDTailoring()" style="display:none">✨ Generate Tailored Resume (Rewrite Summary + Bullets)</button>
+          </div>
         </div>
         <div class="form-panel" id="tab-experience">
           <div id="exp-list"></div>
@@ -737,7 +773,8 @@
       </div>
       <div class="download-bar">
         <span class="download-bar-label">Ready to apply?</span>
-        <button class="btn-download" onclick="downloadPDF()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>Download PDF</button>
+        <button class="btn-download" style="background:linear-gradient(135deg,#60a5fa,#818cf8)" onclick="downloadDOCX()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Word (ATS-safe)</button>
+        <button class="btn-download" onclick="downloadPDF()"><span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>PDF</button>
       </div>
     </div>
     <div class="builder-preview-panel">
@@ -760,7 +797,10 @@
       linkedin: '', github: '', summary: '',
       experiences: [], schools: [], colleges: [], skills: [], certs: [],
       hobbies: '', languages: '', volunteers: [],
-      fontSize: 'medium'
+      fontSize: 'medium',
+      jobDescription: '', jdKeywords: [], jdMatchedKeywords: [], jdMissingKeywords: [],
+      jdMatchScore: null, jdSummaryText: '', jdSuggestions: [], jdClarifyingQuestions: [],
+      jdClarifyingAnswers: {}, jdAnalyzed: false
     };
     let expCounter = 0, schoolCounter = 0, collegeCounter = 0, certCounter = 0, volunteerCounter = 0;
 
@@ -1235,7 +1275,17 @@
       state.hobbies = document.getElementById('f-hobbies')?.value || '';
       state.languages = document.getElementById('f-languages')?.value || '';
       state.fontSize = document.getElementById('f-fontsize')?.value || 'medium';
+      state.jobDescription = document.getElementById('f-jd')?.value || '';
     }
+
+    window.onJDInput = function() {
+      readForm();
+      // Reset stale analysis once the JD text is edited
+      if (state.jdAnalyzed) {
+        state.jdAnalyzed = false;
+        document.getElementById('jd-results').style.display = 'none';
+      }
+    };
 
     document.addEventListener('input', e => {
       if (e.target.id === 'f-title') { state.title = e.target.value; renderSkillSuggestions(); }
@@ -1258,7 +1308,16 @@
     }
 
     function updateATS() {
-      const score = calcATS();
+      let score;
+      const labelEl = document.getElementById('ats-badge-label');
+      if (state.jdAnalyzed && state.jdKeywords && state.jdKeywords.length) {
+        recomputeJDMatch();
+        score = state.jdMatchScore;
+        if (labelEl) labelEl.textContent = 'JD MATCH';
+      } else {
+        score = calcATS();
+        if (labelEl) labelEl.textContent = 'ATS';
+      }
       const el = document.getElementById('ats-score-display');
       if (!el) return;
       el.textContent = score;
@@ -1273,6 +1332,7 @@
       previewDebounce = setTimeout(() => {
         const container = document.getElementById('resume-preview-container');
         if (container) container.innerHTML = buildResumeHTML(state);
+        if (state.jdAnalyzed) renderJDResults();
         requestAnimationFrame(scalePreview);
       }, 50);
     };
@@ -1368,6 +1428,283 @@
       return `<div class="resume-atlas" style="font-size:${getFontScale() * 10}px"><div class="atlas-header"><div><div class="atlas-name">${e(s.name) || 'Your Name'}</div><div class="atlas-title">${e(s.title) || 'Your Title'}</div></div><div class="atlas-contact-block">${s.email ? `<div class="atlas-contact-item">✉ ${e(s.email)}</div>` : ''}${s.phone ? `<div class="atlas-contact-item">☎ ${e(s.phone)}</div>` : ''}${s.location ? `<div class="atlas-contact-item">⌖ ${e(s.location)}</div>` : ''}</div></div><div class="atlas-body"><div class="atlas-col">${s.summary ? `<div class="atlas-section-title">Profile</div><div style="font-size:9.5px;color:#4b5563;line-height:1.7;font-style:italic;margin-bottom:14px">${e(s.summary)}</div>` : ''}<div class="atlas-section-title">Experience</div>${expHTML}</div><div class="atlas-col"><div class="atlas-section-title">Skills</div>${skillsHTML}<div class="atlas-section-title" style="margin-top:14px">Education</div>${eduHTML}</div></div></div>`;
     }
 
+    // ═══ JOB-DESCRIPTION MATCHING ENGINE ═══
+    const JD_STOPWORDS = new Set(['the','and','for','are','with','you','your','our','a','an','to','of','in','on','is','as','be','will','we','this','that','role','job','team','work','years','year','experience','ability','strong','skills','including','etc','across','using','use','other','such','have','has','from','or','at','by','all','also','into','more','who','their','they','it','its','can','must','should','preferred','required','requirements','responsibilities','about','looking','join','well','you\'ll','we\'re','they\'re','not','but','if','than','then','what','when','where','which','while','within','without']);
+
+    function buildResumeText(s) {
+      const bulletText = (s.experiences || []).map(e => (e.bullets || []).join(' ')).join(' ');
+      return [s.title, s.summary, (s.skills || []).join(' '), bulletText, s.hobbies].filter(Boolean).join(' ');
+    }
+
+    function structuralScore(s) {
+      let sc = 0;
+      if (s.name) sc += 4; if (s.title) sc += 4; if (s.email) sc += 3; if (s.phone) sc += 3; if (s.location) sc += 2;
+      if (s.summary && s.summary.length > 50) sc += 10;
+      if (s.experiences.some(e => e.company || e.role)) sc += 8;
+      if (s.experiences.some(e => e.bullets?.some(b => b.trim().length > 10))) sc += 6;
+      return sc;
+    }
+
+    function extractKeywordsFromJD(jd) {
+      const jdLower = jd.toLowerCase();
+      const allSkills = Array.from(new Set(Object.values(SKILL_DB).flat()));
+      const dbMatches = allSkills.filter(sk => jdLower.includes(sk.toLowerCase()));
+      const words = jd.replace(/[^a-zA-Z0-9+.#/ ]/g, ' ').split(/\s+/).filter(Boolean);
+      const freq = {};
+      words.forEach(w => {
+        const lw = w.toLowerCase();
+        if (lw.length < 3 || JD_STOPWORDS.has(lw)) return;
+        if (dbMatches.some(d => d.toLowerCase() === lw)) return;
+        freq[lw] = (freq[lw] || 0) + 1;
+      });
+      const extra = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([w]) => w.charAt(0).toUpperCase() + w.slice(1));
+      const combined = [...dbMatches, ...extra];
+      const seen = new Set(); const out = [];
+      combined.forEach(k => { const lk = k.toLowerCase(); if (!seen.has(lk)) { seen.add(lk); out.push(k); } });
+      return out.slice(0, 20);
+    }
+
+    function offlineAnalyze(jd, s) {
+      const keywords = extractKeywordsFromJD(jd);
+      const resumeText = buildResumeText(s).toLowerCase();
+      const matched = keywords.filter(k => resumeText.includes(k.toLowerCase()));
+      const missing = keywords.filter(k => !matched.includes(k));
+      const coverage = keywords.length ? (matched.length / keywords.length) * 60 : 0;
+      const score = Math.round(Math.min(100, structuralScore(s) + coverage));
+      const suggestions = [];
+      if (missing.length) suggestions.push(`Work these into your resume if genuinely true of you: ${missing.slice(0, 4).join(', ')}.`);
+      if (!(s.summary && s.summary.length > 50)) suggestions.push('Add a 2-3 sentence professional summary near the top.');
+      if (!s.experiences.some(e => e.bullets?.some(b => /\d/.test(b)))) suggestions.push('Quantify at least 2 bullets with numbers (%, $, team size, time saved).');
+      if (s.skills.length < 6) suggestions.push('List at least 6-10 relevant skills to widen keyword coverage.');
+      const clarifyingQuestions = [];
+      if (missing.length) clarifyingQuestions.push(`Do you have real experience with any of: ${missing.slice(0, 3).join(', ')}? List which ones apply.`);
+      clarifyingQuestions.push('What is your strongest measurable achievement relevant to this role (include numbers if possible)?');
+      return {
+        matchScore: score,
+        summary: `Offline keyword match: ${matched.length}/${keywords.length} key terms from this posting currently appear in your resume.`,
+        matchedKeywords: matched, missingKeywords: missing, suggestions, clarifyingQuestions,
+        _keywords: keywords
+      };
+    }
+
+    function offlineTailor(jd, s) {
+      const top = (s.jdMissingKeywords || []).slice(0, 5);
+      const title = s.title || 'professional';
+      const summary = `Results-driven ${title} with hands-on experience in ${(s.skills || []).slice(0, 3).join(', ') || 'the core areas of this field'}. Strong alignment with this role's focus on ${top.slice(0, 3).join(', ') || 'the responsibilities outlined in the job description'}, with a track record of delivering measurable outcomes.`;
+      const firstExp = (s.experiences || [])[0] || {};
+      const baseBullets = (firstExp.bullets || ['', '', '']).slice(0, 3);
+      const bullets = baseBullets.map((b, i) => {
+        if (!b) return b;
+        const kw = top[i];
+        return (kw && !b.toLowerCase().includes(kw.toLowerCase())) ? `${b} using ${kw}` : b;
+      });
+      return { summary, bullets, addSkills: top };
+    }
+
+    // Calls the Anthropic API directly (works when this app is hosted/run inside a Claude
+    // environment that proxies requests). Falls back to null on any failure so callers
+    // can drop back to the offline engine above — no API key is ever stored client-side.
+    async function callClaudeAI(promptText) {
+      try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-6',
+            max_tokens: 1200,
+            messages: [{ role: 'user', content: promptText }]
+          })
+        });
+        if (!resp.ok) return null;
+        const data = await resp.json();
+        const text = (data.content || []).map(c => c.text || '').join('\n');
+        const clean = text.replace(/```json|```/g, '').trim();
+        return JSON.parse(clean);
+      } catch (err) {
+        console.warn('AI call unavailable, using offline matching engine instead:', err);
+        return null;
+      }
+    }
+
+    function buildAnalysisPrompt(jd, s) {
+      const resumeText = buildResumeText(s);
+      return `You are an expert ATS (applicant tracking system) and technical recruiter. Compare the RESUME below against the JOB DESCRIPTION and return ONLY strict JSON (no markdown fences, no prose outside the JSON) with this exact shape:
+{"matchScore": <integer 0-100>, "summary": "<2 sentence honest assessment of fit>", "matchedKeywords": ["..."], "missingKeywords": ["... up to 12, ordered by importance"], "suggestions": ["... up to 6 short, specific, actionable improvements"], "clarifyingQuestions": ["... up to 3 short questions to ask the candidate to fill real gaps, empty array if none needed"]}
+
+JOB DESCRIPTION:
+"""${jd.slice(0, 6000)}"""
+
+CANDIDATE RESUME CONTENT (title, summary, skills, experience bullets):
+"""${resumeText.slice(0, 4000) || '(resume is mostly empty so far)'}"""
+
+Score honestly, do not inflate it. Base the score on real keyword/skill overlap, seniority match, and quantified impact. Return ONLY the JSON object, nothing else.`;
+    }
+
+    function buildTailorPrompt(jd, s) {
+      const answers = Object.entries(s.jdClarifyingAnswers || {}).filter(([, a]) => a && a.trim()).map(([q, a]) => `Q: ${q}\nA: ${a}`).join('\n');
+      const firstExp = (s.experiences || [])[0] || {};
+      return `You are an expert resume writer optimizing a resume for a specific job so it scores 80-95+ on ATS systems while staying 100% truthful to the facts given.
+
+JOB DESCRIPTION:
+"""${jd.slice(0, 6000)}"""
+
+CANDIDATE FACTS:
+Name/title: ${s.name || ''} / ${s.title || ''}
+Current summary: ${s.summary || '(none)'}
+Current skills: ${(s.skills || []).join(', ') || '(none)'}
+Most recent role: ${firstExp.role || ''} at ${firstExp.company || ''}
+Current bullets for that role: ${(firstExp.bullets || []).filter(Boolean).join(' | ') || '(none)'}
+${answers ? 'Additional info the candidate provided:\n' + answers : ''}
+
+Return ONLY strict JSON with this exact shape, no markdown fences, no extra prose:
+{"summary": "<rewritten 2-3 sentence professional summary tailored to this job, truthful, keyword-rich>", "bullets": ["<rewritten bullet 1>", "<rewritten bullet 2>", "<rewritten bullet 3>"], "addSkills": ["... up to 8 relevant skills from the JD that are plausible for this candidate to list, prioritizing ones the candidate already implied"]}
+
+Do not invent employers, titles, or metrics the candidate never mentioned. Only rephrase and sharpen what's given, and weave in relevant JD terminology naturally.`;
+    }
+
+    function recomputeJDMatch() {
+      if (!state.jdKeywords || !state.jdKeywords.length) return;
+      const resumeText = buildResumeText(state).toLowerCase();
+      const matched = state.jdKeywords.filter(k => resumeText.includes(k.toLowerCase()));
+      const missing = state.jdKeywords.filter(k => !matched.includes(k));
+      const coverage = (matched.length / state.jdKeywords.length) * 60;
+      state.jdMatchScore = Math.round(Math.min(100, structuralScore(state) + coverage));
+      state.jdMatchedKeywords = matched;
+      state.jdMissingKeywords = missing;
+    }
+
+    function applyAnalysisResult(result, fromAI) {
+      state.jdKeywords = result._keywords || Array.from(new Set([...(result.matchedKeywords || []), ...(result.missingKeywords || [])]));
+      state.jdMatchScore = result.matchScore;
+      state.jdSummaryText = (fromAI ? '' : '⚙️ Offline matching mode — ') + (result.summary || '');
+      state.jdMatchedKeywords = result.matchedKeywords || [];
+      state.jdMissingKeywords = result.missingKeywords || [];
+      state.jdSuggestions = result.suggestions || [];
+      state.jdClarifyingQuestions = result.clarifyingQuestions || [];
+      renderJDResults();
+    }
+
+    function renderJDResults() {
+      const wrap = document.getElementById('jd-results');
+      if (!wrap) return;
+      wrap.style.display = 'block';
+      const scoreEl = document.getElementById('jd-match-score');
+      const score = state.jdMatchScore ?? 0;
+      scoreEl.textContent = score;
+      scoreEl.style.color = score >= 80 ? '#10b981' : score >= 60 ? '#f59e0b' : '#f87171';
+      document.getElementById('jd-summary-text').textContent = state.jdSummaryText || '';
+
+      const clarifyWrap = document.getElementById('jd-clarify-wrap');
+      const clarifyList = document.getElementById('jd-clarify-list');
+      if (state.jdClarifyingQuestions.length) {
+        clarifyWrap.style.display = 'block';
+        clarifyList.innerHTML = '';
+        state.jdClarifyingQuestions.forEach(q => {
+          const div = document.createElement('div');
+          div.className = 'form-group';
+          div.innerHTML = `<label class="form-label">${e(q)}</label><input class="form-input" data-clarify-q="${esc(q)}" value="${esc(state.jdClarifyingAnswers[q] || '')}" placeholder="Your answer…" />`;
+          clarifyList.appendChild(div);
+        });
+        clarifyList.querySelectorAll('input[data-clarify-q]').forEach(inp => {
+          inp.addEventListener('input', () => { state.jdClarifyingAnswers[inp.dataset.clarifyQ] = inp.value; });
+        });
+      } else {
+        clarifyWrap.style.display = 'none';
+      }
+
+      const missingWrap = document.getElementById('jd-missing-wrap');
+      const missingGrid = document.getElementById('jd-missing-grid');
+      if (state.jdMissingKeywords.length) {
+        missingWrap.style.display = 'block';
+        missingGrid.innerHTML = '';
+        state.jdMissingKeywords.forEach(kw => {
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'skill-suggest-chip';
+          chip.textContent = kw;
+          chip.onclick = () => addMissingKeywordAsSkill(kw);
+          missingGrid.appendChild(chip);
+        });
+      } else {
+        missingWrap.style.display = 'none';
+      }
+
+      const sugWrap = document.getElementById('jd-suggestions-wrap');
+      const sugList = document.getElementById('jd-suggestions-list');
+      if (state.jdSuggestions.length) {
+        sugWrap.style.display = 'block';
+        sugList.innerHTML = state.jdSuggestions.map(sg => `<li>${e(sg)}</li>`).join('');
+      } else {
+        sugWrap.style.display = 'none';
+      }
+      document.getElementById('jd-apply-btn').style.display = 'block';
+    }
+
+    window.addMissingKeywordAsSkill = function(kw) {
+      if (!state.skills.includes(kw)) state.skills.push(kw);
+      renderSkillTags();
+      state.jdMissingKeywords = state.jdMissingKeywords.filter(k => k !== kw);
+      if (!state.jdMatchedKeywords.includes(kw)) state.jdMatchedKeywords.push(kw);
+      recomputeJDMatch();
+      updatePreview();
+      renderJDResults();
+      showToast('✚ Added: ' + kw);
+    };
+
+    window.analyzeJobDescription = async function() {
+      readForm();
+      const jd = (state.jobDescription || '').trim();
+      if (jd.length < 40) { showToast('⚠️ Paste a fuller job description first'); return; }
+      const btn = document.getElementById('jd-analyze-btn');
+      btn.disabled = true; btn.textContent = '🔍 Analyzing…';
+      try {
+        const ai = await callClaudeAI(buildAnalysisPrompt(jd, state));
+        if (ai) applyAnalysisResult(ai, true);
+        else applyAnalysisResult(offlineAnalyze(jd, state), false);
+      } catch (err) {
+        console.error(err);
+        applyAnalysisResult(offlineAnalyze(jd, state), false);
+      }
+      state.jdAnalyzed = true;
+      btn.disabled = false; btn.textContent = '🔍 Re-Analyze Job Description';
+      updatePreview();
+      showToast('✅ Analysis ready');
+    };
+
+    window.applyJDTailoring = async function() {
+      readForm();
+      const jd = state.jobDescription.trim();
+      if (!jd) { showToast('⚠️ Paste a job description first'); return; }
+      const btn = document.getElementById('jd-apply-btn');
+      btn.disabled = true; btn.textContent = '✨ Generating…';
+      const loading = document.getElementById('aiLoading');
+      if (loading) loading.classList.add('active');
+      let usedAI = false;
+      try {
+        const ai = await callClaudeAI(buildTailorPrompt(jd, state));
+        const result = ai || offlineTailor(jd, state);
+        usedAI = !!ai;
+        if (result.summary) {
+          state.summary = result.summary;
+          const el = document.getElementById('f-summary'); if (el) el.value = result.summary;
+        }
+        if (result.bullets && result.bullets.length && state.experiences[0]) {
+          state.experiences[0].bullets = result.bullets.slice(0, 3);
+          renderExpBlocks();
+        }
+        (result.addSkills || []).forEach(sk => { if (sk && !state.skills.includes(sk)) state.skills.push(sk); });
+        renderSkillTags();
+        updatePreview();
+        renderJDResults();
+        showToast(usedAI ? '🚀 Tailored with AI!' : '🚀 Tailored (offline mode)!');
+      } catch (err) {
+        console.error(err);
+        showToast('⚠️ Could not reach AI — used offline tailoring instead');
+      }
+      if (loading) loading.classList.remove('active');
+      btn.disabled = false; btn.textContent = '✨ Generate Tailored Resume (Rewrite Summary + Bullets)';
+    };
+
     window.aiGenerateSummary = function() {
       const title = state.title || 'professional';
       const summaries = [
@@ -1395,7 +1732,57 @@
       }, 800);
     };
 
-    // ═══ IMPROVED PDF DOWNLOAD (CROSS-DEVICE) ═══
+    // ═══ ATS-SAFE DOCX EXPORT (separate simple layout — safest for parsers) ═══
+    function buildATSPlainHTML(s) {
+      const eduAll = getAllEdu(s);
+      const expHTML = (s.experiences || []).filter(x => x.company || x.role).map(exp => `
+        <p style="margin:0 0 2px 0"><b>${e(exp.role) || 'Role'}</b> — ${e(exp.company) || 'Company'}${exp.location ? ', ' + e(exp.location) : ''}</p>
+        <p style="margin:0 0 6px 0;color:#555555;font-size:10pt">${e(exp.start) || ''}${exp.end ? ' - ' + e(exp.end) : ''}</p>
+        <ul style="margin:0 0 14px 0;padding-left:20px">${(exp.bullets || []).filter(b => b.trim()).map(b => `<li>${e(b)}</li>`).join('')}</ul>`).join('');
+      const eduHTML = eduAll.map(ed => `<p style="margin:0 0 10px 0"><b>${e(ed.school)}</b> — ${e(ed.degree) || ''} ${e(ed.field) || ''}${ed.year ? ', ' + e(ed.year) : ''}${ed.gpa ? ' (GPA ' + e(ed.gpa) + ')' : ''}</p>`).join('');
+      const certHTML = (s.certs || []).filter(c => c.name).map(c => `<p style="margin:0 0 6px 0">${e(c.name)}${c.issuer ? ' — ' + e(c.issuer) : ''}${c.year ? ' (' + e(c.year) + ')' : ''}</p>`).join('');
+      return `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+        body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111111;line-height:1.5}
+        h1{font-size:18pt;margin:0 0 2px 0}
+        h2{font-size:11pt;color:#555555;margin:0 0 10px 0;font-weight:normal}
+        h3{font-size:12pt;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #999999;padding-bottom:3px;margin:16px 0 8px 0}
+        p{margin:0 0 6px 0}
+      </style></head><body>
+        <h1>${e(s.name) || 'Your Name'}</h1>
+        <h2>${e(s.title) || 'Your Title'}</h2>
+        <p>${[s.email, s.phone, s.location, s.linkedin, s.github].filter(Boolean).map(e).join(' | ')}</p>
+        ${s.summary ? `<h3>Summary</h3><p>${e(s.summary)}</p>` : ''}
+        ${expHTML ? `<h3>Experience</h3>${expHTML}` : ''}
+        ${eduHTML ? `<h3>Education</h3>${eduHTML}` : ''}
+        ${certHTML ? `<h3>Certifications</h3>${certHTML}` : ''}
+        ${s.skills.length ? `<h3>Skills</h3><p>${s.skills.map(e).join(', ')}</p>` : ''}
+        ${s.languages ? `<h3>Languages</h3><p>${e(s.languages)}</p>` : ''}
+        ${s.hobbies ? `<h3>Interests</h3><p>${e(s.hobbies)}</p>` : ''}
+      </body></html>`;
+    }
+
+    window.downloadDOCX = function() {
+      readForm();
+      try {
+        if (!window.htmlDocx) { showToast('⚠️ Word export is still loading — try again in a second'); return; }
+        const htmlStr = buildATSPlainHTML(state);
+        const converted = window.htmlDocx.asBlob(htmlStr);
+        const url = URL.createObjectURL(converted);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = (state.name || 'resume').replace(/\s+/g, '_') + '_ATS.docx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+        showToast('✅ ATS-safe Word doc downloaded!');
+      } catch (err) {
+        console.error(err);
+        showToast('⚠️ DOCX export failed — try PDF instead');
+      }
+    };
+
+    // ═══ IMPROVED PDF DOWNLOAD (CROSS-DEVICE, MULTI-PAGE) ═══
     window.downloadPDF = function() {
       showToast('📥 Generating PDF…');
       const printEl = document.createElement('div');
@@ -1415,9 +1802,19 @@
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
             const pdfW = pdf.internal.pageSize.getWidth();
-            const ratio = pdfW / (canvas.width / 2);
-            const scaledH = (canvas.height / 2) * ratio;
-            pdf.addImage(imgData, 'PNG', 0, 0, pdfW, scaledH);
+            const pdfH = pdf.internal.pageSize.getHeight();
+            const imgW = pdfW;
+            const imgH = (canvas.height * imgW) / canvas.width;
+            let heightLeft = imgH;
+            let position = 0;
+            pdf.addImage(imgData, 'PNG', 0, position, imgW, imgH);
+            heightLeft -= pdfH;
+            while (heightLeft > 0) {
+              position = heightLeft - imgH;
+              pdf.addPage();
+              pdf.addImage(imgData, 'PNG', 0, position, imgW, imgH);
+              heightLeft -= pdfH;
+            }
             
             if (isIOS) {
               // On iOS open blob in new tab to allow sharing/saving
