@@ -460,6 +460,29 @@
       .ats-badge{padding:4px 8px}
       .ats-score{font-size:12px}
     }
+    /* === GUIDED AI WIZARD === */
+    #guided-overlay{display:none;position:fixed;inset:0;background:#0a0a12;z-index:2100;overflow-y:auto;flex-direction:column}
+    #guided-overlay.open{display:flex;animation:fadeIn .3s ease}
+    .guided-header{position:sticky;top:0;background:rgba(10,10,18,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15);padding:0 16px;height:54px;min-height:54px;display:flex;align-items:center;justify-content:space-between;z-index:2}
+    .guided-progress{display:flex;gap:6px;padding:14px 20px 0;max-width:560px;margin:0 auto;width:100%}
+    .guided-dot{flex:1;height:4px;border-radius:4px;background:rgba(250,250,247,.1);transition:background .3s}
+    .guided-dot.active{background:var(--gold)}
+    .guided-dot.done{background:rgba(201,168,76,.5)}
+    .guided-body{max-width:560px;margin:0 auto;padding:20px 20px 110px;width:100%;flex:1}
+    .guided-step{display:none}
+    .guided-step.active{display:block;animation:fadeIn .35s ease}
+    .guided-step-title{font-family:'Fraunces',serif;font-size:clamp(22px,4vw,28px);font-weight:900;margin-bottom:6px}
+    .guided-step-sub{font-size:13px;color:rgba(250,250,247,.5);margin-bottom:20px;line-height:1.65}
+    .guided-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,18,.98);backdrop-filter:blur(20px);border-top:1px solid rgba(201,168,76,.15);padding:12px 20px;display:flex;gap:10px;align-items:center;justify-content:space-between;z-index:2}
+    .guided-nav-right{display:flex;gap:14px;align-items:center}
+    .guided-skip{font-size:12px;color:rgba(250,250,247,.4);text-decoration:underline;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;white-space:nowrap}
+    .guided-skip:hover{color:rgba(250,250,247,.65)}
+    .guided-chip{padding:6px 12px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid rgba(201,168,76,.25);background:rgba(201,168,76,.06);color:rgba(250,250,247,.6);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+    .guided-chip.selected{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.16)}
+    @media(max-width:480px){
+      .guided-nav{flex-wrap:wrap}
+      .guided-skip{order:3;width:100%;text-align:center;padding-top:6px}
+    }
   </style>
 </head>
 <body>
@@ -476,7 +499,7 @@
     <a href="#testimonials" class="nav-link">Reviews</a>
   </div>
   <div class="nav-right">
-    <button class="nav-cta" onclick="openBuilder()">
+    <button class="nav-cta" onclick="openGuidedWizard()">
       <span class="icon-svg icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>
       Build Free
     </button>
@@ -488,7 +511,7 @@
   <a href="#ai-features" class="mobile-nav-link" onclick="closeMobileNav()">AI Features</a>
   <a href="#how-it-works" class="mobile-nav-link" onclick="closeMobileNav()">How it Works</a>
   <a href="#testimonials" class="mobile-nav-link" onclick="closeMobileNav()">Reviews</a>
-  <button class="mobile-nav-cta" onclick="closeMobileNav();openBuilder()">✦ Start Building Free — No Login</button>
+  <button class="mobile-nav-cta" onclick="closeMobileNav();openGuidedWizard()">✦ Start Building Free — No Login</button>
 </div>
 <section id="hero">
   <div class="hero-bg"></div><div class="hero-grid"></div>
@@ -498,7 +521,7 @@
       <h1 class="hero-heading">Build a <em>Job-Winning</em><br/>Resume in<br/>2 Minutes</h1>
       <p class="hero-sub">The world's most intelligent resume builder. AI writes for you, ATS scores guide you, and 7 stunning templates impress every recruiter.</p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="openBuilder()"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Start Building Free</button>
+        <button class="btn-primary" onclick="openGuidedWizard()"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Start Building Free</button>
         <a href="#templates" class="btn-outline">View Templates →</a>
       </div>
       <div class="hero-stats">
@@ -602,7 +625,7 @@
   <h2 class="cta-heading reveal">Your Dream Job is<br/><em style="font-style:italic;color:var(--gold)">One Resume Away</em></h2>
   <p class="cta-sub reveal">No account. No credit card. No login. Just build.</p>
   <div class="cta-actions reveal">
-    <button class="btn-primary" style="font-size:clamp(14px,1.5vw,16px);padding:clamp(13px,1.5vw,16px) clamp(24px,3vw,40px)" onclick="openBuilder()"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Build My Resume — Free</button>
+    <button class="btn-primary" style="font-size:clamp(14px,1.5vw,16px);padding:clamp(13px,1.5vw,16px) clamp(24px,3vw,40px)" onclick="openGuidedWizard()"><span class="icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></span>Build My Resume — Free</button>
     <a href="#templates" class="btn-outline" style="font-size:clamp(14px,1.5vw,16px);padding:clamp(13px,1.5vw,16px) clamp(20px,2.5vw,32px)">See All Templates →</a>
   </div>
 </section>
@@ -610,7 +633,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand"><div style="display:flex;align-items:center;gap:10px"><div class="logo-icon">R</div><div><div class="logo-text">ResumeAI Pro</div><div class="logo-sub">by Shariq Rafiq Anim</div></div></div><p>The world's most intelligent resume builder. AI-powered, ATS-optimized, designed to get you hired faster.</p></div>
-      <div class="footer-col"><h4>Product</h4><a href="#templates" class="footer-link">Templates</a><a href="#ai-features" class="footer-link">AI Features</a><a href="#how-it-works" class="footer-link">How it Works</a><span class="footer-link" onclick="openBuilder()">Resume Builder</span></div>
+      <div class="footer-col"><h4>Product</h4><a href="#templates" class="footer-link">Templates</a><a href="#ai-features" class="footer-link">AI Features</a><a href="#how-it-works" class="footer-link">How it Works</a><span class="footer-link" onclick="openGuidedWizard()">Resume Builder</span></div>
       <div class="footer-col"><h4>Resources</h4><span class="footer-link">Resume Guide</span><span class="footer-link">ATS Tips</span><span class="footer-link">Career Blog</span></div>
       <div class="footer-col"><h4>Company</h4><span class="footer-link">About</span><span class="footer-link">Contact</span><span class="footer-link">Privacy Policy</span></div>
     </div>
@@ -621,6 +644,94 @@
     </div></div>
   </div>
 </footer>
+
+<!-- ═══ GUIDED AI WIZARD ═══ -->
+<div id="guided-overlay">
+  <div class="guided-header">
+    <div class="builder-title"><span style="color:var(--gold)">✦</span> AI Guided Builder</div>
+    <button class="btn-close-builder" onclick="closeGuided(false)" aria-label="Close">✕</button>
+  </div>
+  <div class="guided-progress" id="guided-progress"></div>
+  <div class="guided-body">
+    <div class="guided-step active" id="g-step-1">
+      <div class="guided-step-title">Let's start with the job</div>
+      <div class="guided-step-sub">Paste the job description you're applying to. I'll use it to tailor every part of your resume and match its keywords.</div>
+      <div class="form-group"><label class="form-label">Job Description *</label><textarea class="form-textarea" id="g-jd" style="min-height:160px" placeholder="Paste the full job posting…"></textarea></div>
+      <div class="form-group"><label class="form-label">Target Job Title *</label><input class="form-input" id="g-title" placeholder="e.g. Security Operations Analyst"/></div>
+    </div>
+
+    <div class="guided-step" id="g-step-2">
+      <div class="guided-step-title">Who are you?</div>
+      <div class="guided-step-sub">Basic contact info recruiters and ATS systems expect to see at the top of a resume.</div>
+      <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="g-name"/></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Email *</label><input class="form-input" id="g-email" type="email"/></div>
+        <div class="form-group"><label class="form-label">Phone *</label><input class="form-input" id="g-phone"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Location</label><input class="form-input" id="g-location" placeholder="City, State"/></div>
+        <div class="form-group"><label class="form-label">LinkedIn</label><input class="form-input" id="g-linkedin"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Years of relevant experience</label>
+        <select class="form-select" id="g-years">
+          <option value="under 1 year">Less than 1 year</option>
+          <option value="1-2 years">1-2 years</option>
+          <option value="3-5 years" selected>3-5 years</option>
+          <option value="6-10 years">6-10 years</option>
+          <option value="10+ years">10+ years</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="guided-step" id="g-step-3">
+      <div class="guided-step-title">Your work experience</div>
+      <div class="guided-step-sub">Give me the raw facts, one responsibility or achievement per line. I'll turn them into sharp, quantified, keyword-rich bullet points — I won't invent anything you didn't tell me.</div>
+      <div class="form-section-title" style="margin-top:0">Most recent role</div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Company *</label><input class="form-input" id="g-role1-company"/></div>
+      <div class="form-group"><label class="form-label">Job Title *</label><input class="form-input" id="g-role1-title"/></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Start Date</label><input class="form-input" id="g-role1-start" placeholder="Jan 2021"/></div>
+      <div class="form-group"><label class="form-label">End Date</label><input class="form-input" id="g-role1-end" placeholder="Present"/></div></div>
+      <div class="form-group"><label class="form-label">Responsibilities & achievements (one per line) *</label><textarea class="form-textarea" id="g-role1-achievements" style="min-height:110px" placeholder="Handled phishing email triage across 500+ mailboxes
+Reduced false-positive alerts by streamlining Proofpoint rules
+Administered AD/Entra ID accounts and MFA for 2,000+ users"></textarea></div>
+
+      <button type="button" class="add-btn" id="g-add-role2-btn" onclick="showSecondRole()">+ Add a previous role</button>
+      <div id="g-role2-block" style="display:none;margin-top:14px">
+        <div class="form-section-title">Previous role</div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Company</label><input class="form-input" id="g-role2-company"/></div>
+        <div class="form-group"><label class="form-label">Job Title</label><input class="form-input" id="g-role2-title"/></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Start Date</label><input class="form-input" id="g-role2-start"/></div>
+        <div class="form-group"><label class="form-label">End Date</label><input class="form-input" id="g-role2-end"/></div></div>
+        <div class="form-group"><label class="form-label">Responsibilities & achievements (one per line)</label><textarea class="form-textarea" id="g-role2-achievements" style="min-height:90px"></textarea></div>
+      </div>
+    </div>
+
+    <div class="guided-step" id="g-step-4">
+      <div class="guided-step-title">Education & certifications</div>
+      <div class="guided-step-sub">Your highest or most relevant qualification is usually enough.</div>
+      <div class="form-row"><div class="form-group"><label class="form-label">School / University *</label><input class="form-input" id="g-edu-school"/></div>
+      <div class="form-group"><label class="form-label">Degree</label><input class="form-input" id="g-edu-degree" placeholder="B.S. / B.A. / Diploma"/></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Field of Study</label><input class="form-input" id="g-edu-field"/></div>
+      <div class="form-group"><label class="form-label">Grad Year</label><input class="form-input" id="g-edu-year"/></div></div>
+      <div class="form-group"><label class="form-label">Certifications (comma-separated)</label><input class="form-input" id="g-certs" placeholder="e.g. SC-900, CompTIA Security+"/></div>
+    </div>
+
+    <div class="guided-step" id="g-step-5">
+      <div class="guided-step-title">Skills & your best achievement</div>
+      <div class="guided-step-sub">These are pulled straight from the job description. Tap the ones you genuinely have — only confirmed skills get added to your resume.</div>
+      <div class="skill-suggestions-grid" id="g-skill-chips" style="margin-bottom:14px"></div>
+      <div class="form-group"><label class="form-label">Any other skills not listed above?</label><input class="form-input" id="g-skills-extra" placeholder="Comma-separated"/></div>
+      <div class="form-group"><label class="form-label">Your single strongest, most quantifiable achievement</label><textarea class="form-textarea" id="g-standout" style="min-height:70px" placeholder="e.g. Cut phishing incident response time by 40% across a 2,000-user org"></textarea></div>
+    </div>
+  </div>
+  <div class="guided-nav">
+    <button class="btn-outline" id="g-back-btn" onclick="guidedBack()" style="display:none">← Back</button>
+    <div class="guided-nav-right">
+      <button class="guided-skip" onclick="closeGuided(true)">Skip, I'll fill it in manually</button>
+      <button class="btn-primary" id="g-next-btn" onclick="guidedNext()">Continue →</button>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ BUILDER OVERLAY ═══ -->
 <div id="builder-overlay">
@@ -1431,6 +1542,17 @@
     // ═══ JOB-DESCRIPTION MATCHING ENGINE ═══
     const JD_STOPWORDS = new Set(['the','and','for','are','with','you','your','our','a','an','to','of','in','on','is','as','be','will','we','this','that','role','job','team','work','years','year','experience','ability','strong','skills','including','etc','across','using','use','other','such','have','has','from','or','at','by','all','also','into','more','who','their','they','it','its','can','must','should','preferred','required','requirements','responsibilities','about','looking','join','well','you\'ll','we\'re','they\'re','not','but','if','than','then','what','when','where','which','while','within','without']);
 
+    function escapeRegex(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+    // Word-boundary aware match — avoids false positives like the skill "R" or "Go"
+    // matching as a substring inside ordinary words ("opeRations", "Golden", etc).
+    function textContainsTerm(text, term) {
+      if (!term || !text) return false;
+      const esc = escapeRegex(term.trim());
+      const re = new RegExp('(^|[^a-zA-Z0-9])' + esc + '($|[^a-zA-Z0-9])', 'i');
+      return re.test(' ' + text + ' ');
+    }
+
     function buildResumeText(s) {
       const bulletText = (s.experiences || []).map(e => (e.bullets || []).join(' ')).join(' ');
       return [s.title, s.summary, (s.skills || []).join(' '), bulletText, s.hobbies].filter(Boolean).join(' ');
@@ -1446,15 +1568,19 @@
     }
 
     function extractKeywordsFromJD(jd) {
-      const jdLower = jd.toLowerCase();
       const allSkills = Array.from(new Set(Object.values(SKILL_DB).flat()));
-      const dbMatches = allSkills.filter(sk => jdLower.includes(sk.toLowerCase()));
-      const words = jd.replace(/[^a-zA-Z0-9+.#/ ]/g, ' ').split(/\s+/).filter(Boolean);
+      const dbMatches = allSkills.filter(sk => textContainsTerm(jd, sk));
+      // Exclude the individual words that make up an already-matched skill phrase
+      // (e.g. "Active Directory" matched -> don't also surface bare "Active"/"Directory").
+      const excludeWords = new Set();
+      dbMatches.forEach(sk => sk.toLowerCase().split(/[^a-z0-9]+/).forEach(w => { if (w) excludeWords.add(w); }));
+
+      const words = jd.replace(/[^a-zA-Z0-9+.#/\- ]/g, ' ').split(/\s+/)
+        .map(w => w.replace(/^[-.]+|[-.]+$/g, '')).filter(Boolean);
       const freq = {};
       words.forEach(w => {
         const lw = w.toLowerCase();
-        if (lw.length < 3 || JD_STOPWORDS.has(lw)) return;
-        if (dbMatches.some(d => d.toLowerCase() === lw)) return;
+        if (lw.length < 3 || JD_STOPWORDS.has(lw) || excludeWords.has(lw) || /^\d+$/.test(lw)) return;
         freq[lw] = (freq[lw] || 0) + 1;
       });
       const extra = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([w]) => w.charAt(0).toUpperCase() + w.slice(1));
@@ -1466,8 +1592,8 @@
 
     function offlineAnalyze(jd, s) {
       const keywords = extractKeywordsFromJD(jd);
-      const resumeText = buildResumeText(s).toLowerCase();
-      const matched = keywords.filter(k => resumeText.includes(k.toLowerCase()));
+      const resumeText = buildResumeText(s);
+      const matched = keywords.filter(k => textContainsTerm(resumeText, k));
       const missing = keywords.filter(k => !matched.includes(k));
       const coverage = keywords.length ? (matched.length / keywords.length) * 60 : 0;
       const score = Math.round(Math.min(100, structuralScore(s) + coverage));
@@ -1564,8 +1690,8 @@ Do not invent employers, titles, or metrics the candidate never mentioned. Only 
 
     function recomputeJDMatch() {
       if (!state.jdKeywords || !state.jdKeywords.length) return;
-      const resumeText = buildResumeText(state).toLowerCase();
-      const matched = state.jdKeywords.filter(k => resumeText.includes(k.toLowerCase()));
+      const resumeText = buildResumeText(state);
+      const matched = state.jdKeywords.filter(k => textContainsTerm(resumeText, k));
       const missing = state.jdKeywords.filter(k => !matched.includes(k));
       const coverage = (matched.length / state.jdKeywords.length) * 60;
       state.jdMatchScore = Math.round(Math.min(100, structuralScore(state) + coverage));
@@ -1705,6 +1831,252 @@ Do not invent employers, titles, or metrics the candidate never mentioned. Only 
       btn.disabled = false; btn.textContent = '✨ Generate Tailored Resume (Rewrite Summary + Bullets)';
     };
 
+    // ═══ GUIDED AI WIZARD ═══
+    let guidedStep = 1;
+    const GUIDED_TOTAL_STEPS = 5;
+
+    window.openGuidedWizard = function() {
+      document.getElementById('guided-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      guidedStep = 1;
+      showGuidedStep(1);
+    };
+
+    window.closeGuided = function(toManual) {
+      document.getElementById('guided-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+      if (toManual) openBuilder();
+    };
+
+    function renderGuidedProgress() {
+      const wrap = document.getElementById('guided-progress');
+      if (!wrap) return;
+      wrap.innerHTML = '';
+      for (let i = 1; i <= GUIDED_TOTAL_STEPS; i++) {
+        const d = document.createElement('div');
+        d.className = 'guided-dot' + (i < guidedStep ? ' done' : i === guidedStep ? ' active' : '');
+        wrap.appendChild(d);
+      }
+    }
+
+    function showGuidedStep(n) {
+      document.querySelectorAll('.guided-step').forEach(el => el.classList.remove('active'));
+      document.getElementById('g-step-' + n).classList.add('active');
+      document.getElementById('g-back-btn').style.display = n > 1 ? 'inline-flex' : 'none';
+      document.getElementById('g-next-btn').textContent = n === GUIDED_TOTAL_STEPS ? '✨ Generate My Resume' : 'Continue →';
+      if (n === GUIDED_TOTAL_STEPS) renderGuidedSkillChips();
+      renderGuidedProgress();
+      const body = document.getElementById('guided-overlay');
+      if (body) body.scrollTop = 0;
+    }
+
+    window.showSecondRole = function() {
+      document.getElementById('g-role2-block').style.display = 'block';
+      document.getElementById('g-add-role2-btn').style.display = 'none';
+    };
+
+    function validateGuidedStep(n) {
+      const val = id => (document.getElementById(id)?.value || '').trim();
+      if (n === 1) {
+        if (val('g-jd').length < 40) { showToast('⚠️ Paste a fuller job description first'); return false; }
+        if (!val('g-title')) { showToast('⚠️ Add your target job title'); return false; }
+      }
+      if (n === 2) {
+        if (!val('g-name')) { showToast('⚠️ Add your name'); return false; }
+        if (!val('g-email')) { showToast('⚠️ Add your email'); return false; }
+        if (!val('g-phone')) { showToast('⚠️ Add your phone number'); return false; }
+      }
+      if (n === 3) {
+        if (!val('g-role1-company') || !val('g-role1-title') || !val('g-role1-achievements')) {
+          showToast('⚠️ Add your most recent company, title, and at least one achievement'); return false;
+        }
+      }
+      if (n === 4) {
+        if (!val('g-edu-school')) { showToast('⚠️ Add your school or university'); return false; }
+      }
+      return true;
+    }
+
+    window.guidedNext = function() {
+      if (!validateGuidedStep(guidedStep)) return;
+      if (guidedStep === GUIDED_TOTAL_STEPS) { generateFullResume(); return; }
+      guidedStep++;
+      showGuidedStep(guidedStep);
+    };
+
+    window.guidedBack = function() {
+      guidedStep = Math.max(1, guidedStep - 1);
+      showGuidedStep(guidedStep);
+    };
+
+    function renderGuidedSkillChips() {
+      const jd = document.getElementById('g-jd').value;
+      const kws = extractKeywordsFromJD(jd);
+      const wrap = document.getElementById('g-skill-chips');
+      wrap.innerHTML = '';
+      window._guidedSelectedSkills = window._guidedSelectedSkills || new Set();
+      kws.forEach(kw => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'guided-chip' + (window._guidedSelectedSkills.has(kw) ? ' selected' : '');
+        chip.textContent = kw;
+        chip.onclick = () => {
+          if (window._guidedSelectedSkills.has(kw)) window._guidedSelectedSkills.delete(kw);
+          else window._guidedSelectedSkills.add(kw);
+          chip.classList.toggle('selected');
+        };
+        wrap.appendChild(chip);
+      });
+    }
+
+    function splitLines(text) {
+      return (text || '').split('\n').map(l => l.trim()).filter(Boolean);
+    }
+
+    function buildFullGenerationPrompt(jd, a) {
+      return `You are an expert resume writer and ATS optimization specialist. Using ONLY the facts provided below (never invent employers, titles, dates, or metrics the candidate didn't give you), write a complete, ATS-optimized resume tailored to this job description. Aim for a genuine ATS match score of 90+ by naturally and truthfully incorporating the job description's key terms and skills the candidate actually has.
+
+JOB DESCRIPTION:
+"""${jd.slice(0, 6000)}"""
+
+CANDIDATE FACTS:
+Name: ${a.name}
+Target title: ${a.title}
+Years of relevant experience: ${a.years}
+Most recent role: ${a.role1Title} at ${a.role1Company} (${a.role1Start} - ${a.role1End})
+Responsibilities/achievements (raw, may be unpolished): ${a.role1Achievements}
+${a.role2Company ? `Previous role: ${a.role2Title} at ${a.role2Company} (${a.role2Start} - ${a.role2End})\nResponsibilities: ${a.role2Achievements}` : ''}
+Education: ${a.eduDegree || ''} in ${a.eduField || ''}, ${a.eduSchool}, ${a.eduYear || ''}
+Certifications: ${a.certs || 'none'}
+Skills the candidate confirmed they have: ${a.skills || 'none listed'}
+Standout achievement: ${a.standout || 'none given'}
+
+Return ONLY strict JSON, no markdown fences, no extra prose, with this exact shape:
+{"summary": "<3 sentence professional summary, keyword-rich, truthful>", "skills": ["... 10-16 skills, prioritizing ones from the job description the candidate actually has"], "experiences": [{"bullets": ["<rewritten bullet 1>", "<rewritten bullet 2>", "<rewritten bullet 3>"]}${a.role2Company ? ', {"bullets": ["...", "...", "..."]}' : ''}], "notes": ["... up to 4 short honest notes on what could push the score even higher"]}
+
+The "experiences" array order must match the roles as listed above (most recent role first). Only rephrase and sharpen the achievements given — do not fabricate numbers that weren't provided.`;
+    }
+
+    function offlineGenerateFullResume(jd, a) {
+      const kws = extractKeywordsFromJD(jd);
+      const userSkills = (a.skills || '').split(',').map(s => s.trim()).filter(Boolean);
+      const mergedSkills = Array.from(new Set([...userSkills, ...kws.slice(0, 10)])).slice(0, 16);
+      const topKw = kws.slice(0, 4).join(', ');
+      const summary = `${a.title || 'Professional'} with ${a.years || 'several years of'} experience, specializing in ${userSkills.slice(0, 3).join(', ') || 'the core requirements of this role'}. Track record aligned with ${topKw || "this role's key requirements"}${a.standout ? '. ' + a.standout : '.'}`;
+
+      function sharpenBullets(raw, kwPool) {
+        const lines = splitLines(raw);
+        const out = lines.slice(0, 3).map((line, i) => {
+          const kw = kwPool[i];
+          const hasKw = kw && textContainsTerm(line, kw);
+          return (kw && !hasKw) ? `${line} (${kw})` : line;
+        });
+        while (out.length < 3 && kwPool[out.length]) {
+          out.push(`Applied ${kwPool[out.length]} to support day-to-day ${a.title || 'role'} responsibilities`);
+        }
+        return out;
+      }
+
+      const experiences = [{ bullets: sharpenBullets(a.role1Achievements, kws) }];
+      if (a.role2Company) experiences.push({ bullets: sharpenBullets(a.role2Achievements, kws.slice(3)) });
+
+      return {
+        summary, skills: mergedSkills, experiences,
+        notes: [
+          kws.length ? `Consider weaving in (if true of you): ${kws.slice(0, 5).join(', ')}` : '',
+          'Add specific numbers (%, $, team size, time saved) to every bullet where possible.'
+        ].filter(Boolean)
+      };
+    }
+
+    function hydrateFormFromState() {
+      const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+      set('f-name', state.name); set('f-title', state.title); set('f-email', state.email);
+      set('f-phone', state.phone); set('f-location', state.location); set('f-linkedin', state.linkedin);
+      set('f-github', state.github); set('f-summary', state.summary); set('f-hobbies', state.hobbies);
+      set('f-languages', state.languages); set('f-jd', state.jobDescription);
+    }
+
+    window.generateFullResume = async function() {
+      const btn = document.getElementById('g-next-btn');
+      btn.disabled = true; btn.textContent = '✨ Generating your resume…';
+
+      const val = id => (document.getElementById(id)?.value || '').trim();
+      const answers = {
+        jd: val('g-jd'), title: val('g-title'), name: val('g-name'), email: val('g-email'),
+        phone: val('g-phone'), location: val('g-location'), linkedin: val('g-linkedin'), years: val('g-years'),
+        role1Company: val('g-role1-company'), role1Title: val('g-role1-title'),
+        role1Start: val('g-role1-start'), role1End: val('g-role1-end') || 'Present',
+        role1Achievements: val('g-role1-achievements'),
+        role2Company: val('g-role2-company'), role2Title: val('g-role2-title'),
+        role2Start: val('g-role2-start'), role2End: val('g-role2-end'),
+        role2Achievements: val('g-role2-achievements'),
+        eduSchool: val('g-edu-school'), eduDegree: val('g-edu-degree'), eduField: val('g-edu-field'), eduYear: val('g-edu-year'),
+        certs: val('g-certs'),
+        skills: Array.from(window._guidedSelectedSkills || []).concat(val('g-skills-extra').split(',').map(s => s.trim()).filter(Boolean)).join(', '),
+        standout: val('g-standout')
+      };
+
+      let gen = null;
+      try { gen = await callClaudeAI(buildFullGenerationPrompt(answers.jd, answers)); } catch (err) { console.error(err); }
+      const usedAI = !!gen;
+      if (!gen) gen = offlineGenerateFullResume(answers.jd, answers);
+
+      // Authoritative facts (name, dates, employers) come straight from the user's answers —
+      // only the summary/bullets/skills phrasing comes from the AI/offline generator, so nothing
+      // gets fabricated.
+      state.name = answers.name; state.title = answers.title; state.email = answers.email;
+      state.phone = answers.phone; state.location = answers.location; state.linkedin = answers.linkedin;
+      state.summary = gen.summary || '';
+      state.skills = Array.from(new Set((gen.skills && gen.skills.length) ? gen.skills : answers.skills.split(',').map(s => s.trim()).filter(Boolean)));
+      state.jobDescription = answers.jd;
+
+      // Hydrate the DOM now, before calling any add*() helper below — several of them
+      // (addExperience in particular) trigger updatePreview() -> readForm(), which reads
+      // straight from these inputs. If they're still empty at that point it clobbers the
+      // state we just set above.
+      hydrateFormFromState();
+      renderSkillTags();
+
+      state.experiences = []; expCounter = 0;
+      const genExp = gen.experiences || [];
+      addExperience({
+        company: answers.role1Company, role: answers.role1Title, location: '',
+        start: answers.role1Start, end: answers.role1End,
+        bullets: (genExp[0] && genExp[0].bullets && genExp[0].bullets.length) ? genExp[0].bullets.slice(0, 3) : splitLines(answers.role1Achievements).slice(0, 3)
+      });
+      if (answers.role2Company) {
+        addExperience({
+          company: answers.role2Company, role: answers.role2Title, location: '',
+          start: answers.role2Start, end: answers.role2End,
+          bullets: (genExp[1] && genExp[1].bullets && genExp[1].bullets.length) ? genExp[1].bullets.slice(0, 3) : splitLines(answers.role2Achievements).slice(0, 3)
+        });
+      }
+
+      state.colleges = []; collegeCounter = 0;
+      addCollege({ school: answers.eduSchool, degree: answers.eduDegree, field: answers.eduField, year: answers.eduYear, gpa: '' });
+
+      state.certs = []; certCounter = 0;
+      answers.certs.split(',').map(c => c.trim()).filter(Boolean).forEach(c => addCert({ name: c, issuer: '', year: '' }));
+
+      if (!state.template) state.template = 'canvas';
+
+      // Score against the JD using the same word-boundary matcher the rest of the app uses,
+      // so the number here always matches the badge shown inside the builder.
+      state.jdKeywords = extractKeywordsFromJD(answers.jd);
+      state.jdAnalyzed = true;
+      recomputeJDMatch();
+      state.jdSummaryText = (usedAI ? '' : '⚙️ Offline matching mode — ') + `Guided build complete: ${state.jdMatchedKeywords.length}/${state.jdKeywords.length} key terms from this posting are reflected in your resume.`;
+      state.jdSuggestions = gen.notes || [];
+      state.jdClarifyingQuestions = [];
+
+      btn.disabled = false; btn.textContent = '✨ Generate My Resume';
+      closeGuided(false);
+      openBuilder(state.template);
+      switchTab('personal', document.querySelector('.form-tab'));
+      showToast(`🚀 Resume generated${usedAI ? '' : ' (offline mode)'} — match score ${state.jdMatchScore}!`);
+    };
+
     window.aiGenerateSummary = function() {
       const title = state.title || 'professional';
       const summaries = [
@@ -1784,6 +2156,10 @@ Do not invent employers, titles, or metrics the candidate never mentioned. Only 
 
     // ═══ IMPROVED PDF DOWNLOAD (CROSS-DEVICE, MULTI-PAGE) ═══
     window.downloadPDF = function() {
+      if (typeof html2canvas === 'undefined' || !window.jspdf) {
+        showToast('⚠️ PDF engine still loading — check your connection and try again in a moment');
+        return;
+      }
       showToast('📥 Generating PDF…');
       const printEl = document.createElement('div');
       printEl.style.cssText = 'position:fixed;left:-9999px;top:0;width:850px;background:white;z-index:-1;';
